@@ -1,4 +1,4 @@
-#include "Matrix.h"
+#include "matrix/Matrix.h"
 
 using namespace std;
 
@@ -6,10 +6,16 @@ int main() {
 
     Matrix<int> m = Matrix<int>();
     m.print();
-    m.loadFromFile("../matrix1.txt");
+    m.loadFromFile("../resources/matrix1.txt");
     cout << endl;
     m.print();
     cout << endl;
+
+    m.changeColumns(5);
+    m.changeRows(5);
+    m.setValue(3,3,1);
+    m.setValue(4,4,1);
+    m.print();
 
     m.printMatrixType();
     return 0;
