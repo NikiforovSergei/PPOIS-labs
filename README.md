@@ -1,2 +1,4 @@
 # PPOIS-labs
-Repository for PPOIS labs
+
+### Левков Глеб 121703
+lab №1 (1.7.1)
