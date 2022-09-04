@@ -42,11 +42,13 @@ public:
     bool isSymmetricalMatrix();
     bool isUpperTriangularMatrix();
     bool isLowerTriangularMatrix();
-    Matrix<T>& operator=(Matrix<T> other) noexcept;
+
     void loadFromFile(std::string fileName);
     void removeMatrix();
 
-
+    Matrix<T>& operator=(Matrix<T> other) noexcept;
+    Matrix<T>& operator++();
+    Matrix<T>& operator--();
 };
 
 
@@ -360,6 +362,20 @@ Matrix<T> &Matrix<T>::operator=(Matrix<T> other)  noexcept {
     this->M=other.M;
     this->rows=other.rows;
     this->columns=other.columns;
+    return *this;
+}
+
+template<typename T>
+Matrix<T> &Matrix<T>::operator++() {
+    this->changeRows(this->rows+1);
+    this->changeColumns(this->columns+1);
+    return *this;
+}
+
+template<typename T>
+Matrix<T> &Matrix<T>::operator--() {
+    this->changeRows(this->rows-1);
+    this->changeColumns(this->columns-1);
     return *this;
 }
 
