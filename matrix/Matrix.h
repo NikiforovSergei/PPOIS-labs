@@ -9,6 +9,17 @@
 #include <iostream>
 #include <fstream>
 
+/**
+ * \brief Матрица
+ *
+ * Класс, реализует тип данных "Вещественная матрица". Класс реализует следующие возможности:
+ * 1. изменение числа строк и числа столбцов;
+ * 2. загрузка матрицы из файла;
+ * 3. извлечение подматрицы заданного размера;
+ * 4. проверка типа матрицы (квадратная, диагональная, нулевая, единичная, симметрическая, верхняя треугольная, нижняя треугольная);
+ * 5. транспонированние матрицы;
+ * @tparam T - тип данных для хранения в матрице шаблонных значений.
+ */
 template <typename T>
 class Matrix {
 private:
@@ -52,13 +63,23 @@ public:
 };
 
 
-
+/**
+ * Конструктор без параметров,
+ * инициализирует размеры матрицы нулями.
+ * \arg \c rows = 0;
+ * \arg \c columns = 0;
+ */
 template<typename T>
 Matrix<T>::Matrix() {
     rows = columns = 0;
     M = nullptr;
 }
 
+/**
+ * Инициализирует матрицу переданными значениями строк и колонок.
+ * @param rows - количество строк
+ * @param columns - количество столбцов
+ */
 template<typename T>
 Matrix<T>::Matrix(int rows, int columns) {
     this->rows = rows;
@@ -82,6 +103,9 @@ Matrix<T>::~Matrix() {
     removeMatrix();
 }
 
+/**
+ * Выводит матрицу в консоль.
+ */
 template<typename T>
 void Matrix<T>::print() {
     if (M!= nullptr) {
@@ -98,6 +122,12 @@ void Matrix<T>::print() {
 
 }
 
+/**
+ * Возвращает значение из i строки j столбца матрицы, если такового нет, возвращает 0.
+ * @param i - строка матрицы (i>0)
+ * @param j - столбец матрицы (j>0)
+ * @return T - значение ячейки матрицы или 0
+ */
 template<typename T>
 T Matrix<T>::getValue(int i, int j) {
     if( (i>=0 && j>=0) and (i < rows && j < columns) )
@@ -106,6 +136,12 @@ T Matrix<T>::getValue(int i, int j) {
         return 0;
 }
 
+/**
+ * Устанавливает переданное значение в i строке j столбце матрицы.
+ * @param i - строка матрицы (i>0)
+ * @param j - столбец матрицы (j>0)
+ * @param value - значение
+ */
 template<typename T>
 void Matrix<T>::setValue(int i, int j, T value) {
     if( (i>=0 && j>=0) and (i <= rows && j <= columns) )
@@ -114,6 +150,11 @@ void Matrix<T>::setValue(int i, int j, T value) {
         return;
 }
 
+/**
+ * Изменяет количество строк на переданное значение,
+ * матрица или обрезается, или пустые ячейки заполняются нулями.
+ * @param changed_rows - новое значение количества строк матрицы.
+ */
 template<typename T>
 void Matrix<T>::changeRows(int changed_rows) {
     T** changedM = new T*[changed_rows];
@@ -132,6 +173,11 @@ void Matrix<T>::changeRows(int changed_rows) {
     this->M = changedM;
 }
 
+/**
+ * Изменяет количество столбцов на переданное значение,
+ * матрица или обрезается, или пустые ячейки заполняются нулями.
+ * @param changed_columns - новое значение количества столбцов матрицы.
+ */
 template<typename T>
 void Matrix<T>::changeColumns(int changed_columns) {
     T** changedM = new T*[rows];
@@ -150,6 +196,10 @@ void Matrix<T>::changeColumns(int changed_columns) {
     this->M = changedM;
 }
 
+/**
+ * Загружает матрицу из файла.
+ * @param fileName - имя файла или путь к файлу
+ */
 template<typename T>
 void Matrix<T>::loadFromFile(std::string fileName) {
     std::string buff;
@@ -175,6 +225,10 @@ void Matrix<T>::loadFromFile(std::string fileName) {
     }
 }
 
+/**
+ * Транспонирует матрицу.
+ * @return Matrix<T> - новая транспонированная матрица.
+ */
 template<typename T>
 Matrix<T> Matrix<T>::getTransMatrix() {
     if (this->M!= nullptr and this->isSquareMatrix()) {
@@ -192,6 +246,14 @@ Matrix<T> Matrix<T>::getTransMatrix() {
         throw std::out_of_range("impossible to get transparent matrix");
 }
 
+/**
+ * Возвращает под матрицу заданного размера начиная с x1 строки y1 столбца, по x2 строки y2 столбца.
+ * @param x1 - начальная строка
+ * @param y1 - начальный столбец
+ * @param x2 - конечная строка
+ * @param y2 - конечный столбец
+ * @return Matrix<T> - сабматрица основной матрицы.
+ */
 template<typename T>
 Matrix<T> Matrix<T>::getSubMatrix(int x1, int y1, int x2, int y2) {
 
@@ -225,11 +287,19 @@ Matrix<T> Matrix<T>::getSubMatrix(int x1, int y1, int x2, int y2) {
         throw std::out_of_range("impossible to get sub matrix");
 }
 
+/**
+ * Является ли эта матрица квадратной.
+ * @return true - если является, в противном случае false
+ */
 template<typename T>
 bool Matrix<T>::isSquareMatrix() {
     return M != nullptr && rows == columns;
 }
 
+/**
+ * Является ли эта матрица диагональной.
+ * @return true - если является, в противном случае false
+ */
 template<typename T>
 bool Matrix<T>::isDiagonalMatrix() {
     for (int i=0; i<rows; i++) {
@@ -241,6 +311,10 @@ bool Matrix<T>::isDiagonalMatrix() {
     return this->isSquareMatrix();
 }
 
+/**
+ * Является ли эта матрица нулевой.
+ * @return true - если является, в противном случае false
+ */
 template<typename T>
 bool Matrix<T>::isZeroMatrix() {
     for (int i=0; i<rows; i++) {
@@ -252,6 +326,10 @@ bool Matrix<T>::isZeroMatrix() {
     return true;
 }
 
+/**
+ * Является ли эта матрица единичной.
+ * @return true - если является, в противном случае false
+ */
 template<typename T>
 bool Matrix<T>::isUnitMatrix() {
     for (int i=0; i<rows; i++) {
@@ -263,6 +341,10 @@ bool Matrix<T>::isUnitMatrix() {
     return this->isSquareMatrix();
 }
 
+/**
+ * Является ли эта матрица симметричной.
+ * @return true - если является, в противном случае false
+ */
 template<typename T>
 bool Matrix<T>::isSymmetricalMatrix() {
     for (int i=0; i<rows; i++) {
@@ -274,6 +356,10 @@ bool Matrix<T>::isSymmetricalMatrix() {
     return this->isSquareMatrix();
 }
 
+/**
+ * Является ли эта матрица верхней треугольной.
+ * @return true - если является, в противном случае false
+ */
 template<typename T>
 bool Matrix<T>::isUpperTriangularMatrix() {
     for (int i=0; i<rows; i++) {
@@ -285,6 +371,10 @@ bool Matrix<T>::isUpperTriangularMatrix() {
     return this->isSquareMatrix();
 }
 
+/**
+ * Является ли эта матрица нижней треугольной.
+ * @return true - если является, в противном случае false
+ */
 template<typename T>
 bool Matrix<T>::isLowerTriangularMatrix() {
     for (int i=0; i<rows; i++) {
@@ -296,6 +386,9 @@ bool Matrix<T>::isLowerTriangularMatrix() {
     return this->isSquareMatrix();
 }
 
+/**
+ * Выводит тип матрицы.
+ */
 template<typename T>
 void Matrix<T>::printMatrixType() {
     std::cout << "Матрица:" << std::endl;
@@ -330,6 +423,9 @@ void Matrix<T>::printMatrixType() {
     }
 }
 
+/**
+ * Освобождает память выделенную под матрицу.
+ */
 template<typename T>
 void Matrix<T>::removeMatrix() {
     if (rows > 0) {
@@ -343,11 +439,19 @@ void Matrix<T>::removeMatrix() {
     }
 }
 
+/**
+ * Возвращает количество строк матрицы.
+ * @return int
+ */
 template<typename T>
 int Matrix<T>::getRows() {
     return rows;
 }
 
+/**
+ * Возвращает количество столбцов матрицы.
+ * @return int
+ */
 template<typename T>
 int Matrix<T>::getColumns() {
     return columns;
@@ -365,6 +469,10 @@ Matrix<T> &Matrix<T>::operator=(Matrix<T> other)  noexcept {
     return *this;
 }
 
+/**
+ * Увеличивает количество строк и столбцов матрицы
+ * @return Matrix<T> - матрица с изменённым размером.
+ */
 template<typename T>
 Matrix<T> &Matrix<T>::operator++() {
     this->changeRows(this->rows+1);
@@ -372,6 +480,10 @@ Matrix<T> &Matrix<T>::operator++() {
     return *this;
 }
 
+/**
+ * Уменьшает количество строк и столбцов матрицы на 1
+ * @return Matrix<T> - матрица с изменённым размером.
+ */
 template<typename T>
 Matrix<T> &Matrix<T>::operator--() {
     this->changeRows(this->rows-1);
