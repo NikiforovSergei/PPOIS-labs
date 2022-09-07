@@ -30,6 +30,7 @@ private:
 public:
     Matrix();
     Matrix(int rows, int columns);
+    Matrix(const Matrix<T> &other);
     ~Matrix();
 
     void print();
@@ -73,6 +74,17 @@ template<typename T>
 Matrix<T>::Matrix() {
     rows = columns = 0;
     M = nullptr;
+}
+/**
+ * Конструктор копирования.
+ * @param other - копируемая матрица
+ */
+template<typename T>
+Matrix<T>::Matrix(const Matrix<T> &other) {
+    this->removeMatrix();
+    this->M = other.M;
+    this->rows = other.rows;
+    this->columns = other.columns;
 }
 
 /**
