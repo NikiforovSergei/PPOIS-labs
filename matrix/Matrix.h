@@ -56,7 +56,6 @@ public:
     bool isLowerTriangularMatrix();
 
     void loadFromFile(std::string fileName);
-    void removeMatrix();
 
     Matrix<T>& operator=(Matrix<T> other) noexcept;
     Matrix<T>& operator++();
@@ -81,7 +80,7 @@ Matrix<T>::Matrix() {
  */
 template<typename T>
 Matrix<T>::Matrix(const Matrix<T> &other) {
-    this->removeMatrix();
+    this->~Matrix();
     this->M = other.M;
     this->rows = other.rows;
     this->columns = other.columns;
@@ -112,7 +111,15 @@ Matrix<T>::Matrix(int rows, int columns) {
 
 template<typename T>
 Matrix<T>::~Matrix() {
-    removeMatrix();
+    if (rows > 0) {
+        for (int i = 0; i < rows; i++) {
+            delete[] M[i];
+        }
+    }
+
+    if (columns > 0) {
+        delete[] M;
+    }
 }
 
 /**
@@ -180,7 +187,7 @@ void Matrix<T>::changeRows(int changed_rows) {
         }
     }
 
-    this->removeMatrix();
+    this->~Matrix();
     this->rows = changed_rows;
     this->M = changedM;
 }
@@ -203,7 +210,7 @@ void Matrix<T>::changeColumns(int changed_columns) {
         }
     }
 
-    this->removeMatrix();
+    this->~Matrix();
     this->columns = changed_columns;
     this->M = changedM;
 }
@@ -217,7 +224,7 @@ void Matrix<T>::loadFromFile(std::string fileName) {
     std::string buff;
     std::ifstream file(fileName);
     if (file.is_open()) {
-        removeMatrix();
+        this->~Matrix();
         file >> this->rows;
         file >> this->columns;
 
@@ -436,22 +443,6 @@ void Matrix<T>::printMatrixType() {
 }
 
 /**
- * Освобождает память выделенную под матрицу.
- */
-template<typename T>
-void Matrix<T>::removeMatrix() {
-    if (rows > 0) {
-        for (int i = 0; i < rows; i++) {
-            delete[] M[i];
-        }
-    }
-
-    if (columns > 0) {
-        delete[] M;
-    }
-}
-
-/**
  * Возвращает количество строк матрицы.
  * @return int
  */
@@ -474,7 +465,7 @@ Matrix<T> &Matrix<T>::operator=(Matrix<T> other)  noexcept {
     if (this == &other)
         return *this;
 
-    this->removeMatrix();
+    this->~Matrix();
     this->M=other.M;
     this->rows=other.rows;
     this->columns=other.columns;
