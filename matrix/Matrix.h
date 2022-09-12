@@ -75,7 +75,7 @@ Matrix<T>::Matrix() {
     M = nullptr;
 }
 /**
- * Конструктор копирования.
+ * Конструктор копирования. Он вызывается когда новый объект создаётся на основе существующего.
  * @param other - копируемая матрица
  */
 template<typename T>
@@ -109,6 +109,9 @@ Matrix<T>::Matrix(int rows, int columns) {
     }
 }
 
+/**
+ * В деструкторе высвобождается динамическая память.
+ */
 template<typename T>
 Matrix<T>::~Matrix() {
     if (rows > 0) {
@@ -138,7 +141,6 @@ void Matrix<T>::print() {
     else {
         std::cout << "matrix empty" << std::endl;
     }
-
 }
 
 /**
