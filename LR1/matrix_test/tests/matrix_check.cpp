@@ -5,60 +5,59 @@
 #include "gtest/gtest.h"
 #include "Matrix.h"
 
-#define RESOURCES_PATH "/Users/glebchanskiy/Workspace/subjects/pivo/sem3/PPOIS-labs/lab1/resources/"
 
 TEST(matrixTypeCheck, diagonalMatrix) {
     Matrix<int> m = Matrix<int>();
 
-    m.loadFromFile( RESOURCES_PATH "diagonal_matrix.txt");
+    m.loadFromFile("resources/diagonal_matrix.txt");
     EXPECT_EQ(m.isDiagonalMatrix(), true);
 }
 
 TEST(matrixTypeCheck, SquareMatrix) {
     Matrix<int> m = Matrix<int>();
 
-    m.loadFromFile(RESOURCES_PATH "square_matrix.txt");
+    m.loadFromFile("resources/square_matrix.txt");
     EXPECT_EQ(m.isSquareMatrix(), true);
 }
 
 TEST(matrixTypeCheck, ZeroMatrix) {
     Matrix<int> m = Matrix<int>();
 
-    m.loadFromFile(RESOURCES_PATH "zero_matrix.txt");
+    m.loadFromFile("resources/zero_matrix.txt");
     EXPECT_EQ(m.isZeroMatrix(), true);
 }
 
 TEST(matrixTypeCheck, UnitMatrix) {
     Matrix<int> m = Matrix<int>();
 
-    m.loadFromFile(RESOURCES_PATH "unit_matrix.txt");
+    m.loadFromFile("resources/unit_matrix.txt");
     EXPECT_EQ(m.isUnitMatrix(), true);
 }
 
 TEST(matrixTypeCheck, SymmetricalMatrix) {
     Matrix<int> m = Matrix<int>();
 
-    m.loadFromFile(RESOURCES_PATH "sym_matrix.txt");
+    m.loadFromFile("resources/sym_matrix.txt");
     EXPECT_EQ(m.isSymmetricalMatrix(), true);
 }
 
 TEST(matrixTypeCheck, LowerTriangularMatrix) {
     Matrix<int> m = Matrix<int>();
 
-    m.loadFromFile(RESOURCES_PATH "upper_matrix.txt");
+    m.loadFromFile("resources/upper_matrix.txt");
     EXPECT_EQ(m.isLowerTriangularMatrix(), true);
 }
 
 TEST(matrixTypeCheck, UpperTriangularMatrix) {
     Matrix<int> m = Matrix<int>();
 
-    m.loadFromFile(RESOURCES_PATH "lower_matrix.txt");
+    m.loadFromFile("resources/lower_matrix.txt");
     EXPECT_EQ(m.isUpperTriangularMatrix(), true);
 }
 
 TEST(matrixGetTransponentMatrixCheck, x3matrix) {
     Matrix<int> m = Matrix<int>();
-    m.loadFromFile(RESOURCES_PATH "matrixToBeTransp.txt");
+    m.loadFromFile("resources/matrixToBeTransp.txt");
 
     Matrix<int> T = m.getTransMatrix();
 
@@ -69,10 +68,10 @@ TEST(matrixGetTransponentMatrixCheck, x3matrix) {
 
 TEST(matrixGetSubMatrixCheck, x5matrix) {
     Matrix<int> m = Matrix<int>();
-    m.loadFromFile(RESOURCES_PATH "big_matrix.txt");
+    m.loadFromFile("resources/big_matrix.txt");
 
     Matrix<int> correct_sub = Matrix<int>();
-    correct_sub.loadFromFile(RESOURCES_PATH "sub_matrix_of_big_matrix.txt");
+    correct_sub.loadFromFile("resources/sub_matrix_of_big_matrix.txt");
 
     Matrix<int> sub_m = m.getSubMatrix(1,1,3,3);
 
@@ -83,10 +82,10 @@ TEST(matrixGetSubMatrixCheck, x5matrix) {
 
 TEST(matrixGetSubMatrixCheck, x3matrix) {
     Matrix<int> m = Matrix<int>();
-    m.loadFromFile(RESOURCES_PATH "midle_matrix.txt");
+    m.loadFromFile("resources/midle_matrix.txt");
 
     Matrix<int> correct_sub = Matrix<int>();
-    correct_sub.loadFromFile(RESOURCES_PATH "sub_matrix_of_big_matrix.txt");
+    correct_sub.loadFromFile("resources/sub_matrix_of_big_matrix.txt");
 
     Matrix<int> sub_m = m.getSubMatrix(0,0,3,3);
 

@@ -6,7 +6,7 @@ int main() {
 
     Matrix<int> m = Matrix<int>();
     m.print();
-    m.loadFromFile("../resources/matrix1.txt");
+    m.loadFromFile("resources/matrix1.txt");
     cout << endl;
     m.print();
     cout << endl;

@@ -12,3 +12,7 @@ add_subdirectory(matrix_lib)
 add_subdirectory(matrix_test)
 
 target_link_libraries(matrix_run matrix)
+
+add_custom_command(TARGET matrix_run POST_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E copy_directory
+                       ${CMAKE_SOURCE_DIR}/resources/ $<TARGET_FILE_DIR:matrix_run>/resources/)
