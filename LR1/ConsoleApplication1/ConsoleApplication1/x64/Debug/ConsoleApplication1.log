@@ -1,0 +1,5 @@
+﻿  ConsoleApplication1.cpp
+  TicTacToe.cpp
+  Создание кода...
+D:\work\3sem\lab1\ConsoleApplication1\ConsoleApplication1\TicTacToe.cpp(39): warning C4715: TTT::operator[]: значение возвращается не при всех путях выполнения
+  ConsoleApplication1.vcxproj -> D:\work\3sem\lab1\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe
