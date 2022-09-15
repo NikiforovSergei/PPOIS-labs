@@ -3,8 +3,7 @@
 using namespace std;
 
 int main() {
-
-    Matrix<int> m = Matrix<int>();
+    Matrix m;
     m.print();
     m.loadFromFile("resources/matrix1.txt");
     cout << endl;
