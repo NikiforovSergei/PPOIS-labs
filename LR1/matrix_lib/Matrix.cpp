@@ -45,18 +45,7 @@ Matrix::~Matrix() {
   }
 }
 
-void Matrix::print() {
-  if (M != nullptr) {
-    for (int i = 0; i < rows; i++) {
-      for (int j = 0; j < columns; j++) {
-        std::cout << M[i][j] << "  ";
-      }
-      std::cout << std::endl;
-    }
-  } else {
-    std::cout << "matrix empty" << std::endl;
-  }
-}
+
 
 double Matrix::getValue(int i, int j) {
   if ((i >= 0 && j >= 0) and (i < rows && j < columns))
@@ -228,38 +217,7 @@ bool Matrix::isLowerTriangularMatrix() {
   return this->isSquareMatrix();
 }
 
-void Matrix::printMatrixType() {
-  std::cout << "Матрица:" << std::endl;
-  int counter = 1;
-  if (this->isSquareMatrix()) {
-    std::cout << counter << ". квадратная" << std::endl;
-    counter++;
-  }
-  if (this->isSymmetricalMatrix()) {
-    std::cout << counter << ". симметричная" << std::endl;
-    counter++;
-  }
-  if (this->isUnitMatrix()) {
-    std::cout << counter << ". единичная" << std::endl;
-    counter++;
-  }
-  if (this->isZeroMatrix()) {
-    std::cout << counter << ". нулевая" << std::endl;
-    counter++;
-  }
-  if (this->isDiagonalMatrix()) {
-    std::cout << counter << ". диагональная" << std::endl;
-    counter++;
-  }
-  if (this->isUpperTriangularMatrix()) {
-    std::cout << counter << ". верхняя треугольная" << std::endl;
-    counter++;
-  }
-  if (this->isLowerTriangularMatrix()) {
-    std::cout << counter << ". нижняя треугольная" << std::endl;
-    counter++;
-  }
-}
+
 
 int Matrix::getRows() { return rows; }
 
