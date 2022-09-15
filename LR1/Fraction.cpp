@@ -449,8 +449,9 @@ double Fraction::ToDouble()
 {
 	double denominator = this->denominator;
 	double integer = this->integer;
-	double numeration = this->numeration + denominator * integer;
-	return numeration/this->denominator;
+	double numeration = this->numeration;
+	this->numeration > 0 ? numeration = this->numeration + this->integer * this->denominator : numeration = this->numeration - this->integer * this->denominator;
+	return numeration/denominator;
 }
 /*! \brief Функция сравнения < двух натуральных дробей
 	\param other число, с которым сравнивают
