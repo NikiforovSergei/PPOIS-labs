@@ -12,6 +12,13 @@ TEST(matrixTypeCheck, diagonalMatrix) {
   EXPECT_EQ(m.isDiagonalMatrix(), true);
 }
 
+TEST(matrixTypeCheck, notDiagonalMatrix) {
+  Matrix m = Matrix();
+
+  m.loadFromFile("resources/big_matrix.txt");
+  EXPECT_EQ(m.isDiagonalMatrix(), false);
+}
+
 TEST(matrixTypeCheck, SquareMatrix) {
   Matrix m = Matrix();
 
@@ -19,11 +26,25 @@ TEST(matrixTypeCheck, SquareMatrix) {
   EXPECT_EQ(m.isSquareMatrix(), true);
 }
 
+TEST(matrixTypeCheck, notSquareMatrix) {
+  Matrix m = Matrix();
+
+  m.loadFromFile("resources/not_square_matrix.txt");
+  EXPECT_EQ(m.isSquareMatrix(), false);
+}
+
 TEST(matrixTypeCheck, ZeroMatrix) {
   Matrix m = Matrix();
 
   m.loadFromFile("resources/zero_matrix.txt");
   EXPECT_EQ(m.isZeroMatrix(), true);
+}
+
+TEST(matrixTypeCheck, notZeroMatrix) {
+  Matrix m = Matrix();
+
+  m.loadFromFile("resources/big_matrix.txt");
+  EXPECT_EQ(m.isZeroMatrix(), false);
 }
 
 TEST(matrixTypeCheck, UnitMatrix) {
@@ -99,8 +120,41 @@ TEST(matrixConstructorCheck, withoutArgumens) {
   EXPECT_EQ(m.getColumns(), 0);
 }
 
-TEST(matrixConstructorCheck, with2Argumens) {
+TEST(matrixConstructorCheck, with2Argumens3x4) {
   Matrix m = Matrix(3, 4);
   EXPECT_EQ(m.getRows(), 3);
   EXPECT_EQ(m.getColumns(), 4);
+}
+
+TEST(matrixConstructorCheck, with2Argumens10x15) {
+  Matrix m = Matrix(10, 15);
+  EXPECT_EQ(m.getRows(), 10);
+  EXPECT_EQ(m.getColumns(), 15);
+}
+
+TEST(matrixConstructorCheck, with2Argumens100x200) {
+  Matrix m = Matrix(100, 200);
+  EXPECT_EQ(m.getRows(), 100);
+  EXPECT_EQ(m.getColumns(), 200);
+}
+
+TEST(matrixOperatorCheck, increment1) {
+  Matrix m = Matrix(10, 10);
+  ++m;
+  EXPECT_EQ(m.getRows(), 11);
+  EXPECT_EQ(m.getColumns(), 11);
+}
+
+TEST(matrixOperatorCheck, increment15) {
+  Matrix m = Matrix(10, 10);
+
+  for (int i = 0; i < 15; i++) ++m;
+
+  EXPECT_EQ(m.getRows(), 25);
+  EXPECT_EQ(m.getColumns(), 25);
+}
+
+int main(int argc, char **argv) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }
