@@ -2,8 +2,27 @@
 
 using namespace std;
 
-// void print(Matrix m);
-// void printMatrixType(Matrix m);
+void print(Matrix& m);
+void printMatrixType(Matrix& m);
+
+int main() {
+  Matrix m;
+  print(m);
+  m.loadFromFile("resources/matrix1.txt");
+  cout << endl;
+  print(m);
+  cout << endl;
+
+  m.changeColumns(5);
+  m.changeRows(5);
+  m.setValue(3, 3, 1);
+  m.setValue(4, 4, 1);
+  print(m);
+
+  printMatrixType(m);
+  return 0;
+}
+
 void print(Matrix& m) {
   if (m.getRows() > 0 && m.getColumns() > 0)
     for (int i = 0; i < m.getRows(); i++) {
@@ -48,22 +67,4 @@ void printMatrixType(Matrix& m) {
     std::cout << counter << ". нижняя треугольная" << std::endl;
     counter++;
   }
-}
-
-int main() {
-  Matrix m;
-  print(m);
-  m.loadFromFile("resources/matrix1.txt");
-  cout << endl;
-  print(m);
-  cout << endl;
-
-  m.changeColumns(5);
-  m.changeRows(5);
-  m.setValue(3, 3, 1);
-  m.setValue(4, 4, 1);
-  print(m);
-
-  printMatrixType(m);
-  return 0;
 }
