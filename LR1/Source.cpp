@@ -7,6 +7,210 @@ using namespace std;
 /// \file
 /// \brief ‘айл Source с реализацией всего, что было объ€влено в Header.
 
+void Solution::Menu()
+{
+    Matrix A, B, C;
+    Solution Way;
+
+    while (true)
+    {
+        switch (Way.Get_1())
+        {
+        case 1:
+        {
+            cin >> A;
+            cout << A;
+        }
+        break;
+
+        case 2:
+        {
+            cin >> B;
+            cout << B;
+        }
+        break;
+
+        case 3:
+        {
+            switch (Way.Get_2())
+            {
+            case 1:
+            {
+                ++A;
+                cout << A;
+            }
+            break;
+
+            case 2:
+            {
+                ++B;
+                cout << B;
+            }
+            break;
+            }
+        }
+        break;
+
+        case 4:
+        {
+            switch (Way.Get_2())
+            {
+            case 1:
+            {
+                --A;
+                cout << A;
+            }
+            break;
+
+            case 2:
+            {
+                --B;
+                cout << B;
+            }
+            break;
+            }
+        }
+        break;
+
+        case 5:
+        {
+            switch (Way.Get_2())
+            {
+            case 1:
+            {
+                C = A + B;
+                cout << C;
+            }
+            break;
+
+            case 2:
+            {
+                C = A - B;
+                cout << C;
+            }
+            break;
+            }
+        }
+        break;
+
+        case 6:
+        {
+            C = A * B;
+            cout << C;
+        }
+        break;
+
+        case 7:
+        {
+            switch (Way.Get_2())
+            {
+            case 1:
+            {
+                C = A * 2;
+                cout << C;
+            }
+            break;
+
+            case 2:
+            {
+                C = B * 2;
+                cout << C;
+            }
+            break;
+            }
+        }
+        break;
+
+        case 8:
+        {
+            switch (Way.Get_2())
+            {
+            case 1:
+            {
+                C = A / 2;
+                cout << C;
+            }
+            break;
+
+            case 2:
+            {
+                C = B / 2;
+                cout << C;
+            }
+            break;
+            }
+        }
+        break;
+
+        case 9:
+        {
+            switch (Way.Get_2())
+            {
+            case 1:
+            {
+                C = A ^ 2;
+                cout << C;
+            }
+            break;
+
+            case 2:
+            {
+                C = B ^ 2;
+                cout << C;
+            }
+            break;
+            }
+        }
+        break;
+
+        case 10:
+        {
+            switch (Way.Get_2())
+            {
+            case 1:
+            {
+                cout << A;
+                cout << A.DeterminantOfMatrix();
+            }
+            break;
+
+            case 2:
+            {
+                cout << B;
+                cout << B.DeterminantOfMatrix();
+            }
+            break;
+            }
+        }
+        break;
+
+        case 11:
+        {
+            switch (Way.Get_2())
+            {
+            case 1:
+            {
+                cout << A;
+                A.NormOfMatrix();
+            }
+            break;
+
+            case 2:
+            {
+                cout << A;
+                B.NormOfMatrix();
+            }
+            break;
+            }
+        }
+        break;
+
+        default:
+            break;
+        }
+    }
+}
+
 int Solution::Get_1()
 {
     cout << "\n\n Create Matrix A - 1\n Create Matrix B - 2\n ++A or ++B - 3\n --A or --B - 4\n A+B or A-B - 5\n A*B - 6\n A*2 or B*2 - 7\n A/2 or B/2 - 8\n A^2 or B^2 - 9\n Determinant of matrix A or B - 10\n Norm of matrix A or B - 11\n\n";
