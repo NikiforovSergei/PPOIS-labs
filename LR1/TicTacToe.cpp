@@ -156,7 +156,7 @@ void TTT::columns()
 	int any_column = 0;
 
 	for (int i = 0; i < size; i++) {
-		for (int j = 0; j / 3 < size; j = j + size) {
+		for (int j = 0; j / size < size; j = j + size) {
 			if (grid[i + j] == 'X') {
 				any_column++;
 			}
