@@ -1,9 +1,0 @@
-﻿  Menu.cpp
-C:\BSUIR\BSUIR\ППОИС\TagPuzzle\TagPuzzle\Menu.h(17,2): warning C4091: static : пропускается слева от "Menu", когда ни одна переменная не объявлена
-  Puzzle.cpp
-  TagPuzzle.cpp
-C:\BSUIR\BSUIR\ППОИС\TagPuzzle\TagPuzzle\Menu.h(17,2): warning C4091: static : пропускается слева от "Menu", когда ни одна переменная не объявлена
-  Test.cpp
-C:\BSUIR\BSUIR\ППОИС\TagPuzzle\TagPuzzle\Test.cpp(1,10): fatal  error C1083: Не удается открыть файл включение: gtest/gtest.h: No such file or directory,
-  Tile.cpp
-  Создание кода...
