@@ -1,0 +1,82 @@
+\hypertarget{fraction_8hpp_source}{}\doxysection{fraction.\+hpp}
+\label{fraction_8hpp_source}\index{src/fraction/include/fraction/fraction.hpp@{src/fraction/include/fraction/fraction.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef LAB1\_HPP}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define LAB1\_HPP}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <stdexcept>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{// !Fraction class}}
+\DoxyCodeLine{11 \textcolor{comment}{/*}}
+\DoxyCodeLine{12 \textcolor{comment}{ * Implementation of a fraction}}
+\DoxyCodeLine{13 \textcolor{comment}{ */}}
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{classFraction}{Fraction}} \{}
+\DoxyCodeLine{15 \textcolor{keyword}{private}:}
+\DoxyCodeLine{16     \textcolor{comment}{// numerator}}
+\DoxyCodeLine{17     \textcolor{keywordtype}{int} numerator;}
+\DoxyCodeLine{18     \textcolor{comment}{// denominator}}
+\DoxyCodeLine{19     \textcolor{keywordtype}{int} denominator;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{comment}{// !Utils functions}}
+\DoxyCodeLine{22     \textcolor{comment}{/*}}
+\DoxyCodeLine{23 \textcolor{comment}{     *  Utils for operator overloading}}
+\DoxyCodeLine{24 \textcolor{comment}{     */} }
+\DoxyCodeLine{25   \mbox{\hyperlink{classFraction}{Fraction}} \_\_division\_of\_fractions(\textcolor{keyword}{const} \mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction);}
+\DoxyCodeLine{26     \mbox{\hyperlink{classFraction}{Fraction}} \_\_multiplication\_of\_fractions(\textcolor{keyword}{const} \mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction);}
+\DoxyCodeLine{27     \mbox{\hyperlink{classFraction}{Fraction}} \_\_sum\_of\_fractions(\mbox{\hyperlink{classFraction}{Fraction}} other\_fraction);}
+\DoxyCodeLine{28     }
+\DoxyCodeLine{29   \textcolor{keywordtype}{void} \_\_reduce\_fraction(\textcolor{keywordtype}{int}\& numerator, \textcolor{keywordtype}{int}\& denominator);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{comment}{// !Utils   }}
+\DoxyCodeLine{32   \textcolor{keywordtype}{void} \_\_to\_common\_denominator(\mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction);}
+\DoxyCodeLine{33     \textcolor{keywordtype}{int} \_\_get\_gcd(\textcolor{keywordtype}{int} first\_number, \textcolor{keywordtype}{int} second\_number);}
+\DoxyCodeLine{34   \textcolor{keywordtype}{int} \_\_get\_lcm(\textcolor{keywordtype}{int} first\_number, \textcolor{keywordtype}{int} second\_number);}
+\DoxyCodeLine{35     }
+\DoxyCodeLine{36   \textcolor{keywordtype}{bool} \_\_validate\_data(\textcolor{keywordtype}{int}\& numerator, \textcolor{keywordtype}{int}\& denominator);}
+\DoxyCodeLine{37 \textcolor{keyword}{public}:}
+\DoxyCodeLine{38     \textcolor{comment}{// Base constructor}}
+\DoxyCodeLine{39     \mbox{\hyperlink{classFraction}{Fraction}}(\textcolor{keywordtype}{int} numerator, \textcolor{keywordtype}{int} denominator);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     \textcolor{comment}{// !Getters }}
+\DoxyCodeLine{42   \textcolor{keywordtype}{int} get\_numerator();}
+\DoxyCodeLine{43     \textcolor{keywordtype}{int} get\_denominator();}
+\DoxyCodeLine{44     \textcolor{keywordtype}{int} get\_integer\_part();}
+\DoxyCodeLine{45     \textcolor{keywordtype}{double} to\_double() \textcolor{keyword}{const};}
+\DoxyCodeLine{46     }
+\DoxyCodeLine{47   \mbox{\hyperlink{classFraction}{Fraction}} operator + (\mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction);}
+\DoxyCodeLine{48     \mbox{\hyperlink{classFraction}{Fraction}} operator + (\textcolor{keyword}{const} \textcolor{keywordtype}{int} other\_int);}
+\DoxyCodeLine{49     \mbox{\hyperlink{classFraction}{Fraction}}\& operator += (\mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction);}
+\DoxyCodeLine{50     \mbox{\hyperlink{classFraction}{Fraction}}\& operator += (\textcolor{keyword}{const} \textcolor{keywordtype}{int} other\_int);}
+\DoxyCodeLine{51     \mbox{\hyperlink{classFraction}{Fraction}} operator -\/ (\mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction);}
+\DoxyCodeLine{52     \mbox{\hyperlink{classFraction}{Fraction}} operator -\/ (\textcolor{keyword}{const} \textcolor{keywordtype}{int} other\_int);}
+\DoxyCodeLine{53     \mbox{\hyperlink{classFraction}{Fraction}}\& operator -\/= (\mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction);}
+\DoxyCodeLine{54     \mbox{\hyperlink{classFraction}{Fraction}}\& operator -\/= (\textcolor{keyword}{const} \textcolor{keywordtype}{int} other\_int);}
+\DoxyCodeLine{55     \mbox{\hyperlink{classFraction}{Fraction}} operator * (\mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction);}
+\DoxyCodeLine{56     \mbox{\hyperlink{classFraction}{Fraction}} operator * (\textcolor{keyword}{const} \textcolor{keywordtype}{int} other\_int);}
+\DoxyCodeLine{57     \mbox{\hyperlink{classFraction}{Fraction}}\& operator *= (\mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction);}
+\DoxyCodeLine{58     \mbox{\hyperlink{classFraction}{Fraction}}\& operator *= (\textcolor{keyword}{const} \textcolor{keywordtype}{int} other\_int);}
+\DoxyCodeLine{59     \mbox{\hyperlink{classFraction}{Fraction}} operator / (\mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction);}
+\DoxyCodeLine{60     \mbox{\hyperlink{classFraction}{Fraction}} operator / (\textcolor{keyword}{const} \textcolor{keywordtype}{int} other\_int);}
+\DoxyCodeLine{61     \mbox{\hyperlink{classFraction}{Fraction}}\& operator /= (\mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction);}
+\DoxyCodeLine{62     \mbox{\hyperlink{classFraction}{Fraction}}\& operator /= (\textcolor{keyword}{const} \textcolor{keywordtype}{int} other\_int);}
+\DoxyCodeLine{63     }
+\DoxyCodeLine{64   \textcolor{keywordtype}{bool} operator == (\textcolor{keyword}{const} \mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction) \textcolor{keyword}{const};}
+\DoxyCodeLine{65     \textcolor{keywordtype}{bool} operator == (\textcolor{keywordtype}{int} other\_int) \textcolor{keyword}{const};}
+\DoxyCodeLine{66     \textcolor{keywordtype}{bool} operator > (\textcolor{keyword}{const} \mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction) \textcolor{keyword}{const};}
+\DoxyCodeLine{67     \textcolor{keywordtype}{bool} operator < (\textcolor{keyword}{const} \mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction) \textcolor{keyword}{const};}
+\DoxyCodeLine{68     \textcolor{keywordtype}{bool} operator >= (\textcolor{keyword}{const} \mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction) \textcolor{keyword}{const};}
+\DoxyCodeLine{69     \textcolor{keywordtype}{bool} operator <= (\textcolor{keyword}{const} \mbox{\hyperlink{classFraction}{Fraction}}\& other\_fraction) \textcolor{keyword}{const};}
+\DoxyCodeLine{70     \textcolor{keywordtype}{bool} operator > (\textcolor{keywordtype}{int} other\_int) \textcolor{keyword}{const};}
+\DoxyCodeLine{71     \textcolor{keywordtype}{bool} operator < (\textcolor{keywordtype}{int} other\_int) \textcolor{keyword}{const};}
+\DoxyCodeLine{72     \textcolor{keywordtype}{bool} operator >= (\textcolor{keywordtype}{int} other\_int) \textcolor{keyword}{const};}
+\DoxyCodeLine{73   \textcolor{keywordtype}{bool} operator <= (\textcolor{keywordtype}{int} other\_int) \textcolor{keyword}{const};}
+\DoxyCodeLine{74 \};}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
