@@ -18,8 +18,12 @@ tapeManager::~tapeManager() {
 }
 
 std::string tapeManager::output() {
-  std::string str(tape.begin(), tape.end());
-  return str;
+  if(!tape.empty()) {
+    std::string str(tape.begin(), tape.end());
+    return str;
+  } else{
+    return "seems you not initialize tape, just type init_tape: (1,0,1) for example :)";
+  }
 }
 void tapeManager::push(std::vector<char> tapeexec) {
   this->tape.insert(tapeexec.end(), tapeexec.begin(), tapeexec.end());
@@ -31,9 +35,14 @@ void tapeManager::push(std::vector<char> tapeexec) {
 
 
 std::string slide::output() {
-  std::string
-      str = std::string(position, '-') + std::string(1, '^') + std::string(tape.tape.size() - position - 1, '-');
-  return str;
+  if(!tape.tape.empty()) {
+    std::string
+        str = std::string(position, '-') + std::string(1, '^') + std::string(tape.tape.size() - position - 1, '-');
+    return str;
+  }
+  else {
+    return "xXxXx:/";
+  }
 }
 
 slide::slide(tapeManager &tape) : tape(tape) {
@@ -81,7 +90,7 @@ ruller::~ruller() {
 }
 
 void ruller::switcher(int &index) {
-  if (!instruct.empty()) {
+  if (!instruct.empty()){
     std::stringstream varname(instruct[index]);
 
     std::string temp;
@@ -196,7 +205,10 @@ bool ruller::stop() const {
   return false;
 }
 bool ruller::commandosCheck(const std::string &commandos) {
-  if (command.contains(commandos)) {
+  std::stringstream ss(commandos);
+  std::string temp;
+  ss >> temp;
+  if (command.contains(temp)) {
     return true;
   }
   return false;
@@ -205,7 +217,7 @@ void ruller::help() {
     std::cout << "******Basic Operators******\n"
                  "1.init_tape: (x,y,x,y) - initialize tape, after once initialization just splitted your tape\n"
                  "2.<-/- (shift to the left)\n"
-                 "3.->/- (shift to the right)\n"
+                 "3.->/+ (shift to the right)\n"
                  "4.V/v - insert number (from 0 to 1)\n"
                  "5.X/x - delete number (from 1 to 0)\n"
                  "6.? x y - this is analog of goTo, for example: x = <-, y = ->. If the cell will be empty, go to the x, else to the y\n"

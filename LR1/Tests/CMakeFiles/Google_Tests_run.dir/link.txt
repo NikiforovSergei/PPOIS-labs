@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/c++  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/Google_Tests_run.dir/TestFIles/test1.cpp.o CMakeFiles/Google_Tests_run.dir/test.cpp.o -o Google_Tests_run  ../lib/libgtest.a ../lib/libgtest_main.a ../lib/libgtest.a 

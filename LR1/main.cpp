@@ -23,7 +23,7 @@ void logo(){
       << std::endl;
 }
 int main() {
-  postMachine::tapeManager tape({'1','1','0', '1', '1', '1'});
+  postMachine::tapeManager tape({});
   postMachine::slide  slide(tape);
   postMachine::ruller ruller(slide,tape);
 
