@@ -1,10 +1,7 @@
-#include <iostream>
+#import <iostream>
 #import "Lib/postMachine.h"
 
 
-class Machine{
-
-};
 int main() {
   postMachine::tapeManager tape({'1','1','0', '1', '1', '1'});
   postMachine::slide  slide(tape);

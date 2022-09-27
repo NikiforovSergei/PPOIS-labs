@@ -67,14 +67,21 @@ class ruller {
       {"!",         7},
       {"help", 8},
       {"init_tape:", 9},
-      {"+", 10},
-      {"-", 11}
+      {"+", 2},
+      {"-", 3},
+      {"x", 5},
+      {"v", 4}
   };
 
   std::vector<std::string> instruct;
 
   bool isItStop = false;
 
+  void goTo(int& index);
+
+  bool commandosCheck(const std::string& commandos);
+
+  void help();
  public:
   void push(const std::string& commandos);
 
@@ -86,7 +93,6 @@ class ruller {
 
   void switcher(int& index);
 
-  void goTo(int& index);
   int size();
 
   bool stop() const;
