@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.23)
-project(LR1)
+project(PostMachine)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(LR1 main.cpp PostMachine/PostMachine.cpp PostMachine/PostMachine.h)
+add_executable(PostMachine main.cpp Lib/postMachine.cpp Lib/postMachine.h)
