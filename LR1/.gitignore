@@ -1,0 +1,12 @@
+**/.DS_Store
+**/.AppleDouble
+**/.LSOverride
+
+.idea
+cmake-build-debug
+
+Doc
+
+Отчет.pdf
+
+Tests
