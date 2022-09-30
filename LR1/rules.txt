@@ -1,0 +1,4 @@
+abcd
+abdca
+ab->bc
+bc->ab
