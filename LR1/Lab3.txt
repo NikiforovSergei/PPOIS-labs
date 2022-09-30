@@ -1,0 +1,302 @@
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <set>
+#include <vector>
+#include <map>
+
+class multiset {
+
+private:
+
+	bool contains(std::set<std::string>* set, std::string value) {
+
+		for (auto& a : *set)
+			if (a == value)
+				return true;
+
+		return false;
+
+	}
+
+	void sort_vector(std::vector<std::string>& element) {
+
+		if (element.size() == 0)
+			return;
+
+		bool sorted = false;
+
+		while (sorted == false) {
+
+			sorted = true;
+
+			for (int i = 0; i < element.size() - 1; i++)
+				if (element[i] > element[i + 1]) {
+					std::string temp = element[i];
+					element[i] = element[i + 1];
+					element[i + 1] = temp;
+					sorted = false;
+				}
+		}
+
+	}
+
+	std::string sort_element(std::string element) {
+
+		std::string output_string = "";
+
+		std::string temp_string = "";
+
+		std::vector<std::string> temp_vector;
+
+		int bracket_count = 0;
+
+		for (auto& a : element)
+			if (a == '{')
+				bracket_count++;
+
+		for (auto& a : element)
+			if (a == '{' || a == '}' || a == ',')
+				a = ' ';
+
+		std::stringstream ss;
+
+
+		ss << element;
+
+		while (ss >> temp_string)
+			temp_vector.push_back(temp_string);
+
+		sort_vector(temp_vector);
+
+		for (int i = 0; i < bracket_count; i++)
+			output_string += "{";
+
+		for (auto& a : temp_vector)
+			if (a != *(temp_vector.end() - 1))
+				output_string += a + ',';
+			else
+				output_string += a;
+
+		for (int i = 0; i < bracket_count; i++)
+			output_string += "}";
+
+		return output_string;
+
+	}
+
+	std::vector<std::pair<char, std::vector<std::string>>>* load_set_container(std::string path) {
+
+		std::ifstream file;
+
+		file.open(path);
+
+		if (!file.is_open())
+			exit(0);
+		else {
+
+			std::vector<std::pair<char, std::vector<std::string>>>* output_set = new std::vector<std::pair<char, std::vector<std::string>>>;
+
+			std::stringstream ss;
+
+			char temp_set_name;
+
+			int bracket_count = 0;
+
+			std::string temp_string = "";
+
+			std::string temp_element = "";
+
+			std::vector<std::string> temp_vector;
+
+
+			while (file >> temp_set_name)
+			{
+
+				std::getline(file, temp_string);
+
+				ss << temp_string;
+				ss >> temp_string;
+
+				while (ss >> temp_string) {
+
+					if (temp_string == "{")
+						bracket_count++;
+
+					if (bracket_count == 1 && temp_string == "{")
+						temp_string = "";
+
+					if (temp_string == "}")
+						bracket_count--;
+
+					if (temp_string != "," && bracket_count >= 2) {
+
+						temp_element += temp_string;
+
+					}
+					else if ((temp_string == "," && bracket_count == 1) || (bracket_count == 0 && temp_string == "}") && temp_string != "{") {
+
+
+						temp_vector.push_back(sort_element(temp_element));
+
+						temp_element.clear();
+
+					}
+					else if ((temp_string != "," && bracket_count == 1) || (temp_string == "," && bracket_count > 1) && temp_string != "{") {
+
+						temp_element += temp_string;
+
+					}
+
+
+
+
+
+				}
+
+				output_set->push_back(std::make_pair(temp_set_name, temp_vector));
+
+				ss.clear();
+				temp_vector.clear();
+			}
+
+
+
+			file.close();
+
+			return output_set;
+
+		}
+
+	}
+
+	std::vector<std::pair<char, std::vector<std::string>>>* get_set_container_from_string(std::string string) {
+
+			std::vector<std::pair<char, std::vector<std::string>>>* output_set = new std::vector<std::pair<char, std::vector<std::string>>>;
+
+			std::stringstream ss;
+
+			
+			char temp_set_name;
+
+			int bracket_count = 0;
+
+			std::string temp_string = "";
+
+			std::string temp_element = "";
+
+			std::vector<std::string> temp_vector;
+
+
+			while (file >> temp_set_name)
+			{
+				
+				std::getline(file, temp_string);
+
+				ss << temp_string;
+				ss >> temp_string;
+
+				while (ss >> temp_string) {
+
+					if (temp_string == "{")
+						bracket_count++;
+
+					if (bracket_count == 1 && temp_string == "{")
+						temp_string = "";
+
+					if (temp_string == "}")
+						bracket_count--;
+
+					if (temp_string != "," && bracket_count >= 2) {
+
+						temp_element += temp_string;
+
+					}
+					else if ((temp_string == "," && bracket_count == 1) || (bracket_count == 0 && temp_string == "}") && temp_string != "{") {
+
+
+						temp_vector.push_back(sort_element(temp_element));
+
+						temp_element.clear();
+
+					}
+					else if ((temp_string != "," && bracket_count == 1) || (temp_string == "," && bracket_count > 1) && temp_string != "{") {
+
+						temp_element += temp_string;
+
+					}
+
+
+
+
+
+				}
+
+				output_set->push_back(std::make_pair(temp_set_name, temp_vector));
+
+				ss.clear();
+				temp_vector.clear();
+			}
+
+
+			return output_set;
+
+	}
+
+	void print_set_container(std::vector<std::pair<char, std::vector<std::string>>>* container) {
+
+
+		for (auto& a : *container) {
+
+			std::cout << a.first << " = { ";
+
+			for (auto& b : a.second)
+				if (b == *(a.second.end() - 1))
+					std::cout << b << ' ';
+				else
+					std::cout << b << " , ";
+
+
+			std::cout << " }\n";
+		}
+	}
+
+};
+
+
+
+
+
+
+
+int main() {
+
+
+
+	std::stringstream ss;
+
+	//std::set<int>* first_set = new std::set<int>;
+	//std::set<int>* second_set = new std::set<int>;
+
+	//first_set->insert(1);
+	//first_set->insert(3);
+	//first_set->insert(4);
+	//first_set->insert(8);
+	//first_set->insert(12);
+
+	//second_set->insert(1);
+	//second_set->insert(2);
+	//second_set->insert(5);
+	//second_set->insert(11);
+	//second_set->insert(12);
+
+	//for (auto& a : *get_symmetric_difference(first_set, second_set))
+	//	std::cout << a << ' ';
+
+	//std::cout << '\n';
+
+	//print_set_container(get_set_container("input.txt"));
+
+	//print_set_container(get_set_container("input.txt"));
+
+}
