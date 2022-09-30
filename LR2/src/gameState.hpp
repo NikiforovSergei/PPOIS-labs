@@ -16,11 +16,11 @@ namespace gameState
         virtual void pause() = 0;
         virtual void resume() = 0;
 
-        virtual void events() = 0;
-        virtual void update() = 0;
-        virtual void draw() = 0;
+        virtual void events(gameEngine::engine* game) = 0;
+        virtual void update(gameEngine::engine* game) = 0;
+        virtual void draw(gameEngine::engine* game) = 0;
 
-        void changeState(gameEngine::engine* game, const state* newState)
+        void changeState(gameEngine::engine* game, state* newState)
         { game->changeState(newState); }
 
     };
