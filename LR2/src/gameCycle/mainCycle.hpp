@@ -1,14 +1,21 @@
 #pragma once
 
-namespace gameField { class field; }
+namespace gameField
+{
+    class field;
+}
 
 namespace gameCycle
 {
     class mainCycle
     {
     public:
-        mainCycle(/* args */);
-        ~mainCycle();
+        mainCycle(/* args */)
+        {
+        }
+        ~mainCycle()
+        {
+        }
 
         void move();
         void eat();
@@ -16,13 +23,5 @@ namespace gameCycle
         void die();
         void nextStep(gameField::field *field);
     };
-
-    mainCycle::mainCycle(/* args */)
-    {
-    }
-
-    mainCycle::~mainCycle()
-    {
-    }
 
 } // namespace gameCycle

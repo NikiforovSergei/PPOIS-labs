@@ -71,8 +71,8 @@ namespace gameField
         for (size_t i = entities.size(); i > 0; i--)
         {
             delete entities[i];
-            entities.pop_back();
         }
+        entities.clear();
 
         return !entities.empty();
     }

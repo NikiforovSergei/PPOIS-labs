@@ -17,6 +17,6 @@ namespace gameState
         virtual void update(gameEngine::engine*) = 0;
         virtual void draw(gameEngine::engine*) = 0;
 
-        virtual ~state() = 0;
+        virtual ~state(){}
     };
 } // namespace gameState

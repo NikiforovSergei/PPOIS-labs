@@ -4,8 +4,11 @@ project(game VERSION 0.1.0)
 #include(CTest)
 #enable_testing()
 
+find_package(SDL2 REQUIRED)
+include_directories(${SDL2_INCLUDE_DIRS})
+
 add_executable(
-    main
+    game
     src/main.cpp
     src/entityInterface/abstractEntity.hpp
     src/entityInterface/abstractEntity.cpp
@@ -23,6 +26,8 @@ add_executable(
     src/gameState/autoState.hpp
     src/gameState/autoState.cpp
     )
+
+target_link_libraries(game ${SDL2_LIBRARIES})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

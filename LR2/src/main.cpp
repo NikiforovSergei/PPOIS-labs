@@ -1,15 +1,14 @@
 #include "gameEngine/gameEngine.hpp"
-using namespace gameEngine;
 
 int main()
 {
-    engine* game = new gameEngine::engine();
+    gameEngine::engine* tmp = new gameEngine::engine;
 
-    game->init("Test game");
-    game->start();
+    tmp->init("Test start");
+    tmp->start();
 
-    game->quit();
-    game->cleanup();
-
+    tmp->cleanup();
+    tmp->quit();
+    
     return 0;
 }

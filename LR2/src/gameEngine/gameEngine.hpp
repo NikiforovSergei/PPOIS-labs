@@ -4,18 +4,18 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_video.h>
 
-//#include "../entityInterface/abstractEntity.cpp"
-//#include "../gameField/fieldAndCell.cpp"
-//#include "../gameCycle/mainCycle.cpp"
-//#include "../gameState/gameState.hpp"
-//#include "../gameState/autoState.cpp"
-//#include "../gameState/introState.cpp"
-//#include "../gameState/moderateState.cpp"
-
-namespace gameState { class state; }
-namespace gameField { class field; }
-namespace gameCycle { class mainCycle; }
-
+namespace gameState
+{
+    class state;
+}
+namespace gameField
+{
+    class field;
+}
+namespace gameCycle
+{
+    class mainCycle;
+}
 
 namespace gameEngine
 {
@@ -33,8 +33,20 @@ namespace gameEngine
         SDL_Window *window;
 
     public:
-        engine();
-        ~engine();
+        engine()
+        {
+            states = {};
+            isRunning = false;
+            field = nullptr;
+            cycle = nullptr;
+            screen = nullptr;
+            renderer = nullptr;
+            window = nullptr;
+        }
+
+        ~engine()
+        {
+        }
 
         int init(const char *title, const unsigned int width = 640, const unsigned int height = 480);
         void start();
@@ -51,19 +63,4 @@ namespace gameEngine
         void quit() { isRunning = false; }
     };
 
-    engine::engine(/* args */)
-    {
-        states = {};
-        isRunning = false;
-        field = nullptr;
-        cycle = nullptr;
-        screen = nullptr;
-        renderer = nullptr;
-        window = nullptr;
-    }
-
-    engine::~engine()
-    {
-
-    }
 } // namespace gameEngine

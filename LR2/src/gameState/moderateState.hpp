@@ -1,9 +1,12 @@
 #pragma once
 
 #include <SDL2/SDL.h>
-
-namespace gameEngine { class engine; }
 #include "gameState.hpp"
+
+namespace gameEngine
+{
+    class engine;
+}
 
 class moderateState : public gameState::state
 {
@@ -11,8 +14,14 @@ private:
     SDL_Surface *bg;
 
 public:
-    moderateState(/* args */);
-    ~moderateState() override;
+    moderateState(/* args */)
+    {
+    }
+
+    ~moderateState() override
+    {
+        cleanup();
+    }
 
     int init() override;
     void cleanup() override;
@@ -24,12 +33,3 @@ public:
     void update(gameEngine::engine *game) override;
     void draw(gameEngine::engine *game) override;
 };
-
-moderateState::moderateState(/* args */)
-{
-}
-
-moderateState::~moderateState()
-{
-    cleanup();
-}
