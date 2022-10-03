@@ -1,0 +1,5 @@
+Add googletests as git submodule
+$ git submodule init
+$ git submodule add [url-to-repo] [path-to-folder]
+$ cd [path-to-folder]
+$ git checkout [target-version]
