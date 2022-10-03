@@ -21,7 +21,7 @@ namespace gameCycle
         void eat();
         void reproduction();
         void die();
-        void nextStep(gameField::field *field);
+        void nextStep(gameField::field *field){}
     };
 
 } // namespace gameCycle
