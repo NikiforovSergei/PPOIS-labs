@@ -10,30 +10,15 @@ using namespace std;
 
 void AddUp(Fraction a, Fraction  b)
 {
-    Fraction  c;
+    
     a.Show();
     b.Show();
     a.Long();
     b.Long();
     a.Show();
     b.Show();
+    Fraction  c=a+b;
     
-    if (a.GetDenominator() == b.GetDenominator())
-    {
-        c.SetWhole(0);
-        c.SetNumerator(a.GetNumerator() + b.GetNumerator()) ;        //складываем числитель, если знаминатели одинаковы
-        c.SetDenominator(a.GetDenominator());
-    }
-    else
-    {
-        int t;
-        c.SetDenominator(a.GetDenominator() * b.GetDenominator());
-        t = c.GetDenominator() / a.GetDenominator();
-        a.SetNumerator( t * a.GetNumerator());
-        t = c.GetDenominator() / b.GetDenominator();                   //приводим к общему знаменателю и складывем   
-        b.SetNumerator( t * b.GetNumerator());
-        c.SetNumerator(a.GetNumerator() + b.GetNumerator());
-    }
     c.Short();
     c.Show();
 }

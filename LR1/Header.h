@@ -49,4 +49,26 @@ public:
     /// Output a whole
     ///<summary>
     void SetWhole(int a);
+    Fraction operator+(Fraction& b)
+    {
+        Fraction c;
+
+        if (this->GetDenominator() == b.GetDenominator())
+        {
+            c.SetWhole(0);
+            c.SetNumerator(this->GetNumerator() + b.GetNumerator());        //складываем числитель, если знаминатели одинаковы
+            c.SetDenominator(this->GetDenominator());
+        }
+        else
+        {
+            int t;
+            c.SetDenominator(this->GetDenominator() * b.GetDenominator());
+            t = c.GetDenominator() / this->GetDenominator();
+            this->SetNumerator(t * this->GetNumerator());
+            t = c.GetDenominator() / b.GetDenominator();                   //приводим к общему знаменателю и складывем   
+            b.SetNumerator(t * b.GetNumerator());
+            c.SetNumerator(this->GetNumerator() + b.GetNumerator());
+        }
+        return c;
+    }
 };
