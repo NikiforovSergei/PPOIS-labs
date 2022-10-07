@@ -14,9 +14,9 @@ namespace gameField
         return to;
     }
 
-    cell *field::getCell(const unsigned int row, const unsigned col)
+    cell *field::getCell(const unsigned int col, const unsigned row)
     {
-        return cells[row][col];
+        return cells.at(row).at(col);
     }
 
     bool field::clear()
@@ -24,56 +24,58 @@ namespace gameField
         bool isError = false;
         for (int i = 0; i < height; i++)
             for (int j = 0; j < width; j++)
-                if (!cells[i][j]->clear())
-                    delete cells[i][j];
+                if (!cells.at(i).at(j)->clear())
+                    delete cells.at(i).at(j);
                 else
                     isError = true;
+        cells.clear();
+
+        printf("field clear\n");
 
         return isError;
     }
 
     //*********************cell-methods*******************//
 
-    unsigned int cell::freeUnitsNum()
+    const unsigned int cell::freeUnitsNum()
     {
-        unsigned int ret = capacity;
-        for (int i = 0; i < entities.size(); i++)
-            ret -= entities[i]->size();
-
-        return ret;
-    }
-
-    bool cell::put(entityInterface::abstractEntity *entity)
-    {
-        if (entities.size() < 4)
+        int ret = capacity;
+        if (_plant != nullptr)
         {
-            entities.push_back(entity);
-            return 0;
+            for (int i = 0; i < grassEaters.size(); i++)
+                ret -= grassEaters.at(i)->size();
+            for (size_t i = 0; i < animals.size(); i++)
+                ret -= animals.at(i)->size();
+
+            if (ret < 0)
+                throw "capacity < 0";
+            else
+                return ret;
         }
-        else
-            return 1;
+        return 0;
     }
 
-    bool cell::del(entityInterface::abstractEntity *entity)
+    const unsigned int cell::entityCount()
     {
-        for (auto i = 0; i < entities.size(); i++)
-            if (entities[i] == entity)
-            {
-                delete entities[i];
-                entities.erase(entities.begin() + i);
-                return 0;
-            }
-        return 1;
+        return animals.size() + grassEaters.size() + (_plant != nullptr);
     }
 
     bool cell::clear()
     {
-        for (size_t i = entities.size(); i > 0; i--)
+        for (size_t i = 0; i < animals.size(); i++)
         {
-            delete entities[i];
+            delete animals.at(i);
         }
-        entities.clear();
+        for (size_t i = 0; i < grassEaters.size(); i++)
+        {
+            delete grassEaters.at(i);
+        }
+        if (_plant != nullptr)
+            delete _plant;
+        animals.clear();
+        grassEaters.clear();
+        _plant = nullptr;
 
-        return !entities.empty();
+        return freeUnitsNum() == capacity;
     }
 } // namespace gameField

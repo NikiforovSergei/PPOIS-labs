@@ -2,13 +2,14 @@
 
 #include <SDL2/SDL.h>
 #include "gameState.hpp"
+#include <memory>
 
 namespace gameEngine { class engine; }
 
 class introState : public gameState::state
 {
 private:
-    SDL_Surface *bg;
+    SDL_Surface * bg;
 
 public:
     introState(/* args */)
@@ -27,7 +28,7 @@ public:
     void pause() override;
     void resume() override;
 
-    void events(gameEngine::engine *game) override;
-    void update(gameEngine::engine *game) override;
-    void draw(gameEngine::engine *game) override;
+    void events(gameEngine::engine * game) override;
+    void update(gameEngine::engine * game) override;
+    void draw(gameEngine::engine * game) override;
 };

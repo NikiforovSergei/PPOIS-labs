@@ -3,6 +3,7 @@ project(game VERSION 0.1.0)
 
 #include(CTest)
 #enable_testing()
+set(CMAKE_CXX_STANDARD 20)
 
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
@@ -11,7 +12,10 @@ add_executable(
     game
     src/main.cpp
     src/entityInterface/abstractEntity.hpp
-    src/entityInterface/abstractEntity.cpp
+    src/entityInterface/animal.cpp
+    src/entityInterface/animal.hpp
+    src/entityInterface/grassEater.hpp
+    src/entityInterface/plant.hpp
     src/gameCycle/mainCycle.hpp
     src/gameCycle/mainCycle.cpp
     src/gameEngine/gameEngine.hpp

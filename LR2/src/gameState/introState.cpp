@@ -1,4 +1,5 @@
 #include "introState.hpp"
+#include <iostream>
 #include "../gameEngine/gameEngine.hpp"
 #include "autoState.hpp"
 #include "moderateState.hpp"
@@ -7,6 +8,12 @@
 int introState::init()
 {
     bg = SDL_LoadBMP("../assets/introStateBG.bmp");
+    if (bg == nullptr)
+    {
+        std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
+        return 1;
+    }
+
     return 0;
 }
 
@@ -58,7 +65,15 @@ void introState::events(gameEngine::engine *game)
 void introState::update(gameEngine::engine *game)
 {
     SDL_Texture *introTexture = SDL_CreateTextureFromSurface(game->renderer, bg);
+    if (introTexture == nullptr)
+    {
+        std::cout << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
+        return;
+    }
+
     SDL_RenderClear(game->renderer);
+    SDL_RenderCopy(game->renderer, introTexture, NULL, NULL);
+    SDL_DestroyTexture(introTexture);
 }
 
 void introState::draw(gameEngine::engine *game)

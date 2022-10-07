@@ -1,10 +1,10 @@
-//#pragma once
+#pragma once
 
 namespace entityInterface
 {
     class abstractEntity
     {
-    private:
+    protected:
         int health;
         unsigned int _size;
 
@@ -18,11 +18,14 @@ namespace entityInterface
         {
         }
 
-        virtual void getDamage() = 0;
-        virtual bool move() { return 0; }
-        virtual bool eat() { return 0; }
-        virtual bool reproduction() { return 0; }
-        virtual bool die() { return 0; }
+        virtual void getDamage(const int damage) { health -= damage; }
+        virtual bool isDie()
+        {
+            if (health <= 0)
+                return 1;
+            else
+                return 0;
+        }
         unsigned int size() { return _size; }
     };
 

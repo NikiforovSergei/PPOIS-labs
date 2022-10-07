@@ -11,7 +11,7 @@ namespace gameEngine
 class autoState : public gameState::state
 {
 private:
-    SDL_Surface *bg;
+    SDL_Surface * bg;
 
 public:
     autoState(/* args */)
@@ -28,7 +28,7 @@ public:
     void pause() override;
     void resume() override;
 
-    void events(gameEngine::engine *game) override;
-    void update(gameEngine::engine *game) override;
-    void draw(gameEngine::engine *game) override;
+    void events(gameEngine::engine * game) override;
+    void update(gameEngine::engine * game) override;
+    void draw(gameEngine::engine * game) override;
 };

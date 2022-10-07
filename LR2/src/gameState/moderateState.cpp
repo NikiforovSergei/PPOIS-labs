@@ -1,3 +1,4 @@
+#include <iostream>
 #include "moderateState.hpp"
 #include "../gameEngine/gameEngine.hpp"
 #include "autoState.hpp"
@@ -8,6 +9,12 @@
 int moderateState::init()
 {
     bg = SDL_LoadBMP("../assets/moderateStateBG.bmp");
+    if (bg == nullptr)
+    {
+        std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
+        return 1;
+    }
+
     return 0;
 }
 
@@ -61,7 +68,15 @@ void moderateState::events(gameEngine::engine *game)
 void moderateState::update(gameEngine::engine *game)
 {
     SDL_Texture *moderateTexture = SDL_CreateTextureFromSurface(game->renderer, bg);
+    if (moderateTexture == nullptr)
+    {
+        std::cout << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
+        return;
+    }
+
     SDL_RenderClear(game->renderer);
+    SDL_RenderCopy(game->renderer, moderateTexture, NULL, NULL);
+    SDL_DestroyTexture(moderateTexture);
 }
 
 void moderateState::draw(gameEngine::engine *game)

@@ -19,7 +19,7 @@ namespace gameEngine
             return 1;
         }
 
-        window = SDL_CreateWindow(title, 0, 0, width, height, SDL_WINDOW_SHOWN);
+        window = SDL_CreateWindow(title, 100, 100, width, height, SDL_WINDOW_SHOWN);
         if (window == nullptr)
         {
             std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
@@ -33,7 +33,8 @@ namespace gameEngine
             return 1;
         }
 
-        field = new gameField::field(16, 12);
+        screen = SDL_GetWindowSurface(window);
+        field = new gameField::field(4, 3);
         cycle = new gameCycle::mainCycle();
 
         isRunning = true;
@@ -49,7 +50,6 @@ namespace gameEngine
             states.pop_back();
         }
 
-        field->clear();
         delete field;
         delete cycle;
         SDL_DestroyRenderer(renderer);

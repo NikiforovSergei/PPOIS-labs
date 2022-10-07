@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 namespace gameEngine { class engine; }
 
 namespace gameState
@@ -13,9 +15,9 @@ namespace gameState
         virtual void pause() = 0;
         virtual void resume() = 0;
 
-        virtual void events(gameEngine::engine*) = 0;
-        virtual void update(gameEngine::engine*) = 0;
-        virtual void draw(gameEngine::engine*) = 0;
+        virtual void events(gameEngine::engine *) = 0;
+        virtual void update(gameEngine::engine *) = 0;
+        virtual void draw(gameEngine::engine *) = 0;
 
         virtual ~state(){}
     };
