@@ -34,12 +34,12 @@ namespace gameEngine
         SDL_Window *window;
 
     public:
-        engine()
+        engine(gameField::field* _field, gameCycle::mainCycle* _cycle)
         {
             states = {};
             isRunning = false;
-            field = nullptr;
-            cycle = nullptr;
+            field = _field;
+            cycle = _cycle;
             screen = nullptr;
             renderer = nullptr;
             window = nullptr;
@@ -49,19 +49,19 @@ namespace gameEngine
         {
         }
 
-        int init(const char *title, const unsigned int width = 640, const unsigned int height = 480);
-        void start();
-        void cleanup();
+        virtual int init(const char *title, const unsigned int width = 640, const unsigned int height = 480);
+        virtual void start();
+        virtual void cleanup();
 
-        void changeState(gameState::state *state);
-        void pushState(gameState::state *state);
-        void popState();
+        virtual void changeState(gameState::state *state);
+        virtual void pushState(gameState::state *state);
+        virtual void popState();
 
-        void events();
-        void update();
-        void draw();
+        virtual void events();
+        virtual void update();
+        virtual void draw();
 
-        void quit() { isRunning = false; }
+        virtual void quit() { isRunning = false; }
     };
 
 } // namespace gameEngine

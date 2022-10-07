@@ -40,24 +40,24 @@ namespace gameField
     const unsigned int cell::freeUnitsNum()
     {
         int ret = capacity;
-        if (_plant != nullptr)
-        {
-            for (int i = 0; i < grassEaters.size(); i++)
-                ret -= grassEaters.at(i)->size();
-            for (size_t i = 0; i < animals.size(); i++)
-                ret -= animals.at(i)->size();
+        for (int i = 0; i < grassEaters.size(); i++)
+            ret -= grassEaters.at(i)->size();
 
-            if (ret < 0)
-                throw "capacity < 0";
-            else
-                return ret;
-        }
-        return 0;
+        for (size_t i = 0; i < animals.size(); i++)
+            ret -= animals.at(i)->size();
+
+        if (_plant != nullptr)
+            ret -= _plant->size();
+
+        if (ret < 0)
+            throw "capacity < 0";
+        else
+            return ret;
     }
 
     const unsigned int cell::entityCount()
     {
-        return animals.size() + grassEaters.size() + (_plant != nullptr);
+        return (animals.size() + grassEaters.size() + _plant != nullptr);
     }
 
     bool cell::clear()

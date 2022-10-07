@@ -34,8 +34,6 @@ namespace gameEngine
         }
 
         screen = SDL_GetWindowSurface(window);
-        field = new gameField::field(4, 3);
-        cycle = new gameCycle::mainCycle();
 
         isRunning = true;
         printf("gameEngine init\n");
@@ -108,9 +106,6 @@ namespace gameEngine
 
     void engine::start()
     {
-        changeState(new introState());
-        cycle = new gameCycle::mainCycle();
-
         while (isRunning)
         {
             events();

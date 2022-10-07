@@ -3,7 +3,6 @@
 #include <memory>
 #include <type_traits>
 
-
 namespace gameField
 {
     class field;
@@ -29,7 +28,11 @@ namespace gameCycle
         virtual void nextStep(gameField::field *field);
 
     private:
-        void eatPlants(gameField::cell* tmpCell);
-        void eatGrassEaters(gameField::cell* tmpCell);
+        void reproductionAnimals(gameField::cell *_cell);
+        void eatPlants(gameField::cell *tmpCell);
+        void eatGrassEaters(gameField::cell *tmpCell);
+        void dieAnimals(gameField::cell *_cell);
+        void dieGrassEaters(gameField::cell *_cell);
+        void diePlant(gameField::cell *_cell);
     };
 } // namespace gameCycle

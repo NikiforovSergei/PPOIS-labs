@@ -26,7 +26,8 @@ namespace entityInterface
             else
                 return 0;
         }
-        unsigned int size() { return _size; }
+        virtual unsigned int size() { return _size; }
+        virtual int getHealth() { return health; }
     };
 
 } // namespace entityInterface

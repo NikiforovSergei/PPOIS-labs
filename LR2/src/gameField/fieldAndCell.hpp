@@ -77,7 +77,7 @@ namespace gameField
     requires std::is_same_v<T, plant *>
     bool cell::put(T entity)
     {
-        if ((entityCount() < 4  and freeUnitsNum() >= entity.size()) or _plant != nullptr)
+        if ((entityCount() < 4 and freeUnitsNum() >= entity.size()) or _plant != nullptr)
         {
             if (_plant != nullptr)
                 delete _plant;
@@ -93,7 +93,7 @@ namespace gameField
     requires std::is_same_v<T, animal *>
     bool cell::put(T entity)
     {
-        if (entityCount() < 4 and freeUnitsNum() >= entity->size())
+        if ((entityCount() < 4) and (freeUnitsNum() >= entity->size()))
         {
             animals.push_back(entity);
             return 0;
@@ -129,14 +129,20 @@ namespace gameField
         if (std::is_same_v<T, animal *>)
         {
             for (auto i = animals.begin(); i != animals.end(); i++)
+            {
                 if (*i == entity)
                     animals.erase(i);
+                break;
+            }
         }
         else
         {
             for (auto i = grassEaters.begin(); i != grassEaters.end(); i++)
+            {
                 if (*i == entity)
                     grassEaters.erase(i);
+                break;
+            }
         }
     }
 
@@ -163,9 +169,6 @@ namespace gameField
                 tempRow.clear();
             }
         }
-
-        //field(const field &from) = delete;
-        //field(const field &&from) = delete;
 
         ~field()
         {

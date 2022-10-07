@@ -5,15 +5,14 @@
 
 enum sex_t
 {
-    MALE,
-    FEMALE
+    MALE = 0,
+    FEMALE = 1
 };
 
 class animal : public entityInterface::abstractEntity
 {
 protected:
     unsigned int speed;
-    unsigned int stepsLeft;
     int starve;
     std::string name;
 
@@ -22,11 +21,10 @@ protected:
 public:
     animal(const std::string name, const int health,
            const unsigned int _size, sex_t sex,
-           const unsigned int stepsLeft, const unsigned int speed = 1)
+           const unsigned int speed = 1)
         : entityInterface::abstractEntity(health, _size)
     {
         this->name = name;
-        this->stepsLeft = stepsLeft;
         this->speed = speed;
         this->sex = sex;
         this->starve = 5;
@@ -36,11 +34,14 @@ public:
     }
 
     std::string getName() { return name; }
-    std::pair<const int, const int> move();
-    void starving() { starve -= 1; }
-    void saturation() { starve = 5; }
+    unsigned int getSpeed() { return speed; }
+
+    virtual std::pair<const int, const int> move();
+    virtual void starving() { starve -= 1; }
+    virtual void saturation() { starve = 5; }
     virtual bool isDie() override { return starve <= 0 or health <= 0; }
-    virtual bool isLovely(animal* partner) { return this->sex != partner->sex; }
+    virtual bool isLovely(animal* partner) { return (this->sex != partner->sex) and (this->name == partner->name); }
+
 private:
 
 };
