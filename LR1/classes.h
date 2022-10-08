@@ -55,6 +55,13 @@ public:
         constructor(objects,sets,input);
     }
     /**
+     деструктор класса MultiSet
+     */
+     ~MultiSet(){
+        objects.clear();
+        sets.clear();
+    }
+    /**
      добаляет мультимножество в вектор мультимножеств
      \param input добавляемое мультимножество
      */
@@ -138,7 +145,8 @@ public:
      перегрузка оператора *
      */
     MultiSet operator * (MultiSet obj){
-        MultiSet Mult{"{}"};
+        MultiSet Mult{"{a}"};
+        Mult.objects.clear();
         string buffer, tuple;
         Multiplication_set_set(buffer,tuple,obj,sets,Mult);
         Multiplication_set_object(buffer, tuple, obj, objects, Mult);
@@ -167,7 +175,8 @@ public:
      */
     void operator *=(MultiSet obj){
         string buffer, tuple;
-        MultiSet Mult{"{}"};
+        MultiSet Mult{"{a}"};
+        Mult.objects.clear();
         Multiplication_set_set(buffer,tuple,obj,sets,Mult);
         Multiplication_set_object(buffer, tuple, obj, objects, Mult);
         Multiplication_object_object(buffer, tuple, obj, objects, Mult);
@@ -207,7 +216,12 @@ public:
      \return возвращает строку содержащую булеан мультимножества
      */
     string BooleanofMultiSet(){
-        return Name()+'='+MultiSet_to_string();
+        string output = "{{},";
+        for (auto &set: sets){
+            output+=set.MultiSet_to_string()+',';
+        }
+        output.erase(output.end()-1);
+        return output+'}';
     }
 
     /**

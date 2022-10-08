@@ -150,9 +150,9 @@ void Multiplication_set_object(string buffer, string tuple, MultiSet &obj, vecto
   проиводит операцию декартовоо произведения над объектами первого множителя и объектами второго
  */
 void Multiplication_object_object(string buffer, string tuple, MultiSet &obj, vector<string> &objects,MultiSet &Mult){
-    for (auto& obj1 : obj.GetObjects()){
+    for (auto& obj1 : objects){
         tuple  = '<' + obj1+',';
-        for (auto & obj2: objects){
+        for (auto & obj2: obj.GetObjects()){
             buffer = tuple+obj2+'>';
             Mult.Add_Object(buffer);
         }
@@ -192,8 +192,8 @@ void Multiplication_set_set(string buffer, string tuple, MultiSet &obj, vector<M
  отнимает от мультимножеств первого элемента мультимножества второго
  */
 void Difference_of_Sets(MultiSet &obj,vector<MultiSet> &sets){
-    for (auto & set:obj.GetSets()){
-        for (int counter = 0;counter<sets.size(); counter++){
+    for (auto & set:sets){
+        for (int counter = 0;counter<obj.GetSets().size(); counter++){
             if (set.MultiSet_to_string() == sets[counter].MultiSet_to_string()){
                 sets.erase(sets.begin()+counter);
                 break;
@@ -215,25 +215,22 @@ void Difference_of_Objects(MultiSet &obj,vector<string> &objects) {
     }
 }
 ///@}
-struct MultiSetTest:testing::Test
+class MultiSetTest:public::testing::Test
 {
-    MultiSet* multiset;
-    string example = "{a,a,c,{a,b,b},{},{a,{c,c}}}";
-    MultiSetTest(){
+protected:
+    void SetUp() {
+        string example = "{a,a,c,{a,b,b},{},{a,{c,c}}}";
         multiset = new MultiSet{example};
     }
-    ~MultiSetTest(){
+    void TearDown(){
         delete multiset;
     }
+    MultiSet *multiset;
 };
 
 TEST_F(MultiSetTest, GetterTest){
-vector<string> expec;
-expec.push_back("a");
-expec.push_back("a");
-expec.push_back("c");
-for (int i = 0; i<expec.size();i++)
-EXPECT_EQ(expec[i],multiset->GetObjects()[i]);
+vector<string> expec = {"a","a","c"};
+EXPECT_EQ(expec, multiset->GetObjects());
 }
 TEST_F(MultiSetTest, TypeCheck){
 vector<string> expec;
@@ -285,7 +282,7 @@ TEST_F(MultiSetTest, getter_of_objects){
     vector<string> test_get_obj;
     vector<string> expected{"a","a","c"};
     test_get_obj = multiset->GetObjects();
-    EXPECT_EQ(expected,test_get_obj);
+    EXPECT_EQ(expected, test_get_obj);
 }
 TEST_F(MultiSetTest, getter_of_multisets){
     vector<MultiSet> test_get_multiset;
@@ -297,34 +294,99 @@ TEST_F(MultiSetTest, getter_of_multisets){
     EXPECT_EQ(expected[1].GetObjects(),test_get_multiset[1].GetObjects());
 }
 
-TEST_F(MultiSetTest, Adding_Multiset){
+TEST(MultiSet, Adding_Multiset){
+    MultiSet multiset{"{a,a,c,{a,b,b},{},{a,{c,c}}}"};
     MultiSet test{"{a,a,b,c,d}"};
-    multiset->Add_MultiSet(test);
-    EXPECT_EQ(test.GetObjects(), multiset->GetSets()[2].GetObjects());
+    multiset.Add_MultiSet(test);
+    EXPECT_EQ(test.GetObjects(), multiset.GetSets()[2].GetObjects());
 }
-TEST_F(MultiSetTest, Adding_Object){
+TEST(MultiSet, Adding_Object){
     string test = "tst";
-    multiset->Add_Object(test);
-    EXPECT_EQ(test,multiset->GetObjects()[3]);
+    MultiSet multiset{"{a,a,c,{a,b,b},{},{a,{c,c}}}"};
+    multiset.Add_Object(test);
+    EXPECT_EQ(test, multiset.GetObjects()[3]);
 }
 
-TEST_F(MultiSetTest, Deleting_object){
+
+TEST(MultiSet, Deleting_object){
+    MultiSet multiset{"{a,a,c,{a,b,b},{},{a,{c,c}}}"};
     int place = 0;
-    multiset->DeleteObject(place);
-    EXPECT_EQ(2,multiset->GetObjects().size());
+    multiset.DeleteObject(place);
+    EXPECT_EQ(2,multiset.GetObjects().size());
 }
 
-TEST_F(MultiSetTest, Deleting_set){
+TEST(MultiSet, Deleting_set){
+    MultiSet multiset{"{a,a,c,{a,b,b},{},{a,{c,c}}}"};
     int place = 0;
-    multiset->DeleteSet(place);
-    EXPECT_EQ(1,multiset->GetSets().size());
+    multiset.DeleteSet(place);
+    EXPECT_EQ(1,multiset.GetSets().size());
 }
 
+TEST_F(MultiSetTest, Boolean){
+    string expected = "{{},{a,b,b},{a,{c,c}}}";
+    string boolean = multiset->BooleanofMultiSet();
+    EXPECT_EQ(expected, boolean);
+}
+TEST(MultiSet, OpeningOfBracers){
+    ASSERT_EQ(Opening_of_bracers('{'),true);
+}
+TEST(MultiSet,comma){
+    ASSERT_EQ(comma(','),true);
+}
+TEST(MultiSet, End_of_String){
+    ASSERT_EQ(End_of_String(0),true);
+}
+TEST(MultiSet, plus_overload){
+    MultiSet multiset1{"{a,b,c}"};
+    MultiSet multiset2{"{z,x,c}"};
+    MultiSet expect{"{a,b,c,z,x,c}"};
+    MultiSet multiset3 = multiset1 + multiset2;
+    EXPECT_EQ(expect.GetObjects(), multiset3.GetObjects());
+}
+TEST(MultiSet,plus_equal_overload){
+    MultiSet multiset1{"{a,b,c}"};
+    MultiSet multiset2{"{z,x,c}"};
+    MultiSet expect{"{a,b,c,z,x,c}"};
+    multiset1+=multiset2;
+    EXPECT_EQ(expect.GetObjects(), multiset1.GetObjects());
+}
+TEST(MultiSet,difference_overload){
+    MultiSet multiset1{"{a,b,c}"};
+    MultiSet multiset2{"{z,x,c}"};
+    MultiSet expect{"{a,b}"};
+    MultiSet multiset3 = multiset1 - multiset2;
+    EXPECT_EQ(expect.GetObjects(), multiset3.GetObjects());
+}
+TEST(MultiSet, difference_equal_overload){
+    MultiSet multiset1{"{a,b,c}"};
+    MultiSet multiset2{"{z,x,c}"};
+    MultiSet expect{"{a,b}"};
+    multiset1-=multiset2;
+    EXPECT_EQ(expect.GetObjects(), multiset1.GetObjects());
+}
+
+TEST(MultiSet, multiplication_overload){
+    MultiSet multiset1{"{a,b}"};
+    MultiSet multiset2{"{z,x}"};
+    vector<string> expect{"<a,z>","<a,x>","<b,z>","<b,x>"};
+    MultiSet multiset3 = multiset1 * multiset2;
+    EXPECT_EQ(expect, multiset3.GetObjects());
+}
+TEST(MultiSet,multiplication_equal_overload){
+    MultiSet multiset1{"{a,b}"};
+    MultiSet multiset2{"{z,x}"};
+    vector<string> expect{"<a,z>","<a,x>","<b,z>","<b,x>"};
+    multiset1 *=multiset2;
+    EXPECT_EQ(expect, multiset1.GetObjects());
+}
+
+TEST(MultiSet,squere_bracers_overload){
+    MultiSet multiset{"{a,b}"};
+    string expect{"a"};
+    EXPECT_EQ(expect, multiset["a"]);
+}
 int main() {
     testing::InitGoogleTest();
-    MultiSet Viwer{"{a,a,c,{a,b,b},{},{a,{c,c}}}"};
-    cout <<Viwer.Boolean_of_MultiSet()<<endl;
-    cout<<Viwer.MultiSet_to_string()<<endl;
     return RUN_ALL_TESTS();
 }
 
