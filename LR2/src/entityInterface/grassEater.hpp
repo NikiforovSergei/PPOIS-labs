@@ -11,16 +11,16 @@ protected:
 
 public:
     grassEater(const std::string name, const int health,
-               const unsigned int _size, sex_t sex,
-               const unsigned int speed = 1,
-               unsigned int _chanceToSurvive = 0)
-        : animal(name, health, _size, sex, speed)
+               const uint _size, sex_t sex,
+               const uint speed = 1,
+               uint _chanceToSurvive = 0, const char* spritePath = nullptr)
+        : animal(name, health, _size, sex, speed, spritePath)
     {
         if (_chanceToSurvive > 1 or _chanceToSurvive < 0)
             _chanceToSurvive = 0;
         this->chanceToSurvive = _chanceToSurvive;
     }
-    ~grassEater()
+    ~grassEater() override
     {
     }
 

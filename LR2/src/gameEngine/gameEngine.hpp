@@ -33,23 +33,19 @@ namespace gameEngine
         SDL_Renderer *renderer;
         SDL_Window *window;
 
-    public:
-        engine(gameField::field* _field, gameCycle::mainCycle* _cycle)
+        engine(gameField::field *_field, gameCycle::mainCycle *_cycle)
+            : field(_field), cycle(_cycle), isRunning(false), screen(nullptr), renderer(nullptr), window(nullptr)
         {
-            states = {};
-            isRunning = false;
-            field = _field;
-            cycle = _cycle;
-            screen = nullptr;
-            renderer = nullptr;
-            window = nullptr;
         }
 
         ~engine()
         {
         }
 
-        virtual int init(const char *title, const unsigned int width = 640, const unsigned int height = 480);
+        void renderField();
+        void renderBG(SDL_Texture *tex);
+
+        virtual int init(const char *title, const uint width = 640u, const uint height = 480u);
         virtual void start();
         virtual void cleanup();
 
@@ -62,6 +58,11 @@ namespace gameEngine
         virtual void draw();
 
         virtual void quit() { isRunning = false; }
+
+    private:
+        const int renderEntity(const int widthCell, const int heightCell,
+                               const int cellX, const int cellY,
+                               SDL_Texture* entityTexture, const int pos);
     };
 
 } // namespace gameEngine

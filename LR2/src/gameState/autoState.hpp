@@ -11,7 +11,6 @@ namespace gameEngine
 class autoState : public gameState::state
 {
 private:
-    SDL_Surface * bg;
 
 public:
     autoState(/* args */)

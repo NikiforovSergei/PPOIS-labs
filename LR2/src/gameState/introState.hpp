@@ -9,7 +9,6 @@ namespace gameEngine { class engine; }
 class introState : public gameState::state
 {
 private:
-    SDL_Surface * bg;
 
 public:
     introState(/* args */)

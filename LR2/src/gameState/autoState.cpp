@@ -5,13 +5,15 @@
 #include "moderateState.hpp"
 #include "gameState.hpp"
 #include "../gameCycle/mainCycle.hpp"
+#include "../gameField/fieldAndCell.hpp"
+#include <SDL2/SDL_image.h>
 
 int autoState::init()
 {
-    bg = SDL_LoadBMP("../assets/autoStateBG.bmp");
+    bg = IMG_Load("../assets/cell.png");
     if (bg == nullptr)
     {
-        std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
+        std::cout << "IMG_Load Error: " << IMG_GetError() << std::endl;
         return 1;
     }
 
@@ -61,8 +63,11 @@ void autoState::events(gameEngine::engine *game)
             break;
         }
     }
-
-    game->cycle->nextStep(game->field);
+    else
+    {
+        SDL_Delay(1000);
+        game->cycle->nextStep(game->field);
+    }
 }
 
 void autoState::update(gameEngine::engine *game)
@@ -75,7 +80,11 @@ void autoState::update(gameEngine::engine *game)
     }
 
     SDL_RenderClear(game->renderer);
-    SDL_RenderCopy(game->renderer, autoTexture, NULL, NULL);
+
+    game->renderBG(autoTexture);
+
+    game->renderField();
+
     SDL_DestroyTexture(autoTexture);
 }
 

@@ -16,47 +16,49 @@ namespace gameField
     class cell
     {
     protected:
-        unsigned int width;
-        unsigned int capacity;
         std::vector<animal *> animals;
-        plant *_plant;
         std::vector<grassEater *> grassEaters;
+        plant *_plant;
+        int maxEntityCount;
 
     public:
-        cell(const unsigned width, const unsigned capacity)
+        cell(const int maxEntityCount)
+            : maxEntityCount(maxEntityCount), _plant(nullptr)
         {
-            this->width = width;
-            this->capacity = capacity;
-            _plant = nullptr;
+        }
+
+        cell(const cell &from)
+        {
+            for (auto i : from.animals)
+                if (i)
+                    animals.push_back(new animal(*i));
+
+            for (auto i : from.grassEaters)
+                if (i)
+                    grassEaters.push_back(new grassEater(*i));
+
+            if (from._plant != nullptr)
+                _plant = new plant(*from._plant);
+            else
+                _plant = nullptr;
+
+            maxEntityCount = from.maxEntityCount;
         }
 
         ~cell()
         {
-            clear();
+            free();
         }
 
-        const unsigned int freeUnitsNum();
-        const unsigned int entityCount();
+        const int entityCount();
 
-        template <typename T>
-        requires std::is_same_v<T, plant *>
-        bool put(T entity);
+        bool put(plant *entity);
+        bool put(animal *entity);
+        bool put(grassEater *entity);
 
-        template <typename T>
-        requires std::is_same_v<T, animal *>
-        bool put(T entity);
-
-        template <typename T>
-        requires std::is_same_v<T, grassEater *>
-        bool put(T entity);
-
-        template <typename T>
-        requires std::is_same_v<T, plant *>
-        void del(T entity);
-
-        template <typename T>
-        requires std::is_same_v<T, animal *> or std::is_same_v<T, grassEater *>
-        void del(T entity);
+        void del(plant *entity);
+        void del(animal *entity);
+        void del(grassEater *entity);
 
         template <typename T>
         requires std::is_same_v<T, plant>
@@ -70,81 +72,9 @@ namespace gameField
         requires std::is_same_v<T, grassEater>
             std::vector<grassEater *> get() { return grassEaters; }
 
-        bool clear();
+        void clear();
+        bool free();
     };
-
-    template <typename T>
-    requires std::is_same_v<T, plant *>
-    bool cell::put(T entity)
-    {
-        if ((entityCount() < 4 and freeUnitsNum() >= entity.size()) or _plant != nullptr)
-        {
-            if (_plant != nullptr)
-                delete _plant;
-
-            _plant = entity;
-            return 0;
-        }
-        else
-            return 1;
-    }
-
-    template <typename T>
-    requires std::is_same_v<T, animal *>
-    bool cell::put(T entity)
-    {
-        if ((entityCount() < 4) and (freeUnitsNum() >= entity->size()))
-        {
-            animals.push_back(entity);
-            return 0;
-        }
-        else
-            return 1;
-    }
-
-    template <typename T>
-    requires std::is_same_v<T, grassEater *>
-    bool cell::put(T entity)
-    {
-        if (entityCount() < 4 and freeUnitsNum() >= entity->size())
-        {
-            grassEaters.push_back(entity);
-            return 0;
-        }
-        else
-            return 1;
-    }
-
-    template <typename T>
-    requires std::is_same_v<T, plant *>
-    void cell::del(T entity)
-    {
-        _plant = nullptr;
-    }
-
-    template <typename T>
-    requires std::is_same_v<T, animal *> || std::is_same_v<T, grassEater *>
-    void cell::del(T entity)
-    {
-        if (std::is_same_v<T, animal *>)
-        {
-            for (auto i = animals.begin(); i != animals.end(); i++)
-            {
-                if (*i == entity)
-                    animals.erase(i);
-                break;
-            }
-        }
-        else
-        {
-            for (auto i = grassEaters.begin(); i != grassEaters.end(); i++)
-            {
-                if (*i == entity)
-                    grassEaters.erase(i);
-                break;
-            }
-        }
-    }
 
     /*-------------------------------------------------------------*/
 
@@ -152,30 +82,63 @@ namespace gameField
     {
     private:
         std::vector<std::vector<cell *>> cells;
-        unsigned int width;
-        unsigned int height;
+        int width;
+        int height;
 
     public:
-        field(const unsigned int width, const unsigned int height)
+        field(const uint width, const uint height, const cell &exampleCell)
+            : width(width), height(height)
         {
-            this->width = width;
-            this->height = height;
             std::vector<cell *> tempRow;
             for (int i = 0; i < height; i++)
             {
                 for (int j = 0; j < width; j++)
-                    tempRow.push_back(new cell(40, 100));
+                    tempRow.push_back(new cell(exampleCell));
                 cells.push_back(tempRow);
                 tempRow.clear();
             }
         }
 
-        ~field()
+        field(const field &from)
         {
-            clear();
+            std::vector<cell *> tempRow;
+            for (size_t i = 0; i < from.cells.size(); ++i)
+            {
+                for (size_t j = 0; j < from.cells.at(i).size(); ++j)
+                    tempRow.push_back(new cell(*from.cells.at(i).at(j)));
+                cells.push_back(tempRow);
+                tempRow.clear();
+            }
+            width = from.width;
+            height = from.height;
         }
 
-        std::pair<const unsigned int, const unsigned int> size()
+        field &operator=(const field &other)
+        {
+            if (this != &other)
+            {
+                free();
+                cells.clear();
+                std::vector<cell *> tempRow;
+                for (size_t i = 0; i < other.cells.size(); ++i)
+                {
+                    for (size_t j = 0; j < other.cells.at(i).size(); ++j)
+                        tempRow.push_back(new cell(*other.cells.at(i).at(j)));
+                    cells.push_back(tempRow);
+                    tempRow.clear();
+                }
+                width = other.width;
+                height = other.height;
+            }
+            return *this;
+        }
+
+        ~field()
+        {
+            free();
+        }
+
+        std::pair<const int, const int> size()
         {
             return {width, height};
         }
@@ -184,8 +147,9 @@ namespace gameField
 
         friend std::ostream &operator<<(std::ostream &to, const field &from);
 
-        cell *getCell(const unsigned int row, const unsigned col);
-        bool clear();
+        cell *getCell(const int row, const int col);
+        void clear();
+        bool free();
     };
 
 } // namespace gameField

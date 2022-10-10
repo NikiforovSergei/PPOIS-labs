@@ -19,7 +19,7 @@ Detailed description of main classes:
 
 		methods:
 			- constructor (create cell with concrete width and capacity, and optionally entities)
-			- freeUnitsNum (return number of free units in *this cell)
+			- freeCapacity (return number of free units in *this cell)
 			- put (put concrete entity to *this cell if there are free units)
 			- del (delete entity FROM *this cell. Dont delete object of entity)
 			- clear (release storage of objects)

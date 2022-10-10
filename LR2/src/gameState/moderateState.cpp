@@ -5,10 +5,11 @@
 #include "introState.hpp"
 #include "gameState.hpp"
 #include "../gameCycle/mainCycle.hpp"
+#include <SDL2/SDL_image.h>
 
 int moderateState::init()
 {
-    bg = SDL_LoadBMP("../assets/moderateStateBG.bmp");
+    bg = IMG_Load("../assets/cell.png");
     if (bg == nullptr)
     {
         std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
@@ -56,6 +57,7 @@ void moderateState::events(gameEngine::engine *game)
                 break;
             case SDLK_n:
                 game->cycle->nextStep(game->field);
+                break;
             case SDLK_ESCAPE:
                 game->quit();
                 break;
@@ -75,7 +77,11 @@ void moderateState::update(gameEngine::engine *game)
     }
 
     SDL_RenderClear(game->renderer);
-    SDL_RenderCopy(game->renderer, moderateTexture, NULL, NULL);
+
+    game->renderBG(moderateTexture);
+
+    game->renderField();
+
     SDL_DestroyTexture(moderateTexture);
 }
 

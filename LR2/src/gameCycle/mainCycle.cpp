@@ -5,34 +5,52 @@ namespace gameCycle
 {
     void mainCycle::move(gameField::field *field)
     {
-        const unsigned int width = field->size().first;
-        const unsigned int height = field->size().second;
-        gameField::field *newField = new gameField::field(width, height);
+        const int width = field->size().first;
+        const int height = field->size().second;
+        gameField::cell exampleCell = *field->getCell(0, 0);
+        exampleCell.clear();
+        gameField::field newField(width, height, exampleCell);
 
-        for (unsigned int i = 0; i < height; i++)
-            for (unsigned int j = 0; j < width; j++)
+        for (int i = 0; i < width; i++)
+            for (int j = 0; j < height; j++)
             {
-                gameField::cell *oldCell = field->getCell(j, i);
+                gameField::cell *oldCell = field->getCell(i, j);
 
-                for (auto k : oldCell->get<animal>())
-                    while (newField->getCell((k->move().first + j + width) % width,
-                                             (k->move().second + i + height) % height)
-                               ->put(k))
-                        ;
+                for (animal *k : oldCell->get<animal>())
+                {
+                    const int moveToX = (k->move().first + i) % width;
+                    const int moveToY = (k->move().second + j) % height;
+                    int count = 0;
+                    while (newField.getCell(moveToX >= 0 ? moveToX : (width + moveToX),
+                                             moveToY >= 0 ? moveToY : (height + moveToY))
+                               ->put(k) and count < 8)
+                    {
+                        count++;
+                    }
+                }
 
-                for (auto k : oldCell->get<grassEater>())
-                    while (newField->getCell((k->move().first + j + width) % width,
-                                             (k->move().second + i + height) % height)
-                               ->put(k))
-                        ;
+                for (grassEater *k : oldCell->get<grassEater>())
+                {
+                    const int moveToX = (k->move().first + i + width) % width;
+                    const int moveToY = (k->move().second + j + height) % height;
+                    int count = 0;
+                    while (newField.getCell(moveToX >= 0 ? moveToX : width + moveToX,
+                                             moveToY >= 0 ? moveToY : height + moveToY)
+                               ->put(k) and count < 8)
+                    {
+                        count++;
+                    }
+                }
             }
-        *field = *newField;
+        field->clear();
+        *field = newField;
+
     }
 
     void mainCycle::eat(gameField::field *field)
     {
-        const unsigned int width = field->size().first;
-        const unsigned int height = field->size().second;
+        const uint width = field->size().first;
+        const uint height = field->size().second;
 
         for (int i = 0; i < height; i++)
             for (int j = 0; j < width; j++)
@@ -137,7 +155,7 @@ namespace gameCycle
                         _cell->put(new grassEater(
                             i->getName(), i->getHealth(), i->size(),
                             (sex_t)(random() % 2),
-                            (unsigned int)(i->getSpeed() / 2 + j->getSpeed() / 2),
+                            (uint)(i->getSpeed() / 2 + j->getSpeed() / 2),
                             (i->getChanceToSurvive() / 2 + j->getChanceToSurvive() / 2)));
                         tmpCell.del(i);
                         tmpCell.del(j);
@@ -198,8 +216,8 @@ namespace gameCycle
     void mainCycle::nextStep(gameField::field *field)
     {
         move(field);
-        eat(field);
-        reproduction(field);
-        die(field);
+        //eat(field);
+        // reproduction(field);
+        //die(field);
     }
 } // namespace gameCycle

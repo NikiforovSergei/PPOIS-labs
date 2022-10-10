@@ -1,22 +1,24 @@
 #pragma once
 
+#include <SDL2/SDL_image.h>
+#include <fstream>
+#include <string>
+
 namespace entityInterface
 {
     class abstractEntity
     {
     protected:
         int health;
-        unsigned int _size;
+        size_t _size;
+        std::string spritePath;
 
     public:
-        abstractEntity(const int health, const unsigned int size)
-        {
-            this->health = health;
-            this->_size = size;
-        }
-        virtual ~abstractEntity()
-        {
-        }
+        abstractEntity(const int health, const size_t size, std::string pathToSprite)
+            : health(health), _size(size), spritePath(pathToSprite)
+        {}
+
+        virtual ~abstractEntity() = default;
 
         virtual void getDamage(const int damage) { health -= damage; }
         virtual bool isDie()
@@ -26,8 +28,10 @@ namespace entityInterface
             else
                 return 0;
         }
-        virtual unsigned int size() { return _size; }
+        virtual size_t size() { return _size; }
         virtual int getHealth() { return health; }
+        virtual void setSpritePath(const char* path) { this->spritePath = path; }
+        virtual std::string getSpritePath() { return spritePath; }
     };
 
 } // namespace entityInterface

@@ -2,12 +2,18 @@
 
 #include <memory>
 
-namespace gameEngine { class engine; }
+namespace gameEngine
+{
+    class engine;
+}
 
 namespace gameState
 {
     class state
     {
+    protected:
+        SDL_Surface *bg;
+
     public:
         virtual int init() = 0;
         virtual void cleanup() = 0;
@@ -19,6 +25,6 @@ namespace gameState
         virtual void update(gameEngine::engine *) = 0;
         virtual void draw(gameEngine::engine *) = 0;
 
-        virtual ~state(){}
+        virtual ~state() = default;
     };
 } // namespace gameState

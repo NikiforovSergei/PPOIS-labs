@@ -12,7 +12,6 @@ namespace gameEngine
 class moderateState : public gameState::state
 {
 private:
-    SDL_Surface * bg;
 
 public:
     moderateState(/* args */)
