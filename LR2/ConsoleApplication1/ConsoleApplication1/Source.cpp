@@ -59,26 +59,19 @@ void InputPinScreen::show_info(Client& client)
 {
 	int pin;
 	std::cout << "Введите пин-код: ";
-	try
+	for (int i = 0; i < ATTEMPTS; i++)
 	{
-		for (int i = 0; i < ATTEMPTS; i++)
+		std::cin >> pin;
+		if (pin == client.get_pin())
 		{
-			std::cin >> pin;
-			if (pin == client.get_pin())
-			{
-				std::cout << "Доступ разрешён" << std::endl;
-				this->pin_checker = true;
-				return;
-			}
-			else
-				std::cout << "Неверный пин код: " << std::endl;
+			std::cout << "Доступ разрешён" << std::endl;
+			this->pin_checker = true;
+			return;
 		}
-		throw 101;
+		else
+			std::cout << "Неверный пин код: " << std::endl;
 	}
-	catch (int i)
-	{
-		std::cout << "Ошибка №" << i << " - Ошибка доступа" << std::endl;
-	}
+	throw std::invalid_argument("Ошибка доступа");
 }
 bool InputPinScreen::check_pin() { return this->pin_checker; }
 
@@ -94,11 +87,8 @@ void PutMoneyScreen::show_info(Client& client)
 	double money;
 	std::cout << "Введите сумму для пополнения: ";
 	std::cin >> money;
-	try {
-		if (money < 0)
-			throw 103;
-	}
-	catch (int i) { std::cout << "Ошибка №" << i << " - Ошибка ввода" << std::endl; }
+	if (money < 0)
+		throw std::invalid_argument("Ошибка ввода");
 	this->money = money;
 	client.get_account().increase_balance(money);
 }
@@ -110,18 +100,12 @@ void GetMoneyScreen::show_info(Client& client)
 	double money;
 	std::cout << "Введите сумму для вывода: ";
 	std::cin >> money;
-	try {
-		if (money < 0)
-			throw 103;
-	}
-	catch (int i) { std::cout << "Ошибка №" << i << " - Ошибка ввода" << std::endl; }
-	try {
-		if (money > client.get_account().get_balance())
-			throw 104;
-		else
-			this->money = money;
-	}
-	catch (int i) { std::cout << "Ошибка №" << i << " - На счете недостаточно средств" << std::endl; }
+	if (money < 0)
+		throw std::invalid_argument("Ошибка ввода");
+	if (money > client.get_account().get_balance())
+		throw std::invalid_argument("На балансе недостаточно средств");
+	else
+		this->money = money;
 }
 
 Bankomat::Bankomat(const Repository& repository)
@@ -152,23 +136,17 @@ void Bankomat::get_money(Client& client)
 	if (put_pin_checker(client))
 	{
 		get_money_screen.show_info(client);
-		try
+		if (repository.amount_money() < get_money_screen.get_withdrawn_money())
 		{
-			if (repository.amount_money() < get_money_screen.get_withdrawn_money())
-			{
-				std::cout << "Текущий баланс хранилища: " << repository.amount_money() << std::endl;
-				throw 102;
-			}
-			else
-			{
-				client.get_account().decrease_balance(get_money_screen.get_withdrawn_money());
-				repository.get_money(get_money_screen.get_withdrawn_money());
-			}
+			std::cout << "Текущий баланс хранилища: " << repository.amount_money() << std::endl;
+			throw std::invalid_argument("В хранилище недостаточно средств");
 		}
-		catch (int i)
+		else
 		{
-			std::cout << "Ошибка №" << i << " - В хранилище недостаточно средств" << std::endl;
+			client.get_account().decrease_balance(get_money_screen.get_withdrawn_money());
+			repository.get_money(get_money_screen.get_withdrawn_money());
 		}
+		
 	}
 
 }

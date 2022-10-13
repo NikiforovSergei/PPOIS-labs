@@ -46,7 +46,11 @@ int main(int argv, char** args)
         case 1: 
         {
             system("cls");
-            bankomat.get_money(client);
+            try
+            {
+                bankomat.get_money(client);
+            }
+            catch (std::invalid_argument err) { std::cout << err.what() << std::endl; }
             system("pause");
             system("cls");
             break;
@@ -54,7 +58,11 @@ int main(int argv, char** args)
         case 2:
         {
             system("cls");
-            bankomat.put_money(client);
+            try
+            {
+                bankomat.put_money(client);
+            }
+            catch (std::invalid_argument err) { std::cout << err.what() << std::endl; }
             system("pause");
             system("cls");
             break;
@@ -62,7 +70,11 @@ int main(int argv, char** args)
         case 3:
         {
             system("cls");
-            bankomat.check_balance(client);
+            try
+            {
+                bankomat.check_balance(client);
+            }
+            catch (std::invalid_argument err) { std::cout << err.what() << std::endl; }
             system("pause");
             system("cls");
             break;
