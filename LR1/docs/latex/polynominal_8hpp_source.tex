@@ -1,0 +1,39 @@
+\hypertarget{polynominal_8hpp_source}{}\doxysection{polynominal.\+hpp}
+\label{polynominal_8hpp_source}\index{src/polynominal/include/polynominal/polynominal.hpp@{src/polynominal/include/polynominal/polynominal.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{comment}{// !Polynominal class }}
+\DoxyCodeLine{6 \textcolor{comment}{/*}}
+\DoxyCodeLine{7 \textcolor{comment}{ * A more detailed class description}}
+\DoxyCodeLine{8 \textcolor{comment}{ */}}
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{classPolynominal}{Polynominal}} \{}
+\DoxyCodeLine{10 \textcolor{keyword}{private}:}
+\DoxyCodeLine{11   \textcolor{comment}{// Cooficients of polynominal}}
+\DoxyCodeLine{12   std::vector<double> \_\_cooficients;}
+\DoxyCodeLine{13   \textcolor{comment}{// Private method to solve Polynominal}}
+\DoxyCodeLine{14   \textcolor{keywordtype}{double} \_\_calculate\_polynominal(\textcolor{keywordtype}{double} x);}
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20   \mbox{\hyperlink{classPolynominal_a27baf220417f0ced8a48aa45ce1e8d97}{Polynominal}}(std::vector<double> cooficients);}
+\DoxyCodeLine{21   }
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23   \textcolor{keywordtype}{double} operator [] (\textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{24   \textcolor{keywordtype}{double} operator () (\textcolor{keywordtype}{double} x);}
+\DoxyCodeLine{25   }
+\DoxyCodeLine{26   \mbox{\hyperlink{classPolynominal}{Polynominal}} operator + (\mbox{\hyperlink{classPolynominal}{Polynominal}}\& other);}
+\DoxyCodeLine{27   \mbox{\hyperlink{classPolynominal}{Polynominal}}\& operator += (\mbox{\hyperlink{classPolynominal}{Polynominal}}\& other);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29   \mbox{\hyperlink{classPolynominal}{Polynominal}} operator -\/ (\mbox{\hyperlink{classPolynominal}{Polynominal}}\& other);}
+\DoxyCodeLine{30   \mbox{\hyperlink{classPolynominal}{Polynominal}}\& operator -\/= (\mbox{\hyperlink{classPolynominal}{Polynominal}}\& other);}
+\DoxyCodeLine{31   }
+\DoxyCodeLine{32   \mbox{\hyperlink{classPolynominal}{Polynominal}} operator * (\mbox{\hyperlink{classPolynominal}{Polynominal}}\& other);}
+\DoxyCodeLine{33   \mbox{\hyperlink{classPolynominal}{Polynominal}}\& operator *= (\mbox{\hyperlink{classPolynominal}{Polynominal}}\& other);}
+\DoxyCodeLine{34   }
+\DoxyCodeLine{35   \textcolor{keywordtype}{bool} operator == (\textcolor{keyword}{const} \mbox{\hyperlink{classPolynominal}{Polynominal}}\& other) \textcolor{keyword}{const};}
+\DoxyCodeLine{36   \textcolor{keywordtype}{bool} operator != (\textcolor{keyword}{const} \mbox{\hyperlink{classPolynominal}{Polynominal}}\& other) \textcolor{keyword}{const};}
+\DoxyCodeLine{37 \};}
+
+\end{DoxyCode}
