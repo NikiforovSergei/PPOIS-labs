@@ -154,14 +154,18 @@ void ImportOcean::getFileName()
 
 void ImportOcean::createOcean()
 {
+	struct stat st;
+	int status = stat(this->path.c_str(), &st);
+
+	if (status != 0)
+	{
+		cout << "File not found";
+		exit(0);
+	}
+
 	ifstream fin(this->path);
 
-	cout << "Trying to open a file" << endl;
-	if (!fin.is_open())
-	{
-		cout << "Error when opening a file" << endl;
-	}
-	else
+	if (fin.is_open())
 	{
 		cout << "File opened" << endl << endl;
 	}
@@ -532,7 +536,7 @@ void Waterfowl::doEating(int i, int j, ImportOcean& field)
 {
 	if (this->hunger == 1)
 	{
-		for (int k = 0; i < 4; i++)
+		for (int k = 0; k < 4; k++)
 		{
 			if (field.getLinkWaterfowl(i, j, k) != nullptr)
 			{
@@ -555,7 +559,7 @@ void Shark::doEating(int i, int j, ImportOcean& field)
 {
 	if (this->hunger == 1)
 	{
-		for (int k = 0; i < 4; i++)
+		for (int k = 0; k < 4; k++)
 		{
 			if (field.getLinkWaterfowl(i, j, k) != nullptr)
 			{
@@ -581,7 +585,7 @@ void Waterfowl::doBreeding(int i, int j, ImportOcean& field)
 {
 	if (this->breed == 1)
 	{
-		for (int k = 0; i < 4; i++)
+		for (int k = 0; k < 4; k++)
 		{
 			if (field.getLinkWaterfowl(i, j, k) == nullptr)
 			{
@@ -598,7 +602,7 @@ void Plankton::doBreeding(int i, int j, ImportOcean& field)
 {
 	if (this->breed == 1)
 	{
-		for (int k = 0; i < 4; i++)
+		for (int k = 0; k < 4; k++)
 		{
 			if (field.getLinkWaterfowl(i, j, k) == nullptr)
 			{
