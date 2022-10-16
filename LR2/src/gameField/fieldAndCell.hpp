@@ -25,6 +25,8 @@ namespace gameField
         cell(const int maxEntityCount)
             : maxEntityCount(maxEntityCount), _plant(nullptr)
         {
+            if (maxEntityCount < 0)
+                throw "error when construct object, type: gameField::field";
         }
 
         cell(const cell &from)
@@ -72,11 +74,28 @@ namespace gameField
         requires std::is_same_v<T, grassEater>
             std::vector<grassEater *> get() { return grassEaters; }
 
+        const int getMaxEntityCount(){ return maxEntityCount; }
+
+        template <typename T>
+        bool fillCellByName(const std::string name, T *entity);
+
         void clear();
         bool free();
     };
 
-    /*-------------------------------------------------------------*/
+    template <typename T>
+    bool cell::fillCellByName(const std::string name, T *entity)
+    {
+        if (name == entity->getName())
+        {
+            put(new T(*entity));
+            return 0;
+        }
+
+        return 1;
+    }
+
+    /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -*/
 
     class field
     {
@@ -86,9 +105,14 @@ namespace gameField
         int height;
 
     public:
-        field(const uint width, const uint height, const cell &exampleCell)
+        field() {}
+
+        field(const int width, const int height, const cell &exampleCell)
             : width(width), height(height)
         {
+            if (width < 0 or height < 0)
+                throw "error when construct object, type: gameField::field";
+
             std::vector<cell *> tempRow;
             for (int i = 0; i < height; i++)
             {
@@ -138,7 +162,7 @@ namespace gameField
             free();
         }
 
-        std::pair<const int, const int> size()
+        std::pair<const int, const int> size() const
         {
             return {width, height};
         }
@@ -147,7 +171,7 @@ namespace gameField
 
         friend std::ostream &operator<<(std::ostream &to, const field &from);
 
-        cell *getCell(const int row, const int col);
+        cell *getCell(const int row, const int col) const;
         void clear();
         bool free();
     };

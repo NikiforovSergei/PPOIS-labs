@@ -39,13 +39,13 @@ void moderateState::resume()
 void moderateState::events(gameEngine::engine *game)
 {
     SDL_Event event;
-    if (SDL_PollEvent(&event))
+    while (SDL_PollEvent(&event))
     {
         switch (event.type)
         {
         case SDL_QUIT:
             game->quit();
-            break;
+            return;
         case SDL_KEYDOWN:
             switch (event.key.keysym.sym)
             {
@@ -60,7 +60,7 @@ void moderateState::events(gameEngine::engine *game)
                 break;
             case SDLK_ESCAPE:
                 game->quit();
-                break;
+                return;
             }
             break;
         }

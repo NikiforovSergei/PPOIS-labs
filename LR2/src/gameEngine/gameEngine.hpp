@@ -62,7 +62,7 @@ namespace gameEngine
     private:
         const int renderEntity(const int widthCell, const int heightCell,
                                const int cellX, const int cellY,
-                               SDL_Texture* entityTexture, const int pos);
+                               SDL_Texture* entityTexture, const int pos, const int maxEntityCount);
     };
 
 } // namespace gameEngine

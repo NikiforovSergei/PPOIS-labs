@@ -1,0 +1,34 @@
+# lines begins from # are comments and ignoring in program
+#
+# firstly describe entities, which you will add to the cells
+#
+# template, where 0 - MALE sex, 1 - FEMALE sex,
+# starveTime - number of steps, when animal, grassEater can alive without eating
+# |entity type|name|health|size|sex|speed|starveTime|spritePath| --- for animals
+#
+# after describe cell template using keyword "templateCell"
+# template
+# |templateCell|maxEntityCount|
+#
+# after describe field using keyword "field"
+# template
+# |field|widthField|heightField|
+#
+# after describe cells using keyword "cell"
+# template, where name-sex is name of entity and 0 if MALE or 1 if FEMALE
+# after delimiter "-", and others entities
+# MALE and FEMALE must be describe in begin separately!!!
+# |cell|cell column|cell row|name-sex| ...
+
+    grassEater panda 120 20 0 1 0.3 5 ../assets/pandaMale.png
+    grassEater panda 120 20 1 1 0.1 5 ../assets/pandaFemale.png
+    plant flower 30 ../assets/plant.png
+
+    templateCell 4
+
+    field 8 8
+
+    cell 0 0 panda-0 flower
+    cell 0 1 panda-0
+    cell 5 4 panda-1 flower
+    cell 7 7 panda-0

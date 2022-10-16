@@ -10,13 +10,19 @@ namespace entityInterface
     {
     protected:
         int health;
+        int maxHealth;
         size_t _size;
         std::string spritePath;
+        std::string name;
 
     public:
-        abstractEntity(const int health, const size_t size, std::string pathToSprite)
-            : health(health), _size(size), spritePath(pathToSprite)
-        {}
+        abstractEntity(std::string name, const int health,
+                       const size_t size, std::string pathToSprite)
+            : name(name), health(health), maxHealth(health), _size(size), spritePath(pathToSprite)
+        {
+            if (maxHealth <= 0 or _size < 0)
+                throw "error when construct object, type: abstractEntity";
+        }
 
         virtual ~abstractEntity() = default;
 
@@ -28,9 +34,12 @@ namespace entityInterface
             else
                 return 0;
         }
+
+        std::string getName() { return name; }
         virtual size_t size() { return _size; }
         virtual int getHealth() { return health; }
-        virtual void setSpritePath(const char* path) { this->spritePath = path; }
+        virtual int getMaxHealth() { return maxHealth; }
+        virtual void setSpritePath(const char *path) { this->spritePath = path; }
         virtual std::string getSpritePath() { return spritePath; }
     };
 

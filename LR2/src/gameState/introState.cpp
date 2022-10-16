@@ -43,7 +43,7 @@ void introState::events(gameEngine::engine *game)
         {
         case SDL_QUIT:
             game->quit();
-            break;
+            return;
         case SDL_KEYDOWN:
             switch (event.key.keysym.sym)
             {
@@ -55,7 +55,7 @@ void introState::events(gameEngine::engine *game)
                 break;
             case SDLK_ESCAPE:
                 game->quit();
-                break;
+                return;
             }
             break;
         }

@@ -40,13 +40,13 @@ void autoState::resume()
 void autoState::events(gameEngine::engine *game)
 {
     SDL_Event event;
-    if (SDL_PollEvent(&event))
+    while (SDL_PollEvent(&event))
     {
         switch (event.type)
         {
         case SDL_QUIT:
             game->quit();
-            break;
+            return;
         case SDL_KEYDOWN:
             switch (event.key.keysym.sym)
             {
@@ -58,16 +58,13 @@ void autoState::events(gameEngine::engine *game)
                 break;
             case SDLK_ESCAPE:
                 game->quit();
-                break;
+                return;
             }
             break;
         }
     }
-    else
-    {
-        SDL_Delay(1000);
-        game->cycle->nextStep(game->field);
-    }
+    SDL_Delay(1000);
+    game->cycle->nextStep(game->field);
 }
 
 void autoState::update(gameEngine::engine *game)

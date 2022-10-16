@@ -84,32 +84,32 @@ namespace gameEngine
                 for (animal *k : tmpCell->get<animal>())
                 {
                     SDL_Texture *entityTex = IMG_LoadTexture(renderer, k->getSpritePath().c_str());
-                    pos = renderEntity(widthCell, heightCell, i, j, entityTex, pos);
+                    pos = renderEntity(widthCell, heightCell, i, j, entityTex, pos, tmpCell->getMaxEntityCount());
                 }
 
                 for (animal *k : tmpCell->get<grassEater>())
                 {
                     SDL_Texture *entityTex = IMG_LoadTexture(renderer, k->getSpritePath().c_str());
-                    pos = renderEntity(widthCell, heightCell, i, j, entityTex, pos);
+                    pos = renderEntity(widthCell, heightCell, i, j, entityTex, pos, tmpCell->getMaxEntityCount());
                 }
 
                 if (tmpCell->get<plant>() != nullptr)
                 {
                     SDL_Texture *entityTex = IMG_LoadTexture(renderer, tmpCell->get<plant>()->getSpritePath().c_str());
-                    pos = renderEntity(widthCell, heightCell, i, j, entityTex, pos);
+                    pos = renderEntity(widthCell, heightCell, i, j, entityTex, pos, tmpCell->getMaxEntityCount());
                 }
             }
     }
 
     const int engine::renderEntity(const int widthCell, const int heightCell,
                                    const int cellX, const int cellY,
-                                   SDL_Texture *entityTexture, const int pos)
+                                   SDL_Texture *entityTexture, const int pos, const int maxEntityCount)
     {
         SDL_Rect entityRect;
-        entityRect.w = widthCell / 2;
-        entityRect.h = heightCell / 2;
-        entityRect.x = widthCell * cellX + (widthCell / 2) * (pos % 2);
-        entityRect.y = heightCell * cellY + (heightCell / 2) * (floor(pos / 2));
+        entityRect.w = widthCell / (int)sqrt(maxEntityCount);
+        entityRect.h = heightCell / (int)sqrt(maxEntityCount);
+        entityRect.x = widthCell * cellX + (widthCell / (int)sqrt(maxEntityCount)) * (pos % (int)sqrt(maxEntityCount));
+        entityRect.y = heightCell * cellY + (heightCell / (int)sqrt(maxEntityCount)) * (floor(pos / (int)sqrt(maxEntityCount)));
         SDL_RenderCopy(renderer, entityTexture, nullptr, &entityRect);
         return pos + 1;
     }
