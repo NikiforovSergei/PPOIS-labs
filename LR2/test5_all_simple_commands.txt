@@ -1,0 +1,33 @@
+function main { #Some comment
+push 6
+peek six
+dup
+pop 
+dup #Some comment
+mul #Some comment
+pop six_square
+add#some comment
+peek twelve#comments
+push 2#comment
+push 6#comments
+div
+peek three #comment
+push twelve#comment
+sub
+peek nine                                     #comment
+
+push six
+push twelve
+add    #some comment
+
+push three
+add
+
+push nine
+add
+
+push six_square
+sub
+
+return
+}

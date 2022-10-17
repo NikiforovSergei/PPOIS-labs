@@ -1,0 +1,44 @@
+function f1 { #Some comment
+peek five
+push 4
+push five
+
+ifgr func
+
+push 0
+return
+
+func:
+call f2
+push 1
+
+ifeq return_1
+
+push 0
+return
+
+return_1:
+push 1
+return
+}
+
+function main 
+{
+push 5
+call f1
+
+return
+}
+
+function f2
+{
+push 5
+ifeq return_1
+
+push 0
+return
+
+return_1:
+push 1
+return
+}

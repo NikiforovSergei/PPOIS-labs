@@ -1,0 +1,47 @@
+function main
+{
+push 9
+call func1
+call func2
+return
+}
+
+function factorial
+{
+peek n
+push 0
+ifeq zero_factorial
+push 1
+push n
+sub
+
+call factorial
+push n
+mul
+return
+zero_factorial:
+pop
+push 1
+
+return
+}
+
+function func1
+{
+pop n
+push 1
+push n
+sub
+call factorial
+
+return
+}
+
+function func2
+{
+pop n
+push 2
+push n
+div
+return
+}
