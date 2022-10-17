@@ -33,22 +33,7 @@ void Difference(Fraction a, Fraction b)
     a.Show();
     b.Show();
 
-    if (a.GetDenominator() == b.GetDenominator())
-    {
-        c.SetWhole(0);
-        c.SetNumerator (a.GetNumerator() - b.GetNumerator());        //вычитаем числитель, если знаминатели одинаковы
-        c.SetDenominator(a.GetDenominator());
-    }
-    else
-    {
-        int t;
-        c.SetDenominator(a.GetDenominator ()* b.GetDenominator());
-        t = c.GetDenominator() / a.GetDenominator();
-        a.SetNumerator(t * a.GetNumerator());
-        t = c.GetDenominator() / b.GetDenominator();                   //приводим к общему знаменателю и вычитаем   
-        b.SetNumerator ( t * b.GetNumerator());
-        c.SetNumerator ( a.GetNumerator() - b.GetNumerator());
-    }
+    c = a - b;
     c.Short();
     c.Show();
 }
@@ -63,9 +48,7 @@ void Multiplication(Fraction a, Fraction b)
     a.Show();
     b.Show();
 
-    c.SetNumerator ( a.GetNumerator() * b.GetNumerator());
-    c.SetDenominator( a.GetDenominator ()* b.GetDenominator());
-
+    c = a * b;
     c.Short();
     c.Show();
 }
@@ -81,12 +64,7 @@ void Dividing(Fraction a, Fraction b)
     a.Show();
     b.Show();
     
-    bb = b.GetNumerator();
-    b.SetNumerator ( b.GetDenominator());
-    b.SetDenominator( bb);
-
-    c.SetNumerator ( a.GetNumerator ()* b.GetNumerator());
-    c.SetDenominator ( a.GetDenominator() * b.GetDenominator());
+    c = a / b;
 
     c.Short();
     c.Show();
@@ -99,8 +77,9 @@ void IncrementDecrement(Fraction a)
     cin >> ch;
     if (ch == 1)
     {
+        Fraction c;
         a.Show();
-        a.SetWhole(a.GetWhole()+1);
+        ++a;
         a.Show();
     }
     else
@@ -108,7 +87,7 @@ void IncrementDecrement(Fraction a)
         a.Show();
         a.Long();
         a.Show();
-        a.SetNumerator(a.GetNumerator()-a.GetDenominator());
+        --a;
         a.Short();
         a.Show();
     }
@@ -116,37 +95,53 @@ void IncrementDecrement(Fraction a)
 
 void Comparison(Fraction a, Fraction b)
 {
+    cout <<  "1-- >" << "\t2-- <" << "\t3-- ==\n";
     a.Show();
     b.Show();
     a.Long();
     b.Long();
     a.Show();
     b.Show();
-
-    if (a.GetNumerator() == b.GetNumerator())
+    int ch;
+    cin>>ch;
+    switch (ch)
     {
-        a.Short();
-        b.Short();
-        cout << "(" << a.GetWhole ()<< ") " << a.GetNumerator ()<< "/" << a.GetDenominator ()<<" = " << "(" << b.GetWhole ()<< ") " << b.GetNumerator ()<< "/" << b.GetDenominator();
-    }
-    if (a.GetNumerator ()> b.GetNumerator())
-    {
-        a.Short();
-        b.Short();
-        cout << "(" << a.GetWhole ()<< ") " << a.GetNumerator ()<< "/" << a.GetDenominator ()<< " > " << "(" << b.GetWhole ()<< ") " << b.GetNumerator ()<< "/" << b.GetDenominator();
-    }if (a.GetNumerator ()< b.GetNumerator())
-    {
-        a.Short();
-        b.Short();
-        cout << "(" << a.GetWhole ()<< ") " << a.GetNumerator ()<< "/" << a.GetDenominator ()<< " < " << "(" << b.GetWhole ()<< ") " << b.GetNumerator ()<< "/" << b.GetDenominator();
+        case 1:
+            if (a > b)
+            {
+                cout << "Yes";
+            }
+            else
+            {
+                cout << "No";
+            };
+        case 2:
+            if (a < b)
+            {
+                cout << "Yes";
+            }
+            else
+            {
+                cout << "No";
+            };
+        case 3:
+            if (a == b)
+            {
+                cout << "Yes";
+            }
+            else
+            {
+                cout << "No";
+            };
     }
 }
+
 
 int main()
 {
     int ch;
     Fraction a, b;
-    cout << "0--to Exit" << "\t1--to Add Up" << "\t2--to Substract" << "\t3--to Multiply" << "\t4--to Divide\n" << "5--to Increment/Decrement" << "\t6--to Compare"<< "\t7--to Double\n";
+    cout << "0--to Exit" << "\t1--to Add Up" << "\t2--to Substract" << "\t3--to Multiply" << "\t4--to Divide\n" << "5--to Increment/Decrement" << "\t6--to Compare" << "\t7--to Double\n";
     cin >> ch;
     system("cls");
     switch (ch)
