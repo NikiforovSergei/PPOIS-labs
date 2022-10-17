@@ -20,15 +20,16 @@
 # MALE and FEMALE must be describe in begin separately!!!
 # |cell|cell column|cell row|name-sex| ...
 
-    grassEater panda 120 20 0 1 0.3 5 ../assets/pandaMale.png
-    grassEater panda 120 20 1 1 0.1 5 ../assets/pandaFemale.png
+    grassEater panda 120 20 0 1 0.3 10 ../assets/pandaMale.png
+    grassEater panda 120 20 1 1 0.1 10 ../assets/pandaFemale.png
     plant flower 30 ../assets/plant.png
-
+    animal tiger 100 30 0 1 10 ../assets/tigerMale.png
+    animal tiger 100 30 1 1 10 ../assets/tigerFemale.png
     templateCell 4
 
-    field 8 8
+    field 4 4
 
-    cell 0 0 panda-0 flower
-    cell 0 1 panda-0
-    cell 5 4 panda-1 flower
-    cell 7 7 panda-0
+    cell 0 0 panda-0 tiger-1
+    cell 0 1 panda-0 tiger-0 tiger-1
+    cell 3 3 panda-1 tiger-0
+    cell 2 1 panda-0 tiger-1

@@ -69,19 +69,17 @@ namespace gameCycle
 
     void mainCycle::eatGrassEaters(gameField::cell *tmpCell)
     {
-        std::vector<animal *> animals = tmpCell->get<animal>();
-        std::vector<grassEater *> grassEaters = tmpCell->get<grassEater>();
-        if (!animals.empty() and !grassEaters.empty())
+        if (!tmpCell->get<animal>().empty() and !tmpCell->get<grassEater>().empty())
         {
             bool isAte = false;
 
-            for (auto hunter : animals)
+            for (int i = 0; i < tmpCell->get<animal>().size(); ++i)
             {
-                for (auto victim : grassEaters)
-                    if (!victim->isAlive())
+                for (int j = 0; j < tmpCell->get<grassEater>().size(); ++j)
+                    if (!tmpCell->get<grassEater>().at(j)->isAlive())
                     {
-                        delete victim;
-                        tmpCell->del(victim);
+                        delete tmpCell->get<grassEater>().at(j);
+                        tmpCell->del(tmpCell->get<grassEater>().at(j));
                         isAte = true;
                         break;
                     }
@@ -89,15 +87,15 @@ namespace gameCycle
                         continue;
 
                 if (!isAte)
-                    hunter->starving();
+                    tmpCell->get<animal>().at(i)->starving();
                 else
-                    hunter->saturation();
+                    tmpCell->get<animal>().at(i)->saturation();
                 isAte = false;
             }
         }
         else
-            for (auto hunter : animals)
-                hunter->starving();
+            for (int i = 0; i < tmpCell->get<animal>().size(); ++i)
+                tmpCell->get<animal>().at(i)->starving();
     }
 
     void mainCycle::eatPlants(gameField::cell *tmpCell)

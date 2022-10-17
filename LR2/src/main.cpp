@@ -13,20 +13,17 @@ int main(int argc, char **args)
     std::fstream FILE("../field.txt");
     FILE >> _field;
 
-    std::fstream out("../outField.txt");
-    out << _field;
+    gameCycle::mainCycle _cycle;
+    gameEngine::engine _game(&_field, &_cycle);
 
-    //gameCycle::mainCycle _cycle;
-    //gameEngine::engine _game(&_field, &_cycle);
+    if (!_game.init("Test start", 800u, 800u))
+    {
+        _game.changeState(new introState());
+        _game.start();
+    }
 
-    //if (!_game.init("Test start", 800u, 800u))
-    //{
-    //    _game.changeState(new introState());
-    //    _game.start();
-    //}
-
-    //_game.cleanup();
-    //_game.quit();
+    _game.cleanup();
+    _game.quit();
 
     return 0;
 }
