@@ -10,9 +10,17 @@
 #include "../entityInterface/animal.hpp"
 #include "../entityInterface/grassEater.hpp"
 
+/**
+ * @brief namespace for declaration class field and cell
+ * 
+ */
 namespace gameField
 {
 
+    /**
+     * @brief class cell, each element can contane different entities
+     * 
+     */
     class cell
     {
     protected:
@@ -22,6 +30,11 @@ namespace gameField
         int maxEntityCount;
 
     public:
+        /**
+         * @brief Construct a new cell object
+         * 
+         * @param maxEntityCount
+         */
         cell(const int maxEntityCount)
             : maxEntityCount(maxEntityCount), _plant(nullptr)
         {
@@ -29,6 +42,11 @@ namespace gameField
                 throw "error when construct object, type: gameField::field";
         }
 
+        /**
+         * @brief Construct a new cell object
+         * 
+         * @param from template to create cell
+         */
         cell(const cell &from)
         {
             for (auto i : from.animals)
@@ -47,39 +65,103 @@ namespace gameField
             maxEntityCount = from.maxEntityCount;
         }
 
+        /**
+         * @brief Destroy the cell object
+         * 
+         */
         ~cell()
         {
             free();
         }
 
+        /**
+         * @brief find number of entities in the cell
+         * 
+         * @return const int number of entities
+         */
         const int entityCount();
 
+        /**
+         * @brief put entity to cell
+         * 
+         * @param entity what put to cell
+         * @return true if failure put
+         * @return false if success
+         */
         bool put(plant *entity);
         bool put(animal *entity);
         bool put(grassEater *entity);
 
+        /**
+         * @brief erase entity from cell(whithout free storage)
+         * 
+         * @param entity what to erase
+         */
         void del(plant *entity);
         void del(animal *entity);
         void del(grassEater *entity);
 
+        /**
+         * @brief get plant from cell
+         * 
+         * @tparam T animal, grassEater, or plant
+         * @return requires* 
+         */
         template <typename T>
         requires std::is_same_v<T, plant>
             plant *get() { return _plant; }
 
+        /**
+         * @brief get vector of animals in cell
+         * 
+         * @tparam T animal, grassEater, or plant
+         * @return requires 
+         */
         template <typename T>
         requires std::is_same_v<T, animal>
             std::vector<animal *> get() { return animals; }
 
+        /**
+         * @brief get vector of grassEater in cell
+         * 
+         * @tparam T animal, grassEater, or plant
+         * @return requires 
+         */
         template <typename T>
         requires std::is_same_v<T, grassEater>
             std::vector<grassEater *> get() { return grassEaters; }
 
+        /**
+         * @brief Get the Max Entity Count object
+         * 
+         * @return const int 
+         */
         const int getMaxEntityCount(){ return maxEntityCount; }
 
+        /**
+         * @brief fill cell with entity if entity->name == name
+         * 
+         * @tparam T 
+         * @param name 
+         * @param entity 
+         * @return true 
+         * @return false 
+         */
         template <typename T>
         bool fillCellByName(const std::string name, T *entity);
 
+        /**
+         * @brief clear all entities in cell
+         * 
+         */
         void clear();
+        
+        /**
+         * @brief free storage of entities in cell
+         * 
+         * @return true if failure
+         * @return false if success
+         */
         bool free();
     };
 
