@@ -1,0 +1,142 @@
+*----------------------------------------------------The description of architecture---------------------------------------------------------*
+
+Main classes:
+	- cell (@brief it represent such methods, as: put abstractEntity to cell, del it from cell, etc.)
+	- field (@brief it represent access to concrete cell)
+	- abstractEntity (@brief base class for all creatures(entities) in the game)
+	- mainCycle (@brief it represent methods for implementation all game rules and manage entities on the field)
+	- gameEngine (@brief it represent interface to manage main game cycle)
+	- gameState (@brief it represent the methods to control state of game)
+	
+Detailed description of main classes:
+	
+	@detail the main idea of class is to transfer control of cleaning and filling cells from field and abstractEntity to individual object.
+	cell:
+		fields:
+			- width (size of square cell)
+			- capacity (number of units of space of cell. F.e. 4 units, and there are two entities which occupy 2 units each in the cell.)
+			- entities (list of pointers to entities, which there are in the cell at the moment)
+
+		methods:
+			- constructor (create cell with concrete width and capacity, and optionally entities)
+			- freeCapacity (return number of free units in *this cell)
+			- put (put concrete entity to *this cell if there are free units)
+			- del (delete entity FROM *this cell. Dont delete object of entity)
+			- clear (release storage of objects)
+			
+	@detail object just for connect cells in one object and transfer control of cells from mainCycle
+	field(class):
+		fields(list of variables in class):
+			- width (width of field in cells)
+			- height (height of field in cells)
+			- cells (2dimensions list of cells with fast search and access)
+
+		methods:
+			- constructor (create field width*height)
+			- readFrom
+			- printTo
+			- getCell (access to cell in concrete coordinates)
+			- clear (release storage of object)
+
+	@detail base interface for different entities - from plants to animals
+	abstractEntity:
+		fields:
+			- health (number of health - each entity is alive)
+			- size (number of units which entity occupy in cell)
+
+		methods:
+			- getDamage (base method to get damage)
+			- move (move between cells with concrete speed)
+			- eat
+			- reproduction
+			- die
+
+		@detail child of class abstractEntity, it override base methods
+		plant : abstractEntity:
+			fields:
+				- 
+	
+			methods:
+				-
+		
+		@detail child of class abstractEntity, it override base methods
+		animal : abstractEntity
+			fields:
+				- speed ( number of cells at one step of game)
+				- survivalChance ( smaller animal have a chance to run away from bigger)
+				- sex (for reproduction)
+				- weight (for starve)
+
+			methods:
+				-
+
+	@detail
+	mainCycle:
+		fields:
+			-
+
+		methods:
+			- move
+			- eat
+			- reproduction
+			- die
+			- nextStep
+			- restore ( step := 0 )
+
+	@detail
+	gameEngine:
+		fields:
+			- field
+			- isRun
+
+		methods:
+
+			- init ( receive field )
+			- cleanup
+
+			- changeState
+			- pushState
+			- popState
+
+			- events
+			- update
+			- draw (draw gui game field)
+	
+			- isRun
+			- quit
+
+	@detail
+	gameState:
+		fields:
+			-
+
+		methods:
+			- init
+			- cleanup
+
+			- pause
+			- resume
+
+			- events
+			- update
+			- draw
+
+			- changeState
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
