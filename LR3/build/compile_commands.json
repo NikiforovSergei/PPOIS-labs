@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/home/bella/code/PPOIS_labs/forPR/LR3/build",
-  "command": "/usr/bin/c++ -g -std=gnu++20 -o CMakeFiles/sort.dir/main.cpp.o -c /home/bella/code/PPOIS_labs/forPR/LR3/main.cpp",
-  "file": "/home/bella/code/PPOIS_labs/forPR/LR3/main.cpp"
-}
-]
