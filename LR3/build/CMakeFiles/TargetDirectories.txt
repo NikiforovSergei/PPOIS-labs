@@ -1,0 +1,5 @@
+/home/bella/code/PPOIS_labs/forPR/LR3/build/CMakeFiles/sort.dir
+/home/bella/code/PPOIS_labs/forPR/LR3/build/CMakeFiles/package.dir
+/home/bella/code/PPOIS_labs/forPR/LR3/build/CMakeFiles/package_source.dir
+/home/bella/code/PPOIS_labs/forPR/LR3/build/CMakeFiles/edit_cache.dir
+/home/bella/code/PPOIS_labs/forPR/LR3/build/CMakeFiles/rebuild_cache.dir
