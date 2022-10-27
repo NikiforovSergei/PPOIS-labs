@@ -1,0 +1,31 @@
+function main
+{
+# operator push
+push 3
+
+# factorial
+
+push 5
+goto label
+pop i
+push 56
+
+pop
+
+label:
+
+push 15
+push 7
+add
+
+return
+}
+
+function tree
+{
+push 5
+
+
+return
+#dslvkjbfidj 
+}
