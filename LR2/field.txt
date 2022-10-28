@@ -27,9 +27,11 @@
     animal tiger 100 30 1 1 10 ../assets/tigerFemale.png
     templateCell 4
 
-    field 4 4
+    field 8 8
 
     cell 0 0 panda-0 tiger-1
-    cell 0 1 panda-0 tiger-0 tiger-1
-    cell 3 3 panda-1 tiger-0
+    cell 5 1 panda-0 tiger-0 tiger-1
+    cell 3 3 panda-1 tiger-0 flower
     cell 2 1 panda-0 tiger-1
+    cell 7 7 flower panda-1
+    cell 4 5 flower flower
