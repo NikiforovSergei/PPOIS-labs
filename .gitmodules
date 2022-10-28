@@ -1,3 +1,6 @@
 [submodule "LR1/googletest"]
 	path = LR1/googletest
 	url = https://github.com/google/googletest
+[submodule "LR3/googletest"]
+	path = LR3/googletest
+	url = https://github.com/google/googletest
