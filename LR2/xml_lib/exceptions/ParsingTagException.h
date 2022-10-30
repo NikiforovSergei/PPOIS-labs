@@ -1,3 +1,5 @@
+#pragma once
+
 #include "XmlException.h"
 
 namespace xml {

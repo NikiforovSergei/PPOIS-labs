@@ -10,6 +10,9 @@
 #include "Document.h"
 #include "ProcessingInstruction.h"
 #include "TextElement.h"
+#include "exceptions/CantFindAttributeException.h"
+#include "exceptions/CantFindTagException.h"
+#include "exceptions/ParsingTagException.h"
 
 namespace xml {
 class XmlDocument {

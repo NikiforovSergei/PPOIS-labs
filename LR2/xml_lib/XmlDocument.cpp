@@ -1,10 +1,7 @@
 #include "XmlDocument.h"
 
-#include "exceptions/CantFindAttributeException.h"
-#include "exceptions/CantFindTagException.h"
 #include "Element.h"
 #include "Node.h"
-#include "exceptions/ParsingTagException.h"
 
 using namespace xml;
 
@@ -12,7 +9,12 @@ XmlDocument::XmlDocument(std::ifstream *inputFile) {
   this->input = inputFile;
   currentLine = 1;
   document = new Document();
-  load();
+  try {
+    load();
+  } catch (ParsingTagException &ex) {
+    throw ex;
+  }
+ 
 }
 
 void XmlDocument::load() {
@@ -21,7 +23,11 @@ void XmlDocument::load() {
     if (input->eof()) {
       return;
     }
-    processingOfCharacters();
+    try {
+      processingOfCharacters();
+    } catch (ParsingTagException &ex) {
+      throw ex;
+    }
   }
 }
 
@@ -37,8 +43,7 @@ void XmlDocument::skipTabsAndLineBreaks() {
   }
 }
 
-Element *XmlDocument::convertStringToElement(
-    std::string content) const {
+Element *XmlDocument::convertStringToElement(std::string content) const {
   char *nextToken = nullptr, *tokenValue, *subTokenValue,
        *nextSubToken = nullptr;
   tokenValue = strtok_r(&content[0], " ", &nextToken);
@@ -71,7 +76,11 @@ void XmlDocument::processingOfSpecialSymbol() {
       processingOfComment();
       break;
     case '/':
-      processingOfClosingTag();
+      try {
+        processingOfClosingTag();
+      } catch (ParsingTagException &ex) {
+        throw ex;
+      }
       break;
     default:
       processingOfOpeningTag();
@@ -81,7 +90,12 @@ void XmlDocument::processingOfSpecialSymbol() {
 void XmlDocument::processingOfCharacters() {
   if (input->peek() == '<') {
     input->get();
-    processingOfSpecialSymbol();
+    try {
+      processingOfSpecialSymbol();
+    } catch (ParsingTagException &ex) {
+      throw ex;
+    }
+
   } else {
     processingOfText();
   }
@@ -117,12 +131,11 @@ void XmlDocument::processingOfClosingTag() {
   input->get();
   std::string content = getStringUntil('>');
   if (tagStack.empty())
-    // throw new ParsingTagException("Met closing tag before any opening ones");
-    throw new ParsingTagException("Met closing tag before any opening ones");
+    throw ParsingTagException("Met closing tag before any opening ones");
   if (content == tagStack.top()->value)
     tagStack.pop();
   else
-    throw new ParsingTagException("Closing tag didn't match the opening one");
+    throw ParsingTagException("The closing tag will not match the opening tag");
 }
 
 void XmlDocument::processingOfText() {
