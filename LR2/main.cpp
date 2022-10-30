@@ -4,24 +4,23 @@
 #include "XmlDocument.h"
 #include "XmlSearcher.h"
 #include "exceptions/XmlException.h"
-#include "exceptions/ParsingTagException.h"
 
 using namespace xml;
 
 int main(int argc, char* argv[]) {
   std::ifstream input;
+  
 
-  input.open("/Users/glebchanskiy/main/PPOIS-labs/LR2/resources/input.xml");
+  input.open(argv[1]);
 
   if (input.is_open()) {
     try {
       XmlDocument xml(&input);
-
-      XmlSearcher search(&xml, argv[1]);
+      XmlSearcher search(&xml, argv[2]);
       for (auto& node : search.getResult()) {
         std::cout << node->toString() << std::endl;
       }
-    } catch (ParsingTagException& ex) {
+    } catch (XmlException& ex) {
       std::cout << "failed to load xml file: " << ex.what() << std::endl;
     }
   } else {
