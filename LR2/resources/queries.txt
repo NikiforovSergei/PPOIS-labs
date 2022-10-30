@@ -1,0 +1,11 @@
+/
+/videos
+/videos/video
+/videos/video/title
+/videos/video[attr("type", "film")]
+/videos/video/title[text("Крестный отец")]
+/videos/video/title[!attr("lang", "ru")]
+/videos/video[attr("type", "film") && attr("onSale", "true")]
+/videos/video/title[text("Крестный отец") || text("The Godfather")]
+/videos/video/title[text("Бойцовский клуб") && attr("lang", "ru")]
+/videos/video/title[attr("lang", "en") || attr("lang", "ru") && text("Бойцовский клуб")]
