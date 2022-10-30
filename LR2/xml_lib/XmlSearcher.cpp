@@ -141,16 +141,14 @@ std::vector<Node *> XmlSearcher::recursionParse(const std::string &query,
 }
 
 std::vector<Node *> XmlSearcher::attributeQuery(const std::string &query,
-                                                bool logical_not) {
+                                                bool logicalNot) {
   std::string *parsedAttribute = parseAttribute(query);
   std::string attributeName = parsedAttribute[0];
   std::string attributeValue = parsedAttribute[1];
   debug("query parsed:\nattributeName: " + attributeName +
         "\nattributeValue: " + attributeValue +
-        "\nlogical_not: " + (logical_not ? "true" : "false"));
-    std::vector<Node *> test = checkAttribute(attributeName, attributeValue, logical_not);
-
-  return test;
+        "\nlogicalNot: " + (logicalNot ? "true" : "false"));
+  return checkAttribute(attributeName, attributeValue, logicalNot);
 }
 
 std::string *XmlSearcher::parseAttribute(std::string request_result) {
@@ -167,18 +165,18 @@ std::string *XmlSearcher::parseAttribute(std::string request_result) {
   return new std::string[2]{attr_name, attr_value};
 }
 
-std::vector<Node *> XmlSearcher::textQuery(const std::string &current,
-                                           bool logical_not) {
-  size_t pos1 = current.find('(') + 2;
-  size_t pos2 = current.find(')');
-  std::string text = current.substr(pos1, pos2 - pos1 - 1);
+std::vector<Node *> XmlSearcher::textQuery(const std::string &query,
+                                           bool logicalNot) {
+  size_t pos1 = query.find('(') + 2;
+  size_t pos2 = query.find(')');
+  std::string text = query.substr(pos1, pos2 - pos1 - 1);
   debug("query parsed:\nlooking for: " + text);
-  return checkText(text, logical_not);
+  return checkText(text, logicalNot);
 }
 
 std::vector<Node *> XmlSearcher::checkAttribute(const std::string &name,
                                                 const std::string &value,
-                                                bool logical_not) {
+                                                bool logicalNot) {
   std::vector<Node *> resultSet;
 
   debug("searching for nodes with \nname = " + name + "\nvalue = " + value);
@@ -189,8 +187,8 @@ std::vector<Node *> XmlSearcher::checkAttribute(const std::string &name,
       debug("attribute  name: " + attribute.name);
       debug("attribute value: " + attribute.value);
 
-      if (logical_not) {
-        debug("logical_not true");
+      if (logicalNot) {
+        debug("logicalNot true");
         if (attribute.name != name || attribute.value != value) {
           if (attribute.name != name)
             debug( "attribute.name != name ::: true");
@@ -203,7 +201,7 @@ std::vector<Node *> XmlSearcher::checkAttribute(const std::string &name,
           resultSet.push_back(node);
         }
       } else {
-        debug("logical_not false");
+        debug("logicalNot false");
         if (attribute.name == name && attribute.value == value) {
           debug("added node: " + node->getValue());
           resultSet.push_back(node);
@@ -216,7 +214,7 @@ std::vector<Node *> XmlSearcher::checkAttribute(const std::string &name,
 }
 
 std::vector<Node *> XmlSearcher::checkText(const std::string &text,
-                                           bool logical_not) {
+                                           bool logicalNot) {
   std::vector<Node *> resultSet;
 
   debug("filling result set:");
@@ -225,7 +223,7 @@ std::vector<Node *> XmlSearcher::checkText(const std::string &text,
     std::string nodeContent = node->getContent();
     debug("nodeContent: |" + nodeContent);
 
-    if (logical_not) {
+    if (logicalNot) {
       debug(nodeContent + "!=" + text + "?");
       if (nodeContent != ' ' + text + ' ') {
         debug("added node: " + node->getContent());

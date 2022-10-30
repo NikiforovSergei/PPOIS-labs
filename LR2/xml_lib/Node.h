@@ -7,8 +7,17 @@
 
 namespace xml {
 
+/**
+ * @brief Класс обобщённого xml элемента.
+ * @details Класс реализует узел xml документа.
+ * @author Левков Глеб
+ * @date 2022-09-30
+ */
 class Node {
  public:
+   /**
+   * @brief Конструктор задаёт значение и родителя элемента.
+   */
   Node(Node *parent, std::string value);
 
   virtual std::string getValue() = 0;

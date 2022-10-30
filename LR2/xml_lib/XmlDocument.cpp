@@ -104,7 +104,7 @@ void XmlDocument::processingOfCharacters() {
 void XmlDocument::processingOfProcessingInstruction() {
   input->get();
   document->PI = new ProcessingInstruction();
-  document->PI->value = "<?" + getStringUntil('?') + "?>";
+  document->PI->value = getStringUntil('?');
 
   getStringUntil('>');
   if (input->get() == '\n') currentLine++;
