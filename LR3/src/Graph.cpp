@@ -7,20 +7,21 @@
 #include <utility>
 #include <forward_list>
 #include <vector>
+#include <stdexcept>
 #include <unordered_map>
 
-template<class TV, class TE>
+template<class TV, class EI, class TE>
 class UndirectedGraph {
 public:
   typedef size_t vertex_id_type;
-  typedef size_t edge_id_type;
+  typedef EI edge_id_type;
   typedef TV vertex_data_type;
   typedef TE edge_data_type;
 private:
-  typedef UndirectedGraph<vertex_data_type, edge_data_type> graph_type;
+  typedef UndirectedGraph<vertex_data_type, edge_id_type, edge_data_type> graph_type;
   typedef std::unordered_map<vertex_id_type, vertex_data_type> vertex_container;
   typedef std::unordered_map<edge_id_type, edge_data_type> edge_container;
-  typedef std::vector<size_t> adj_list; // 0 1 1 0 1 ...
+  typedef std::vector<vertex_id_type> adj_list; // 0 1 1 0 1 ...
   typedef std::unordered_map<vertex_id_type, adj_list> adj_container;
 
   vertex_container vertices;
@@ -116,20 +117,70 @@ public:
   };
 
   std::pair<graph_vertex_iterator, bool> insert_vertex(const vertex_id_type& vertex_id, const vertex_data_type& vertex_data) {
-    auto pair = vertices.emplace(vertex_id, vertex_data);
     for (size_t i = 0; i < this->n_vertices(); i++) {
       adj[i].push_back(0);
     }
+    auto pair = vertices.emplace(vertex_id, vertex_data);
     adj.emplace(vertex_id, adj_list(this->n_vertices(), 0));
     return pair;
   }
-  bool delete_vertex(const vertex_id_type& vertex_id);  
   
   std::pair<graph_edge_iterator, bool> insert_edge(const vertex_id_type& v1, const vertex_id_type& v2, edge_data_type& data) {
     if (vertices.count(v1) == 0 || vertices.count(v2) == 0) {
       return std::make_pair(edges.end(), false);
     }
 
+    if (v1 == v2) {
+      throw std::invalid_argument("");
+    }
+
+    auto pair = edges.emplace(edge_id_type(v1, v2), data);
+
+    if (pair.second) {
+      adj[v1][v2] = 1;
+      if (v1 != v2) {
+        adj[v2][v1] = 1;
+      }
+    }
+
+    return pair;
+  }
+
+  bool delete_vertex(const vertex_id_type& vertex_id) {
+    auto count = vertices.erase(vertex_id);
+    if (count == 0) {
+      return false;
+    }
+    
+    for (auto it = adj.begin(); it != adj.end(); it++) {
+      const auto other_id = *it;
+
+      edges.erase(edge_id_type(vertex_id, other_id));
+      
+      auto& other_id_list = this->adj.at(other_id);
+      for (auto it = other_id_list.begin(); it != other_id_list.end(); it++) {
+        if (vertex_id == *it) {
+          other_id_list.erase(it);
+          break;
+        }
+      }
+    }
+
+    this->adj.erase(vertex_id);
+
+    return true;
+  } 
+
+  bool delete_edge(const edge_id_type& edge) {
+    auto count = edges.erase(edge);
+    if (count == 0) {
+      return false;
+    }
+
+    this->adj[edge.a][edge.b] = 0;
+    this->adj[edge.b][edge.a] = 0;
+
+    return true;
   }
 };
 
