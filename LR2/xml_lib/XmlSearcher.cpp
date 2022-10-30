@@ -272,34 +272,3 @@ void XmlSearcher::debug(const std::string& message) {
     std::cout << message << std::endl;
   }
 }
-
-//if (operation == "&&") {
-//for (auto i : rightResultSet.size() > leftResultSet.size()
-//? rightResultSet
-//: leftResultSet) {
-//bool isMatchFounded = false;
-//for (auto j : rightResultSet.size() > leftResultSet.size()
-//? rightResultSet
-//: leftResultSet) {
-//if (*(Element *)i == *(Element *)j) {
-//isMatchFounded = true;
-//debug("  " + i->toString() + " is equal to " + j->toString());
-//}
-//}
-//if (isMatchFounded) resultSet.push_back(i);
-//}
-//} else if (operation == "||") {
-//resultSet = rightResultSet.size() > leftResultSet.size() ? rightResultSet
-//                                                         : leftResultSet;
-//for (auto i : rightResultSet.size() > leftResultSet.size()
-//? leftResultSet
-//: rightResultSet) {
-//bool isMatchNotFounded = true;
-//for (auto j : rightResultSet.size() > leftResultSet.size()
-//? rightResultSet
-//: leftResultSet) {
-//if ((Element *)i == (Element *)j) isMatchNotFounded = false;
-//}
-//if (isMatchNotFounded) resultSet.push_back(i);
-//}
-//}
