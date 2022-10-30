@@ -150,11 +150,6 @@ std::vector<Node *> XmlSearcher::attributeQuery(const std::string &query,
         "\nlogical_not: " + (logical_not ? "true" : "false"));
     std::vector<Node *> test = checkAttribute(attributeName, attributeValue, logical_not);
 
-    debug("");
-    for (auto &node : test) {
-        debug(node->toString());
-    }
-    debug("");
   return test;
 }
 
