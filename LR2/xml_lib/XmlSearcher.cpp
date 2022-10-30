@@ -226,18 +226,20 @@ std::vector<Node *> XmlSearcher::checkText(const std::string &text,
 
   debug("filling result set:");
 
-  for (auto node : searchTable[requestPath.back()]) {
-    std::string nodeContent = node->value;
-    if (nodeContent.find('\n') != std::string::npos)
-      nodeContent = nodeContent.substr(0, nodeContent.find('\n'));
+  for (auto &node : searchTable[requestPath.back()]) {
+    std::string nodeContent = node->getContent();
+    debug("nodeContent: |" + nodeContent);
+
     if (logical_not) {
-      if (nodeContent != text) {
-        debug("added node: " + node->getValue());
+      debug(nodeContent + "!=" + text + "?");
+      if (nodeContent != ' ' + text + ' ') {
+        debug("added node: " + node->getContent());
         resultSet.push_back(node);
       }
     } else {
-      if (nodeContent == text) {
-        debug("added node: " + node->getValue());
+      debug(nodeContent + "==" + text + "?");
+      if (nodeContent == ' ' + text + ' ') {
+        debug("added node: " + node->getContent());
         resultSet.push_back(node);
       }
     }
