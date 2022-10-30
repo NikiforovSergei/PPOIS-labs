@@ -2,16 +2,16 @@
 <!-- коммент -->
 <videos>
   <video type="film" onSale="true">
-    <title lang="ru">The Godfather</title>
-    <title lang="en">Крестный отец</title>
+    <title lang="en">The Godfather</title>
+    <title lang="ru">Крестный отец</title>
     <director>Фрэнсис Форд Коппола</director>
     <year>1972</year>
     <length>175 мин</length>
     <rating>R</rating> 
   </video>
   <video type="film" onSale="false">
-    <title lang="ru">Fight Club</title>
-    <title lang="en">Бойцовский клуб</title>
+    <title lang="en">Fight Club</title>
+    <title lang="ru">Бойцовский клуб</title>
     <director>Дэвид Финчер</director>
     <year>1999</year>
     <length>139 мин</length>
