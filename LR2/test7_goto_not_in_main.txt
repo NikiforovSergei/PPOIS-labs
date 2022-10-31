@@ -1,0 +1,17 @@
+function f { #Some comment
+push 0
+goto return_1
+return
+
+return_1:
+push 1
+return
+}
+
+function main 
+{
+push 0
+call f
+
+return
+}

@@ -1,0 +1,9 @@
+function main { #Some comment
+push 0
+goto return_1
+return
+
+return_1:
+push 1
+return
+}

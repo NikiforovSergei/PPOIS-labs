@@ -1,0 +1,21 @@
+function main {
+
+push 5
+push 6
+add
+
+call func
+
+return
+}
+
+function func #Hm... Something wrong...
+{
+#This function is not correct
+
+push 11
+div
+
+#no return
+#return
+}
