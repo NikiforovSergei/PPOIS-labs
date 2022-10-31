@@ -3,7 +3,6 @@
 #ifndef __KITA_EDGE__
 #define __KITA_EDGE__
 
-#include <cstddef>
 #include <stdexcept>
 
 template<typename T>

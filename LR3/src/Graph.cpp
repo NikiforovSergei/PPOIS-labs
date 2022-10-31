@@ -3,9 +3,6 @@
 #ifndef __KITA_GRAPH__
 #define __KITA_GRAPH__
 
-#include <cstddef>
-#include <utility>
-#include <forward_list>
 #include <vector>
 #include <stdexcept>
 #include <unordered_map>
@@ -35,7 +32,7 @@ public:
   typedef typename adj_list::iterator graph_adj_iterator;
   typedef typename adj_list::const_iterator graph_adj_const_iterator;
 
-  static edge_id_type make_edge_id(const vertex_id_type& a, const vertex_id_type& b) {
+  edge_id_type make_edge_id(const vertex_id_type& a, const vertex_id_type& b) {
     return edge_id_type(a, b);
   } 
 
@@ -164,7 +161,7 @@ public:
       
       auto& other_id_list = adj.at(other_id);
       for (auto it = other_id_list.begin(); it != other_id_list.end(); it++) {
-        if (vertex_id == *it) {
+        if (*it == vertex_id) {
           other_id_list.erase(it);
           break;
         }
