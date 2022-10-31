@@ -13,9 +13,9 @@
 template<class TV, class EI, class TE>
 class UndirectedGraph {
 public:
-  typedef size_t vertex_id_type;
-  typedef EI edge_id_type;
+  typedef int vertex_id_type;
   typedef TV vertex_data_type;
+  typedef EI edge_id_type;
   typedef TE edge_data_type;
 private:
   typedef UndirectedGraph<vertex_data_type, edge_id_type, edge_data_type> graph_type;
@@ -35,14 +35,18 @@ public:
   typedef typename adj_list::iterator graph_adj_iterator;
   typedef typename adj_list::const_iterator graph_adj_const_iterator;
 
+  static edge_id_type make_edge_id(const vertex_id_type& a, const vertex_id_type& b) {
+    return edge_id_type(a, b);
+  } 
+
   bool is_empty() const {
     return vertices.empty();
   }
   
-  size_t n_vertices() const {
+  int n_vertices() const {
     return vertices.size();
   }
-  size_t n_edges() const {
+  int n_edges() const {
     return edges.size();
   }
   
@@ -117,7 +121,7 @@ public:
   };
 
   std::pair<graph_vertex_iterator, bool> insert_vertex(const vertex_id_type& vertex_id, const vertex_data_type& vertex_data) {
-    for (size_t i = 0; i < this->n_vertices(); i++) {
+    for (int i = 0; i < this->n_vertices(); i++) {
       adj[i].push_back(0);
     }
     auto pair = vertices.emplace(vertex_id, vertex_data);
@@ -134,7 +138,7 @@ public:
       throw std::invalid_argument("");
     }
 
-    auto pair = edges.emplace(edge_id_type(v1, v2), data);
+    auto pair = edges.emplace(make_edge_id(v1, v2), data);
 
     if (pair.second) {
       adj[v1][v2] = 1;
@@ -152,12 +156,13 @@ public:
       return false;
     }
     
-    for (auto it = adj.begin(); it != adj.end(); it++) {
+    auto& vertex_id_list = adj.at(vertex_id);
+    for (auto it = vertex_id_list.begin(); it != vertex_id_list.end(); it++) {
       const auto other_id = *it;
 
-      edges.erase(edge_id_type(vertex_id, other_id));
+      edges.erase(make_edge_id(vertex_id, other_id));
       
-      auto& other_id_list = this->adj.at(other_id);
+      auto& other_id_list = adj.at(other_id);
       for (auto it = other_id_list.begin(); it != other_id_list.end(); it++) {
         if (vertex_id == *it) {
           other_id_list.erase(it);
@@ -166,7 +171,7 @@ public:
       }
     }
 
-    this->adj.erase(vertex_id);
+    adj.erase(vertex_id);
 
     return true;
   } 
@@ -177,8 +182,8 @@ public:
       return false;
     }
 
-    this->adj[edge.a][edge.b] = 0;
-    this->adj[edge.b][edge.a] = 0;
+    adj[edge.a][edge.b] = 0;
+    adj[edge.b][edge.a] = 0;
 
     return true;
   }
