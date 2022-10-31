@@ -1,5 +1,0 @@
-﻿  ConsoleApplication1.cpp
-C:\Users\USER\Desktop\2курс\поис\laba2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(190,23): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\USER\Desktop\2курс\поис\laba2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(42,7): warning C4101: a: неиспользованная локальная переменная
-C:\Users\USER\Desktop\2курс\поис\laba2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(41,6): warning C4101: size: неиспользованная локальная переменная
-  ConsoleApplication1.vcxproj -> C:\Users\USER\Desktop\2курс\поис\laba2\ConsoleApplication1\Debug\ConsoleApplication1.exe
