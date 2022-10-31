@@ -8,7 +8,7 @@
 #include <tuple>
 
 #include "Document.h"
-#include "ProcessingInstruction.h"
+#include "Declaration.h"
 #include "TextElement.h"
 #include "exceptions/CantFindAttributeException.h"
 #include "exceptions/CantFindTagException.h"

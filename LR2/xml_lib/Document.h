@@ -4,7 +4,7 @@
 
 #include "Comment.h"
 #include "Element.h"
-#include "ProcessingInstruction.h"
+#include "Declaration.h"
 
 namespace xml {
 
@@ -17,13 +17,13 @@ namespace xml {
 class Document {
  public:
   /**
-   * @brief Конструктор инициализирует root=nullptr и ProcessingInstruction=nullptr.
+   * @brief Конструктор инициализирует root=nullptr и Declaration=nullptr.
    */
   Document();
 
   Element *root;
   std::vector<Comment> comments;
-  ProcessingInstruction *PI;
+  Declaration *declaration;
 };
 
 }  // namespace xml

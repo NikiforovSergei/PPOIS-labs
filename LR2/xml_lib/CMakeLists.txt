@@ -5,7 +5,7 @@ set(HEADER_FILES
   Comment.h
   Document.h
   Node.h
-  ProcessingInstruction.h
+  Declaration.h
   Element.h
   TextElement.h
   XmlDocument.h
@@ -21,7 +21,7 @@ set(SOURCE_FILES
   Comment.cpp
   Document.cpp
   Node.cpp
-  ProcessingInstruction.cpp
+  Declaration.cpp
   Element.cpp
   TextElement.cpp
   XmlDocument.cpp
