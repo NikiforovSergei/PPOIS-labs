@@ -9,4 +9,5 @@ int main() {
   XMLElement *root = doc->get_first_child();
 
   std::cout << ("frameset" == root->get_name());
+  std::cout << ("role" == root->get_first_child()->get_name());
 }

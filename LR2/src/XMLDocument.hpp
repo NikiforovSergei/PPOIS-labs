@@ -14,15 +14,18 @@ class XMLDocument {
 public:
   XMLDocument(string filename);
   ~XMLDocument();
+
   void print(string filename);
   void parse();
-  XMLElement *get_first_child();
 
+  XMLElement *get_first_child();
 private:
   string filename;
   ifstream input_stream;
+
   XMLTokenType last_read_token_type = XMLTokenType::XML_END;
   XMLElement *root;
+  
   string read_token(char prev_ch, char *next_ch, bool extra = false,
                     bool quota = false);
   string parse_tag();
