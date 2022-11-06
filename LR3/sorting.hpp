@@ -85,13 +85,13 @@ void additional_strand_sort(std::list<T> &first_list, std::list<T> &second_list)
 }
 
 template <typename T>
-void strand_sort(std::vector<T> &buffer, int high)
+void strand_sort(std::vector<T> &container, int high)
 {
     std::list<T> in, out;
 
     for (int i = 0; i < high; i++)
     {
-        in.push_back(buffer[i]);
+        in.push_back(container[i]);
     }
 
     additional_strand_sort(in, out);
@@ -99,7 +99,7 @@ void strand_sort(std::vector<T> &buffer, int high)
     int i = 0;
     for (auto number: out)
     {
-        buffer[i] = number;
+        container[i] = number;
         i++;
     }
 }

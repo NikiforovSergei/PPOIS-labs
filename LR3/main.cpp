@@ -11,7 +11,7 @@ int main() {
     char symbols_temp[] = {'a', 'c', 'e', 'b'};
     std::vector<Student> students = {Student(9.7), Student(8.8), Student(9.9)};
     int choice;
-    std::cout << "Select the type of sorting: \n1.Cocktail sort - 1 \n2. Strand sort - 2" << std::endl;
+    std::cout << "Select the type of sorting: \n1.Cocktail sort - 1 \n2.Strand sort - 2" << std::endl;
     std::cin >> choice;
     switch (choice) {
         case 1: {
