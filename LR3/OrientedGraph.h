@@ -547,7 +547,6 @@ public:
 					break;
 				}
 			}
-
 			for (int i = 0; i < nodes.size(); i++)
 			{
 				FindAdjNodes(nodes[i]);
@@ -569,7 +568,6 @@ public:
 					break;
 				}
 			}
-
 			for (int i = 0; i < nodes.size(); i++)
 			{
 				FindAdjNodes(nodes[i]);
@@ -675,9 +673,7 @@ public:
 			}
 		}
 		s << "\n\n";
-	
 		return s;
-
 	}
 	
 	//iterator for nodes vector
@@ -815,7 +811,6 @@ public:
 		}
 	};
 
-	
 	EdgeIterator edge_begin()
 	{
 		return EdgeIterator(&edges[0]);
@@ -825,6 +820,5 @@ public:
 	{
 		return EdgeIterator(&edges[edges.size()-1]+1);
 	}
-
 };
 

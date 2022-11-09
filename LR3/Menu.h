@@ -5,9 +5,9 @@
 template<typename T>
 class Menu {
 private:
-    static void start(int kod, oriented_graph<T>& graph) 
+    static void start(int ch, oriented_graph<T>& graph) 
     {
-        switch (kod) {
+        switch (ch) {
         case 1: 
         {
             std::cout << graph;
@@ -203,10 +203,10 @@ public:
                 "18 - nodes neighbours by iterators\n"
                 "19 - incedent edges for graph nodes by iterators\n";
 
-            int kod;
-            std::cin >> kod;
+            int ch;
+            std::cin >> ch;
             system("cls");
-            start(kod, graph);
+            start(ch, graph);
         }
     }
 };
