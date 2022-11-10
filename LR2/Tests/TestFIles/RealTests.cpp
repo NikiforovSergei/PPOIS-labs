@@ -39,8 +39,8 @@ TEST_F(RealTestMachine, RealTestNumber5){
   stc::Tree::print(stc::Parser::solution("{a}+{}*(({}+{a,{a,b}}))"), output);
   EXPECT_EQ("{a}", output);
 }
-TEST_F(RealTestMachine, RealTestNumber5){
+TEST_F(RealTestMachine, RealTestNumber6){
   std::string output;
-  stc::Tree::print(stc::Parser::solution("{a}+{}*(({}+{a,{a,b}}))"), output);
-  EXPECT_EQ("{a}", output);
+  stc::Tree::print(stc::Parser::solution("{a}*{}+(({}+{a,{a,b}}))"), output);
+  EXPECT_EQ("{a, {a, b}}", output);
 }

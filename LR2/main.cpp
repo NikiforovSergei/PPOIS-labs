@@ -40,7 +40,6 @@ int main()
     {
       try {
         stc::Tree::print(stc::Parser::solution(my_line), output);
-        std::cout<<output<<std::endl;
       }
       catch (stc::Exception& e){
         std::cout<<e.what()<<std::endl;
