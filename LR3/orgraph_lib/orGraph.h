@@ -6,9 +6,6 @@
 
 #include "../matrix_lib/Matrix.h"
 
-
-
-
 template<class ContentType>
 class OrGraph {
 
@@ -44,9 +41,6 @@ class OrGraph {
       } else
         return false;
     }
-//    VertexIterator next() {
-//      return VertexIterator(node->parent->vertexes[++index]);
-//    }
 
     VertexIterator &operator=(const VertexIterator &iterator) {
       node = iterator.node;
@@ -96,15 +90,11 @@ class OrGraph {
     constVertexIterator(const constVertexIterator &it) : node(it.node), index(0) {}
 
     bool hasNext() {
-      if (index < node->parent->vertexes.size() - 1) {
+      if (index < node->parent->vertexes.size()) {
         return true;
       } else
         return false;
     }
-//    }
-//    constVertexIterator next() {
-//      return constVertexIterator(node->parent->vertexes[++index]);
-//    }
 
     constVertexIterator &operator=(const constVertexIterator &iterator) {
       node = iterator.node;
@@ -144,7 +134,7 @@ class OrGraph {
 
   };
 
-  class EdgeIterator  {
+  class EdgeIterator {
    public:
 
     friend class OrGraph;
@@ -203,10 +193,10 @@ class OrGraph {
     typedef Edge &reference;
 
     explicit constEdgeIterator(pointer node) : node(node), index(0) {}
-    constEdgeIterator(const EdgeIterator &it) : node(it.node), index(0) {}
+    constEdgeIterator(const constEdgeIterator &it) : node(it.node), index(0) {}
 
     bool hasNext() {
-      if (index < node->first->parent->getEdges()->size()) {
+      if (index < node->first->parent->getEdges().size()) {
         return true;
       } else
         return false;
@@ -233,7 +223,8 @@ class OrGraph {
       return node;
     }
     constEdgeIterator &operator++() {
-      node = node->first->parent->getEdges()[++index];
+      node = (node->first->parent->getEdges()[index]);
+      ++index;
       return *this;
     }
 
@@ -251,7 +242,7 @@ class OrGraph {
   }
 
   constVertexIterator Cbegin() const {
-    return ConstNodeIterator((vertexes.empty() ? nullptr : vertexes[0]));
+    return constVertexIterator((vertexes.empty() ? nullptr : vertexes[0]));
   }
 
   constVertexIterator Cend() const {
@@ -267,7 +258,7 @@ class OrGraph {
   }
 
   constEdgeIterator CEBegin() const {
-    return ConstRibIterator((getEdges()->empty() ? nullptr : getEdges()[0]));
+    return constEdgeIterator((getEdges().empty() ? nullptr : getEdges()[0]));
   }
 
   constEdgeIterator CEEnd() const {
@@ -318,6 +309,16 @@ class OrGraph {
 
   EdgeIterator getEdgeIterator(Edge *edge) {
     return EdgeIterator(edge);
+  }
+
+  bool operator!=(OrGraph const &other) const;
+  bool operator==(OrGraph const &other) const;
+
+  friend bool operator==(const OrGraph &it1, const OrGraph &it2) {
+    return it1.vertexes == it2.vertexes && it1.matrix == it2.matrix;
+  }
+  friend bool operator!=(const OrGraph &it1, const OrGraph &it2) {
+    return it1.vertexes != it2.vertexes || it1.matrix != it2.matrix;
   }
 
  private:
@@ -585,7 +586,8 @@ void OrGraph<ContentType>::removeIncidenceEdges(Vertex *vertex) {
 //}
 
 template<class ContentType>
-std::vector<std::pair<typename OrGraph<ContentType>::Vertex *, typename OrGraph<ContentType>::Vertex *> *> OrGraph<ContentType>::getEdges() {
+std::vector<std::pair<typename OrGraph<ContentType>::Vertex *, typename OrGraph<ContentType>::Vertex *> *> OrGraph<
+    ContentType>::getEdges() {
 
   std::vector<std::pair<typename OrGraph<ContentType>::Vertex *, typename OrGraph<ContentType>::Vertex *> *> result;
 
@@ -596,4 +598,13 @@ std::vector<std::pair<typename OrGraph<ContentType>::Vertex *, typename OrGraph<
     }
   }
   return result;
+}
+
+template<class ContentType>
+bool OrGraph<ContentType>::operator!=(OrGraph const &other) const {
+  return this->vertexes != other.vertexes || this->matrix != other.matrix;
+}
+template<class ContentType>
+bool OrGraph<ContentType>::operator==(OrGraph const &other) const {
+  return this->vertexes == other.vertexes && this->matrix == other.matrix;
 }

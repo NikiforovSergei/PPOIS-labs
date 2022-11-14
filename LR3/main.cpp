@@ -17,8 +17,6 @@ int main() {
   cout << "graph is empty: " << (graph.isEmpty() ? "true" : "false") << endl;
   cout << "vertex count: " << graph.getVertexCount() << ", edges count: " << graph.getEdgesCount() << endl << endl;
 
-
-
   Node *n1 = new Node("node_1");
   Node *n2 = new Node("node_2");
   Node *n3 = new Node("node_3");
@@ -31,7 +29,6 @@ int main() {
   Node *n10 = new Node("node_10");
   Node *n11 = new Node("node_11");
   Node *n12 = new Node("node_12");
-
 
   graph.addEdge(n1, n2);
   graph.addEdge(n1, n3);
@@ -56,21 +53,29 @@ int main() {
 //  OrGraph<std::string>::VertexIterator it1 = graph.getVertexIterator(n1);
 //  OrGraph<std::string>::EdgeIterator it2 = graph.getEdgeIterator(new std::pair(n1,n2));
 
-  OrGraph<std::string>::VertexIterator it1 = graph.begin();
+
+  OrGraph<std::string>::constVertexIterator cit1 = graph.Cbegin();
   OrGraph<std::string>::EdgeIterator it2 = graph.EBegin();
 
-  cout << "Вершины графа: ";
+  OrGraph<std::string>::VertexIterator it1 = graph.begin();
+  cout << "Вершины графа: " << endl;
   while (it1.hasNext()) {
     ++it1;
     cout << (*it1).content << endl;
   }
+
+  cout << "Вершины графа: " << endl;
+  while (cit1.hasNext()) {
+    ++cit1;
+    cout << (*cit1).content << endl;
+  }
+
   cout << "\n---\n";
-  cout << "Рёбра графа: ";
+  cout << "Рёбра графа: " << endl;
   while (it2.hasNext()) {
     ++it2;
     cout << (*it2).first->content << "-" << (*it2).second->content << endl;
   }
-  cout << endl << endl;
 
 
   cout << "vertex count: " << graph.getVertexCount() << ", edges count: " << graph.getEdgesCount() << endl;
@@ -92,6 +97,12 @@ int main() {
   graph.removeVertex(n7);
   cout << "vertexes node_4, node_5, node_6, node_7 was deleted" << endl;
 
+  cout << graph.toString() << endl;
+
+  graph.removeEdge(n1,n2);
+  graph.removeEdge(n1,n3);
+
+  cout << "edges n1-n2, n1-n3 deleted" << endl;
   cout << graph.toString() << endl;
 
   graph.clear();

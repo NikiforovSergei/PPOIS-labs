@@ -83,6 +83,20 @@ class Matrix {
 
   void clear();
 
+  bool operator!=(Matrix const &other) const {
+    return this->M != other.M;
+  }
+  bool operator==(Matrix const &other) const {
+    return this->M == other.M;
+  }
+  friend bool operator==(const Matrix &it1, const Matrix &it2) {
+    return it1.M == it2.M;
+  }
+
+  friend bool operator!=(const Matrix &it1, const Matrix &it2) {
+    return it1.M != it2.M;
+  }
+
  private:
   std::vector<std::vector<int>> M;
 
