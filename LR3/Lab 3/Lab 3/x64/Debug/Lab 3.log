@@ -1,0 +1,22 @@
+﻿  main.cpp
+C:\Users\USER\Documents\Visual Studio 2022\Works\Lab 3\Lab 3\main.cpp(55,45): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\USER\Documents\Visual Studio 2022\Works\Lab 3\Lab 3\main.cpp(56,37): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\USER\Documents\Visual Studio 2022\Works\Lab 3\Lab 3\main.cpp(69,43): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\USER\Documents\Visual Studio 2022\Works\Lab 3\Lab 3\main.cpp(70,37): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\USER\Documents\Visual Studio 2022\Works\Lab 3\Lab 3\Header.h(105,21): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\USER\Documents\Visual Studio 2022\Works\Lab 3\Lab 3\main.cpp(64): message : выполняется компиляция ссылки на экземпляр шаблон функции "void strandSort<int*>(T &,int)"
+          with
+          [
+              T=int *
+          ]
+C:\Users\USER\Documents\Visual Studio 2022\Works\Lab 3\Lab 3\Header.h(105,21): warning C4244: =: преобразование "double" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\USER\Documents\Visual Studio 2022\Works\Lab 3\Lab 3\main.cpp(69): message : выполняется компиляция ссылки на экземпляр шаблон функции "void strandSort<std::vector<int,std::allocator<int>>>(T &,int)"
+          with
+          [
+              T=std::vector<int,std::allocator<int>>
+          ]
+  Lab 3.vcxproj -> C:\Users\USER\Documents\Visual Studio 2022\Works\Lab 3\x64\Debug\Lab 3.exe
