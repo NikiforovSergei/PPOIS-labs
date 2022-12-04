@@ -3,12 +3,14 @@
 using namespace std;
 
 struct Trail {
-
+    Trail *id;
+    Trail *next;
 };
 struct Node {
   int key;
   int count;
   Node *next;
+  Trail *list;
 };
 
 class List {
