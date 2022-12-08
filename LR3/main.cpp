@@ -8,6 +8,7 @@ int main() {
   temp.addArc(2, 1);
   temp.addNode(3);
   temp.addArc(2, 3);
+  temp.addArc(3,2);
   wirth_struct<int> temp2(temp);
 
   if (temp==temp2) {

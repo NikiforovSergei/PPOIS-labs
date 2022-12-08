@@ -382,6 +382,12 @@ void wirth_struct<type, A>::addArc(type x, type y) {
   //Определим, существует ли в графе дуга (x,y)?
   p = SearchGraph(x);
   q = SearchGraph(y);
+
+  if (find(y, x)) {
+    std::cout << "man you, you cannot add the same arc, but reverse:\n"
+                 "Struct has: " + std::to_string(y) + "->" + std::to_string(x) << std::endl;
+    return;
+  }
   r = (*p).Trail;
   Res = false;
   while ((r!=nullptr) && (!Res))
