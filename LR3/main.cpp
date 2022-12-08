@@ -7,7 +7,7 @@ int main() {
   //temp.addArc(0,1);
   temp.addArc(2, 1);
   temp.addNode(3);
-  temp.addArc(2,3);
+  temp.addArc(2, 3);
   wirth_struct<int> temp2(temp);
 
   if (temp==temp2) {
@@ -28,7 +28,7 @@ int main() {
     std::cout << "ogox2" << std::endl;
   }
 
-  if (temp.find(2,1)) {
+  if (temp.find(2, 1)) {
     std::cout << "Findally!" << std::endl;
   }
   std::cout << temp[0].Key << std::endl;
@@ -42,16 +42,16 @@ int main() {
     }
     i++;
   }
-  std::cout<<std::endl;
+  std::cout << std::endl;
   temp.print();
-  std::cout<<std::endl;
-  std::cout<<temp.degree(2)<<std::endl;
-  std::cout<<temp.degree(1,2)<<std::endl;
+  std::cout << std::endl;
+  std::cout << temp.degree(2) << std::endl;
+  std::cout << temp.degree(1, 2) << std::endl;
   temp.clear();
-  if(temp.empty()){
-    std::cout<<"yep"<<std::endl;
+  if (temp.empty()) {
+    std::cout << "yep" << std::endl;
   }
-  std::cout<<temp.arc_size()<<std::endl;
+  std::cout << temp.arc_size() << std::endl;
   //temp2.print();
 
 

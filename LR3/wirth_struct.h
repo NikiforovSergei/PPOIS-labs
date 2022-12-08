@@ -117,7 +117,7 @@ class wirth_struct {
 
 template<typename type, typename A>
 bool wirth_struct<type, A>::empty() {
-  if(Head == Tail){
+  if (Head==Tail) {
     return true;
   }
   return false;
@@ -156,7 +156,6 @@ int wirth_struct<type, A>::degree(type x, type y) {
   return degree(x) + degree(y);
 }
 template<typename type, typename A>
-
 typename wirth_struct<type, A>::Leader &wirth_struct<type, A>::operator[](const int &n) {
   if (n <= node_size() && n >= 0) {
     Leader *temp = Head;
@@ -165,12 +164,13 @@ typename wirth_struct<type, A>::Leader &wirth_struct<type, A>::operator[](const 
     }
   }
 }
+
 template<typename type, typename A>
 bool wirth_struct<type, A>::operator<(wirth_struct &other) {
   return this->node_size() < other.node_size();
 }
-template<typename type, typename A>
 
+template<typename type, typename A>
 bool wirth_struct<type, A>::operator>(wirth_struct &other) {
   return this->node_size() > other.node_size();
 }
@@ -210,6 +210,7 @@ bool wirth_struct<type, A>::find(type x, type y) {
   }
   return false;
 }
+
 template<typename type, typename A>
 int wirth_struct<type, A>::arc_size() {
   Leader *p;
@@ -228,6 +229,7 @@ int wirth_struct<type, A>::arc_size() {
 
   return counter;
 }
+
 template<typename type, typename A>
 int wirth_struct<type, A>::node_size() {
   Leader *p = Head;
@@ -240,6 +242,7 @@ int wirth_struct<type, A>::node_size() {
 
   return counter;
 }
+
 template<typename type, typename A>
 bool wirth_struct<type, A>::operator<=(wirth_struct &other) {
   return this->node_size() < other.node_size() || operator==(other);
@@ -356,6 +359,7 @@ typename wirth_struct<type, A>::Leader *wirth_struct<type, A>::SearchGraph(type 
   }
   return h;
 }
+
 template<typename type, typename A>
 typename wirth_struct<type, A>::Leader *wirth_struct<type, A>::Search(type w)
 //Функция возвращает указатель на заголовочный узел
@@ -392,8 +396,7 @@ void wirth_struct<type, A>::addArc(type x, type y) {
 }
 
 template<typename type, typename A>
-void wirth_struct<type, A>::deleteArc(type x, type y)
-{
+void wirth_struct<type, A>::deleteArc(type x, type y) {
   Leader *p, *q;
   Trailer *t, *r;
   bool Res; //Флаг наличия в графе данной дуги.
@@ -422,6 +425,7 @@ void wirth_struct<type, A>::deleteArc(type x, type y)
     }
   }
 }
+
 template<typename type, typename A>
 void wirth_struct<type, A>::print() {
   Leader *p; //Рабочий указатель.
@@ -440,6 +444,7 @@ void wirth_struct<type, A>::print() {
     std::cout << " ";
   }
 }
+
 template<typename type, typename A>
 void wirth_struct<type, A>::deleteNode(type y)
 //Функция возвращает указатель Head на структуру Вирта,
@@ -493,6 +498,7 @@ void wirth_struct<type, A>::free_trailer(Trailer **X) {
     *X = nullptr;
   }
 }
+
 template<typename type, typename A>
 void wirth_struct<type, A>::addNode(type T) {
   SearchGraph(T);
