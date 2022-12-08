@@ -48,8 +48,11 @@ int main() {
   std::cout<<temp.degree(2)<<std::endl;
   std::cout<<temp.degree(1,2)<<std::endl;
   temp.clear();
-
+  if(temp.empty()){
+    std::cout<<"yep"<<std::endl;
+  }
   std::cout<<temp.arc_size()<<std::endl;
   //temp2.print();
+
 
 }

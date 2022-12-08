@@ -32,6 +32,9 @@ class wirth_struct {
   Leader *SearchGraph(type);
   Leader *Search(type);
 
+  void free_main_list(Leader **, Leader **);
+  void free_trailer(Trailer **);
+
   Leader *Head; //Указатель на список заголовочных узлов.
   Leader *Tail;
  public:
@@ -46,13 +49,12 @@ class wirth_struct {
   void deleteArc(type, type);
   void print();
   void deleteNode(type);
-  void free_main_list(Leader **, Leader **);
-  void free_trailer(Trailer **);
   void addNode(type);
   void clear();
 
   bool find(type);
   bool find(type, type);
+  bool empty();
 
   int node_size();
   int arc_size();
@@ -114,13 +116,21 @@ class wirth_struct {
 };
 
 template<typename type, typename A>
+bool wirth_struct<type, A>::empty() {
+  if(Head == Tail){
+    return true;
+  }
+  return false;
+}
+
+template<typename type, typename A>
 void wirth_struct<type, A>::clear() {
-    Leader *t = Head;
-    while (t!=Tail) {
-      free_trailer(&(*t).Trail);
-      t = (*t).Next;
-    }
-    free_main_list(&Head, &Tail);
+  Leader *t = Head;
+  while (t!=Tail) {
+    free_trailer(&(*t).Trail);
+    t = (*t).Next;
+  }
+  free_main_list(&Head, &Tail);
 
   Head = Tail = new (Leader);
 
@@ -129,20 +139,20 @@ void wirth_struct<type, A>::clear() {
 template<typename type, typename A>
 int wirth_struct<type, A>::degree(type x) {
 
-  Leader* p = Head;
+  Leader *p = Head;
 
   int count = 0;
- while(p != Tail){
-   if(p->Key == x){
-     count = p->Count;
-   }
-   p = p->Next;
- }
+  while (p!=Tail) {
+    if (p->Key==x) {
+      count = p->Count;
+    }
+    p = p->Next;
+  }
   return count;
 }
 
 template<typename type, typename A>
-int wirth_struct<type, A>::degree(type x, type y){
+int wirth_struct<type, A>::degree(type x, type y) {
   return degree(x) + degree(y);
 }
 template<typename type, typename A>
@@ -270,7 +280,7 @@ template<typename type, typename A>
 wirth_struct<type, A> &wirth_struct<type, A>::operator=(const wirth_struct<type, A> &other) {
 
   if (this->Head!=nullptr) {
-   clear();
+    clear();
   }
 
   Head = Tail = new (Leader);
@@ -383,12 +393,9 @@ void wirth_struct<type, A>::addArc(type x, type y) {
 
 template<typename type, typename A>
 void wirth_struct<type, A>::deleteArc(type x, type y)
-//Функция возвращает указатель Head на структуру
-//Вирта, соответствующую ориентированному графу
-//и полученную удалением дуги (x,y).
 {
-  Leader *p, *q;    //Рабочие указатели.
-  Trailer *t, *r;    //Рабочие указатели.
+  Leader *p, *q;
+  Trailer *t, *r;
   bool Res; //Флаг наличия в графе данной дуги.
 
   //Определим, существует ли в графе дуга (x,y)?
