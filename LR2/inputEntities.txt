@@ -1,0 +1,14 @@
+Plant 3 0 100 100 1 grass
+Plant 0 0 90 100 1 grass
+Herbivore 3 4 80 100 20 antilope2 6 9 1 1
+Animal 0 0 80 100 20 antilope2 6 9 2 1
+Herbivore 0 0 80 100 20 antilope2 6 9 1 1
+Plant 2 0 100 100 1 grass
+Animal 4 0 80 100 20 antilope2 6 9 2 1
+Plant 3 4 100 100 1 grass
+Plant 4 0 100 100 1 grass
+Animal 4 0 80 100 20 antilope2 6 9 2 1
+Plant 3 2 100 100 1 grass
+Plant 2 3 100 100 1 grass
+Herbivore 4 1 80 100 20 antilope2 6 9 1 1
+Plant 4 1 100 100 1 grass
