@@ -1,0 +1,3 @@
+﻿  Source.cpp
+D:\Code\PPOIS_Lab1\Source.cpp(107,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  PPOIS_Lab1.vcxproj -> D:\Code\PPOIS_Lab1\Debug\PPOIS_Lab1.exe
