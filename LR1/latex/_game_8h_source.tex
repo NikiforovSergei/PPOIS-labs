@@ -1,0 +1,37 @@
+\hypertarget{_game_8h_source}{}\doxysection{Game.\+h}
+\mbox{\hyperlink{_game_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include<iostream>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{enum} Direction \{UP, RIGHT, DOWN, LEFT \}; }
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_game}{Game}}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16 \textcolor{keyword}{private}: }
+\DoxyCodeLine{18     \textcolor{keywordtype}{int} cells[4][4];}
+\DoxyCodeLine{19     \textcolor{keywordtype}{bool} move(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, Direction dir);}
+\DoxyCodeLine{20     \textcolor{keywordtype}{bool} solvable();}
+\DoxyCodeLine{23 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25     \mbox{\hyperlink{class_game_ad59df6562a58a614fda24622d3715b65}{Game}}(); }
+\DoxyCodeLine{26     \mbox{\hyperlink{class_game_ad59df6562a58a614fda24622d3715b65}{Game}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_game}{Game}}\& obj); }
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keywordtype}{bool} move(\textcolor{keywordtype}{int} val, Direction dir); }
+\DoxyCodeLine{36     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_game_aa622204c2e578f8e6a5303c73cccfddb}{solved}}(); }
+\DoxyCodeLine{39     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_a6d54497ce3a66f6dd45eacfdccc8d0bd}{draw}}(); }
+\DoxyCodeLine{42     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_game_a87dba780880cbfcf81ab5e35bbecb845}{blank\_line}}(); }
+\DoxyCodeLine{45     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_game_ad2bf7d7f889dd03845c7cf0fa6905eff}{get\_invertions}}(); }
+\DoxyCodeLine{48     \textcolor{keyword}{static} Direction \mbox{\hyperlink{class_game_a6ee0d24763a1fbc7f02ea18bc29a91b4}{ctod}}(\textcolor{keywordtype}{char} ch); }
+\DoxyCodeLine{52     \textcolor{keywordtype}{int}\& operator[](\textcolor{keywordtype}{int} val);}
+\DoxyCodeLine{53     \textcolor{keywordtype}{bool} operator==(\mbox{\hyperlink{class_game}{Game}}\& rhs);}
+\DoxyCodeLine{54     \textcolor{keywordtype}{bool} operator!=(\mbox{\hyperlink{class_game}{Game}}\& rhs) \{ \textcolor{keywordflow}{return} !operator==(rhs); \}}
+\DoxyCodeLine{55     \textcolor{keyword}{friend} ostream\& operator<<(ostream\& os, \mbox{\hyperlink{class_game}{Game}}\& x);}
+\DoxyCodeLine{56     \textcolor{keyword}{friend} istream\& operator>>(istream\& is, \mbox{\hyperlink{class_game}{Game}}\& x);}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \};}
+\DoxyCodeLine{59 }
+
+\end{DoxyCode}
