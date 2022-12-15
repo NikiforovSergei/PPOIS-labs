@@ -1,9 +1,0 @@
-﻿  MC.cpp
-D:\GitRep\ppoisl1\ppoisl1\MC.cpp(37,26): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\GitRep\ppoisl1\ppoisl1\MC.cpp(88,18): warning C4244: аргумент: преобразование "const double" в "const unsigned __int64", возможна потеря данных
-D:\GitRep\ppoisl1\ppoisl1\MC.cpp(178,36): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\GitRep\ppoisl1\ppoisl1\MC.cpp(194,36): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\GitRep\ppoisl1\ppoisl1\MC.cpp(402,37): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-  ppoisl1.cpp
-  Создание кода...
-  ppoisl1.vcxproj -> D:\GitRep\ppoisl1\ppoisl1\x64\Debug\ppoisl1.exe
