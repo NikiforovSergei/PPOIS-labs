@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<catalog lang="en"> <!-- This is the world known catalog "MegaCatalog" -->
+  <book> Adventure book <!-- This is Mega interesting book -->
+    <author>World Known author</author>
+    <year>2004</year>
+    <price>15000</price>
+  </book>
+  <book> Adventure book 2 <!-- This is Mega Interesting book 2 -->
+    <author country="UK">World known author</author>
+    <year>2003</year>
+    <price>23000</price>
+  </book>
+</catalog>
+<program lang="C"> <!-- This is the simple program on C -->
+  <![CDATA[print("Hello World!\n")]]>
+</program>
+<catalog> 
+  <book> Not Adventure Book <!-- This is the book was written by two authors-->
+    <authors>
+      <author1> Not world known author</author1>
+      <author2> Not world known author</author2>
+    </authors>
+  </book>
+</catalog>
