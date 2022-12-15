@@ -1,0 +1,21 @@
+﻿  Lab_ocean.cpp
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\ocean.h(379,14): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\Lab_ocean.cpp(99,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\Lab_ocean.cpp(69,7): warning C4101: 'test': unreferenced local variable
+  Ocean.cpp
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\ocean.h(379,14): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\Ocean.cpp(69,43): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\Ocean.cpp(70,42): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\Ocean.cpp(71,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\Ocean.cpp(72,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\Ocean.cpp(73,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\Ocean.cpp(74,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\Ocean.cpp(75,46): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\Ocean.cpp(709,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\Ocean.cpp(742,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\Ocean.cpp(959,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\Ocean.cpp(992,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\Ocean.cpp(1271,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\ppvis_lab2\ppvis_lab2\Ocean.cpp(1304,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  ppvis_lab2.vcxproj -> C:\Users\ftsel\source\repos\ppvis_lab2\x64\Debug\ppvis_lab2.exe
