@@ -1,0 +1,11 @@
+﻿  Calculator.cpp
+  Exceptions.cpp
+  Functions.cpp
+D:\ppoisL2\Functions.cpp(11,77): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\ppoisL2\Functions.cpp(25,77): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  Solver.cpp
+  Tokens.cpp
+  Variables.cpp
+  main.cpp
+  Создание кода...
+  main.vcxproj -> D:\GitRep\ppoisl1\main\x64\Debug\main.exe
