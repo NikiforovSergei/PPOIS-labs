@@ -1,0 +1,7 @@
+﻿  Source.cpp
+C:\Users\Stas\Desktop\Lab_Vectors\MathLib\MathLib\Source.cpp(115,13): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+C:\Users\Stas\Desktop\Lab_Vectors\MathLib\MathLib\Source.cpp(116,15): warning C4101: z: неиспользованная локальная переменная
+C:\Users\Stas\Desktop\Lab_Vectors\MathLib\MathLib\Source.cpp(116,12): warning C4101: y: неиспользованная локальная переменная
+C:\Users\Stas\Desktop\Lab_Vectors\MathLib\MathLib\Source.cpp(116,9): warning C4101: x: неиспользованная локальная переменная
+C:\Users\Stas\Desktop\Lab_Vectors\MathLib\MathLib\Source.cpp(92): warning C4715: Vector::comparison: значение возвращается не при всех путях выполнения
+  MathLib.vcxproj -> C:\Users\Stas\Desktop\Lab_Vectors\MathLib\x64\Debug\MathLib.exe
