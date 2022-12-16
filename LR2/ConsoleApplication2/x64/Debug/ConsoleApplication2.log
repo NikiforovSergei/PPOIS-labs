@@ -1,0 +1,4 @@
+﻿  ConsoleApplication2.cpp
+C:\Users\Stas\Desktop\Lab_Vectors\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp(210,6): warning C4551: в вызове функции отсутствует список аргументов
+C:\Users\Stas\Desktop\Lab_Vectors\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp(27): warning C4715: life::get_place: значение возвращается не при всех путях выполнения
+  ConsoleApplication2.vcxproj -> C:\Users\Stas\Desktop\Lab_Vectors\ConsoleApplication2\x64\Debug\ConsoleApplication2.exe
