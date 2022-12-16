@@ -1,0 +1,118 @@
+\hypertarget{class_game}{}\doxysection{Game Class Reference}
+\label{class_game}\index{Game@{Game}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_ad59df6562a58a614fda24622d3715b65}\label{class_game_ad59df6562a58a614fda24622d3715b65}} 
+{\bfseries Game} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a87293021876469ed183e502b01f77d4c}\label{class_game_a87293021876469ed183e502b01f77d4c}} 
+{\bfseries Game} (const \mbox{\hyperlink{class_game}{Game}} \&obj)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_ac562a6290e7aa2acee28a774af350eec}{move}} (int val, Direction dir)
+\item 
+bool \mbox{\hyperlink{class_game_aa622204c2e578f8e6a5303c73cccfddb}{solved}} ()
+\item 
+void \mbox{\hyperlink{class_game_a6d54497ce3a66f6dd45eacfdccc8d0bd}{draw}} ()
+\item 
+int \mbox{\hyperlink{class_game_a87dba780880cbfcf81ab5e35bbecb845}{blank\+\_\+line}} ()
+\item 
+int \mbox{\hyperlink{class_game_ad2bf7d7f889dd03845c7cf0fa6905eff}{get\+\_\+invertions}} ()
+\item 
+\mbox{\Hypertarget{class_game_ab5e4ff875663705c5828dbe74c997525}\label{class_game_ab5e4ff875663705c5828dbe74c997525}} 
+int \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (int val)
+\item 
+\mbox{\Hypertarget{class_game_ad633899fda88da358f3c8ce422045550}\label{class_game_ad633899fda88da358f3c8ce422045550}} 
+bool {\bfseries operator==} (\mbox{\hyperlink{class_game}{Game}} \&rhs)
+\item 
+\mbox{\Hypertarget{class_game_ab6f8b08897e722cae5c8d9280b7eba72}\label{class_game_ab6f8b08897e722cae5c8d9280b7eba72}} 
+bool {\bfseries operator!=} (\mbox{\hyperlink{class_game}{Game}} \&rhs)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Direction \mbox{\hyperlink{class_game_a6ee0d24763a1fbc7f02ea18bc29a91b4}{ctod}} (char ch)
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_a70778400825c970648d4dbcb214411de}\label{class_game_a70778400825c970648d4dbcb214411de}} 
+ostream \& {\bfseries operator$<$$<$} (ostream \&os, \mbox{\hyperlink{class_game}{Game}} \&x)
+\item 
+\mbox{\Hypertarget{class_game_a32b44847e6381bc287d3b62ec495220a}\label{class_game_a32b44847e6381bc287d3b62ec495220a}} 
+istream \& {\bfseries operator$>$$>$} (istream \&is, \mbox{\hyperlink{class_game}{Game}} \&x)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_a87dba780880cbfcf81ab5e35bbecb845}\label{class_game_a87dba780880cbfcf81ab5e35bbecb845}} 
+\index{Game@{Game}!blank\_line@{blank\_line}}
+\index{blank\_line@{blank\_line}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{blank\_line()}{blank\_line()}}
+{\footnotesize\ttfamily int Game\+::blank\+\_\+line (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The line number where the blank space is, countring from the bottom. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a6ee0d24763a1fbc7f02ea18bc29a91b4}\label{class_game_a6ee0d24763a1fbc7f02ea18bc29a91b4}} 
+\index{Game@{Game}!ctod@{ctod}}
+\index{ctod@{ctod}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{ctod()}{ctod()}}
+{\footnotesize\ttfamily Direction Game\+::ctod (\begin{DoxyParamCaption}\item[{char}]{ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em ch} & Character representation of the direction. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Enum value represented by the character. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a6d54497ce3a66f6dd45eacfdccc8d0bd}\label{class_game_a6d54497ce3a66f6dd45eacfdccc8d0bd}} 
+\index{Game@{Game}!draw@{draw}}
+\index{draw@{draw}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Game\+::draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Draws the puzzle state in console. \mbox{\Hypertarget{class_game_ad2bf7d7f889dd03845c7cf0fa6905eff}\label{class_game_ad2bf7d7f889dd03845c7cf0fa6905eff}} 
+\index{Game@{Game}!get\_invertions@{get\_invertions}}
+\index{get\_invertions@{get\_invertions}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{get\_invertions()}{get\_invertions()}}
+{\footnotesize\ttfamily int Game\+::get\+\_\+invertions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The number of every possible invertion in the puzzle. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_ac562a6290e7aa2acee28a774af350eec}\label{class_game_ac562a6290e7aa2acee28a774af350eec}} 
+\index{Game@{Game}!move@{move}}
+\index{move@{move}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily bool Game\+::move (\begin{DoxyParamCaption}\item[{int}]{val,  }\item[{Direction}]{dir }\end{DoxyParamCaption})}
+
+Attemps to move a cell value to the new location.
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Cell value to move. \\
+\hline
+{\em dir} & Direction to move the cell value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the movement was sucessfull, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_aa622204c2e578f8e6a5303c73cccfddb}\label{class_game_aa622204c2e578f8e6a5303c73cccfddb}} 
+\index{Game@{Game}!solved@{solved}}
+\index{solved@{solved}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{solved()}{solved()}}
+{\footnotesize\ttfamily bool Game\+::solved (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+true if the puzzle is solved, false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_game_8h}{Game.\+h}}\item 
+Game.\+cpp\end{DoxyCompactItemize}
