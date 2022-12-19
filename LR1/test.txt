@@ -1,0 +1,6 @@
+vocabulary словарь
+coffee кофе
+tree дерево
+tea чай
+dad папа
+edge ребро

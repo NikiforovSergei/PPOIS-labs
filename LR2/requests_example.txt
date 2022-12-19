@@ -1,0 +1,9 @@
+/
+/bookstore
+/bookstore/book
+/bookstore/book/title[attr(“lang”, “en”)]
+/bookstore/book/title[attr(“lang”, “en”) && text(“C++ builder”)]
+/bookstore/book/title[attr(“lang”, “en”) || text(“C++ builder”)]
+/bookstore/book/title[attr(“lang”, “en”) && text(“C++ builder”) && text(“Robin Hood”)]
+/bookstore/book/title[!text(C++ builder”)]
+/bookstore/book/title[!attr(“lang”, “en”) || text(“C++ builder”)]
