@@ -1,0 +1,104 @@
+﻿  Menu.cpp
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(148,8): error C3668: 'ocean_life::Plankton::aging': method with override specifier 'override' did not override any base class methods
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(171,8): error C3668: 'ocean_life::Passive::aging': method with override specifier 'override' did not override any base class methods
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(229,8): error C3668: 'ocean_life::Aggressive::aging': method with override specifier 'override' did not override any base class methods
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(295,8): error C3668: 'ocean_life::Neutral::aging': method with override specifier 'override' did not override any base class methods
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(386,49): warning C4138: '*/' found outside of comment
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(386,49): error C2059: syntax error: '*'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(390,36): error C2238: unexpected token(s) preceding ';'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(396,47): warning C4138: '*/' found outside of comment
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(396,47): error C2059: syntax error: '*'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(400,36): error C2238: unexpected token(s) preceding ';'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(406,47): warning C4138: '*/' found outside of comment
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(406,47): error C2059: syntax error: '*'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(410,42): error C2238: unexpected token(s) preceding ';'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(416,53): warning C4138: '*/' found outside of comment
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(416,53): error C2059: syntax error: '*'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(420,42): error C2238: unexpected token(s) preceding ';'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(436,14): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Menu.cpp(99,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Ocean.cpp
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(148,8): error C3668: 'ocean_life::Plankton::aging': method with override specifier 'override' did not override any base class methods
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(171,8): error C3668: 'ocean_life::Passive::aging': method with override specifier 'override' did not override any base class methods
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(229,8): error C3668: 'ocean_life::Aggressive::aging': method with override specifier 'override' did not override any base class methods
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(295,8): error C3668: 'ocean_life::Neutral::aging': method with override specifier 'override' did not override any base class methods
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(386,49): warning C4138: '*/' found outside of comment
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(386,49): error C2059: syntax error: '*'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(390,36): error C2238: unexpected token(s) preceding ';'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(396,47): warning C4138: '*/' found outside of comment
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(396,47): error C2059: syntax error: '*'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(400,36): error C2238: unexpected token(s) preceding ';'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(406,47): warning C4138: '*/' found outside of comment
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(406,47): error C2059: syntax error: '*'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(410,42): error C2238: unexpected token(s) preceding ';'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(416,53): warning C4138: '*/' found outside of comment
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(416,53): error C2059: syntax error: '*'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(420,42): error C2238: unexpected token(s) preceding ';'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(436,14): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(69,43): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(70,42): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(71,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(72,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(73,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(74,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(75,46): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(88,4): error C3861: 'Passive_move': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(99,4): error C3861: 'Passive_move': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(110,4): error C3861: 'Neutral_move': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(121,4): error C3861: 'Neutral_move': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(132,4): error C3861: 'Aggressive_move': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(143,4): error C3861: 'Aggressive_move': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(578,20): error C2039: 'Passive_move': is not a member of 'ocean_life::Ocean_master'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(355): message : see declaration of 'ocean_life::Ocean_master'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(583,19): error C2065: 'ocean_table': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(584,20): error C2065: 'ocean_table': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(588,20): error C3861: 'return_plankton': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(599,12): error C3861: 'empty_place': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(613,12): error C3861: 'empty_place': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(627,12): error C3861: 'empty_place': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(641,12): error C3861: 'empty_place': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(655,2): error C2065: 'ocean_table': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(664,19): error C3861: 'return_plankton': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(709,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(742,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(780,20): error C2039: 'Neutral_move': is not a member of 'ocean_life::Ocean_master'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(355): message : see declaration of 'ocean_life::Ocean_master'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(785,19): error C2065: 'ocean_table': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(786,20): error C2065: 'ocean_table': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(791,27): error C3861: 'return_plankton': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(799,29): error C3861: 'return_clownfish': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(800,19): error C3861: 'return_fugu': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(813,12): error C3861: 'empty_place': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(825,12): error C3861: 'empty_place': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(837,12): error C3861: 'empty_place': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(849,12): error C3861: 'empty_place': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(861,2): error C2065: 'ocean_table': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(870,27): error C3861: 'return_plankton': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(959,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(992,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1030,20): error C2039: 'Aggressive_move': is not a member of 'ocean_life::Ocean_master'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(355): message : see declaration of 'ocean_life::Ocean_master'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1035,19): error C2065: 'ocean_table': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1036,20): error C2065: 'ocean_table': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1040,25): error C3861: 'return_dolphin': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1041,21): error C3861: 'return_whale': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1050,29): error C3861: 'return_clownfish': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1051,19): error C3861: 'return_fugu': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1065,12): error C3861: 'empty_place': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1077,12): error C3861: 'empty_place': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1089,12): error C3861: 'empty_place': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1101,12): error C3861: 'empty_place': identifier not found
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1113,2): error C2065: 'ocean_table': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1271,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1304,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1342,25): error C2039: 'return_plankton': is not a member of 'ocean_life::Ocean_master'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\ocean.h(355): message : see declaration of 'ocean_life::Ocean_master'
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1344,22): error C2065: 'fish_plankton': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1345,7): error C2065: 'fish_plankton': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1345,49): error C2065: 'fish_plankton': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1346,11): error C2065: 'fish_plankton': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1347,2): error C2065: 'p_extra': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1348,2): error C2065: 'p_extra': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1349,2): error C2065: 'p_extra': undeclared identifier
+C:\Users\ftsel\source\repos\PPOIS2\PPOIS2\Ocean.cpp(1350,10): error C2065: 'p_extra': undeclared identifier
+  Generating Code...
