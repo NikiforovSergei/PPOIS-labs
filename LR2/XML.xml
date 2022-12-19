@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<bookstore>
+  <book>
+    <title lang="en">Robin Hood</title>
+    Robin Hood robbed the tich, giving the loot to the poor
+    <price>10000</price>
+    <count />
+  </book>
+  <book>
+    <title lang="en">C++ builder</title>
+	Learn c++ with builder
+    <price>5000</price>
+    <count>3</count>
+  </book>
+</bookstore>
