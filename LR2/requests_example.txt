@@ -1,0 +1,9 @@
+/
+/bookstore
+/bookstore/book
+/bookstore/book/title[attr(“lang”, “en”)]
+/bookstore/book/title[attr(“lang”, “en”) && text(“Learn XML”)]
+/bookstore/book/title[attr(“lang”, “en”) || text(“Learn XML”)]
+/bookstore/book/title[attr(“lang”, “en”) && text(“Learn XML”) && text(“Harry Potter”)]
+/bookstore/book/title[!text(“Learn XML”)]
+/bookstore/book/title[!attr(“lang”, “en”) || text(“Learn XML”)]
